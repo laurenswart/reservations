@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Locality;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,7 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             ArtistSeeder::class,
-            TypeSeeder::class
+            TypeSeeder::class,
+            LocalitySeeder::class,
         ]);
 
     }
