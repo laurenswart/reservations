@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Models\Artist;
 use App\Models\Locality;
 
 class LocalitySeeder extends Seeder
@@ -16,8 +15,11 @@ class LocalitySeeder extends Seeder
      */
     public function run()
     {
-        //Empty the table first
-        Locality::truncate();
+       //Empty the table first
+       DB::statement('SET FOREIGN_KEY_CHECKS=0');
+       Locality::truncate();
+       DB::statement('SET FOREIGN_KEY_CHECKS=1');
+
 
         //Define data
         $localities = [
@@ -27,7 +29,8 @@ class LocalitySeeder extends Seeder
             ['postal_code'=>'5100', 'locality'=>'Jambes'],
             ['postal_code'=>'3000', 'locality'=>'Leuven'],
             ['postal_code'=>'9000', 'locality'=>'Gand'],
-            ['postal_code'=>'2000', 'locality'=>'Anvers']
+            ['postal_code'=>'2000', 'locality'=>'Anvers'],
+            ['postal_code'=>'1170', 'locality'=>'Watermael-Boitsfort'],
         ];
 
         //Insert data in the table

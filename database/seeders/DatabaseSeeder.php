@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Locality;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,6 +18,7 @@ class DatabaseSeeder extends Seeder
             TypeSeeder::class,
             LocalitySeeder::class,
             RoleSeeder::class,
+            LocationSeeder::class,
         ]);
 
     }
