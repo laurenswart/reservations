@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Type extends Model
+class Role extends Model
 {
     use HasFactory;
 
@@ -14,14 +14,14 @@ class Type extends Model
      *
      * @var array
      */
-    protected $fillable = ['type'];
+    protected $fillable = ['role'];
 
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'types';
+    protected $table = 'roles';
   
     /**
      * Indicates if the model should be timestamped.
@@ -29,5 +29,5 @@ class Type extends Model
      * @var bool
      */
     public $timestamps = false;
-  
+
 }
