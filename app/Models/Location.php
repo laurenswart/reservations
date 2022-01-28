@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\Representation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -51,6 +52,14 @@ class Location extends Model
     public function shows()
     {
         return $this->hasMany(Show::class);
+    }
+
+    /**
+     * Get the representations at the location
+     */
+    public function representations()
+    {
+        return $this->hasMany(Representation::class);
     }
 }
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\LocalityController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\RepresentationController;
 use App\Http\Controllers\RoleController;
 /*
 |--------------------------------------------------------------------------
@@ -41,5 +42,11 @@ Route::get('/role/{id}', [RoleController::class, 'show'])
 Route::get('location', [LocationController::class, 'index'])->name('location_index');
 Route::get('location/{id}', [LocationController::class, 'show'])
 ->where('id', '[0-9]+')->name('location_show');
+
+Route::get('/representation', [RepresentationController::class, 'index'])
+->name('representation_index');
+Route::get('/representation/{id}', [RepresentationController::class, 'show'])
+->where('id', '[0-9]+')->name('representation_show');
+
 
 
