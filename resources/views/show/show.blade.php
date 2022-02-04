@@ -42,6 +42,20 @@
         @else
         <p>Aucune représentation</p>
         @endif
+
+        <h2>Liste des artistes</h2>
+        @foreach ($collaborateurs as $collabName => $collabData)
+            <p><strong>{{ ucfirst($collabName) }}s:</strong>
+            @foreach ($collabData as $auteur)
+                {{ $auteur->firstname }} 
+                {{ $auteur->lastname }}
+                @if($loop->iteration == $loop->count-1) et 
+                @elseif(!$loop->last), 
+                @endif
+            @endforeach
+            </p>
+        @endforeach
+
     </article>
     
     <nav><a href="{{ route('show_index') }}">Retour à l'index</a></nav>
