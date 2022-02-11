@@ -18,9 +18,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'firstname',
+        'lastname',
         'email',
         'password',
+        'langue',
+        'password', 
+        'login',
     ];
 
     /**
@@ -34,11 +38,25 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast.
+     * The table associated with the model.
      *
-     * @var array<string, string>
+     * @var string
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    protected $table = 'users';
+  
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = true;
+
+    /**
+     * The roles that are defined by the user.
+     */
+    public function roles(){
+        return $this->belongsToMany(Role::class);
+    }
+
+    
 }
