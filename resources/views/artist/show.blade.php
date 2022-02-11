@@ -10,6 +10,6 @@
         <li>{{ $type->type }}</li>
     @endforeach
     </ul>
-
-    <nav><a href="{{ route('artist_index') }}">Retour à l'index</a></nav>
+    <div><a href="{{ route('artists_edit' ,$artist->id) }}">Modifier</a></div>
+    <nav><a href="{{ route('artists_index') }}">Retour à l'index</a></nav>
 @endsection

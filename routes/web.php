@@ -24,36 +24,43 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/artist', [ArtistController::class, 'index'])->name('artist_index');
-Route::get('/artist/{id}', [ArtistController::class, 'show'])
-	->where('id', '[0-9]+')->name('artist_show');
+Route::get('/artists', [ArtistController::class, 'index'])->name('artists_index');
+Route::get('/artists/{id}', [ArtistController::class, 'show'])
+	->where('id', '[0-9]+')->name('artists_show');
+Route::get('/artists/edit/{id}', [ArtistController::class, 'edit'])
+	->where('id', '[0-9]+')->name('artists_edit');
+Route::put('/artists/{id}', [ArtistController::class, 'update'])
+	->where('id', '[0-9]+')->name('artists_update');
 
 
-Route::get('/type', [TypeController::class, 'index'])->name('type_index');
-Route::get('/type/{id}', [TypeController::class, 'show'])
+Route::get('/types', [TypeController::class, 'index'])->name('type_index');
+Route::get('/types/{id}', [TypeController::class, 'show'])
     ->where('id', '[0-9]+')->name('type_show');
 
-Route::get('/locality', [LocalityController::class, 'index'])->name('locality_index');
-Route::get('/locality/{id}', [LocalityController::class, 'show'])
+Route::get('/localities', [LocalityController::class, 'index'])->name('locality_index');
+Route::get('/localities/{id}', [LocalityController::class, 'show'])
     ->where('id', '[0-9]+')->name('locality_show');
 
-Route::get('/role', [RoleController::class, 'index'])->name('role_index');
-Route::get('/role/{id}', [RoleController::class, 'show'])
+Route::get('/roles', [RoleController::class, 'index'])->name('role_index');
+Route::get('/roles/{id}', [RoleController::class, 'show'])
     ->where('id', '[0-9]+')->name('role_show');
 
-Route::get('location', [LocationController::class, 'index'])->name('location_index');
-Route::get('location/{id}', [LocationController::class, 'show'])
+Route::get('locations', [LocationController::class, 'index'])->name('location_index');
+Route::get('locations/{id}', [LocationController::class, 'show'])
 ->where('id', '[0-9]+')->name('location_show');
 
-Route::get('/representation', [RepresentationController::class, 'index'])
+Route::get('/representations', [RepresentationController::class, 'index'])
 ->name('representation_index');
-Route::get('/representation/{id}', [RepresentationController::class, 'show'])
+Route::get('/representations/{id}', [RepresentationController::class, 'show'])
 ->where('id', '[0-9]+')->name('representation_show');
 
-Route::get('/show', [ShowController::class, 'index'])
+Route::get('/shows', [ShowController::class, 'index'])
 ->name('show_index');
-Route::get('/show/{id}', [ShowController::class, 'show'])
+Route::get('/shows/{id}', [ShowController::class, 'show'])
 ->where('id', '[0-9]+')->name('show_show');
+
+
+
 
 
 

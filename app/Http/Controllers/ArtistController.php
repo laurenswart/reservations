@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artist;
+use Exception;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ArtistController extends Controller
 {
@@ -68,7 +71,11 @@ class ArtistController extends Controller
      */
     public function edit($id)
     {
-        //
+        $artist = Artist::find($id);
+
+        return view('artist.edit', [
+            'artist'=>$artist
+        ]);
     }
 
     /**
@@ -80,7 +87,35 @@ class ArtistController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //récupérer l'artiste à modifier
+        $artist = Artist::find($id);
+
+        if($artist==null){
+            return Redirect::route('artists.index');
+        }
+
+        //récupérer les données entrantes
+        $firstname = $request->input('firstname');
+        $lastname = $request->input('lastname');
+
+        //validation
+        $validated = $request->validate([
+            'firstname' => 'required|max:60',
+            'lastname' => 'required|max:60',
+        ]);
+        //sauvegarder
+        $artist->firstname = $validated['firstname'];
+        $artist->lastname = $validated['lastname'];
+        try{
+            $artist->save();
+            return view('artist.show',[
+                'artist' => $artist,
+            ]);
+        } catch (QueryException $e) {
+            return view('artist.edit',[
+                'artist' => $artist,
+            ]);
+        }
     }
 
     /**
