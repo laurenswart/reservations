@@ -59,10 +59,17 @@ class User extends Authenticatable
     }
 
     /**
-     * The roles that are defined by the user.
+     * The reservations that are made by the user.
      */
     public function reservations(){
         return $this->hasMany(Reservation::class);
+    }
+
+    /**
+     * The representations that are reserved by a user
+     */
+    public function representations(){
+        return $this->belongsToMany(Representation::class);
     }
 
     

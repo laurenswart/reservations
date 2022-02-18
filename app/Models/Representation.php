@@ -57,6 +57,14 @@ class Representation extends Model
     {
         return $this->hasMany(Reservations::class);
     }
+
+    /**
+     * Get the users that have a reservation for this representation
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
 
 

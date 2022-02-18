@@ -6,6 +6,7 @@ use App\Http\Controllers\TypeController;
 use App\Http\Controllers\LocalityController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\RepresentationController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ShowController;
 
@@ -33,31 +34,36 @@ Route::put('/artists/{id}', [ArtistController::class, 'update'])
 	->where('id', '[0-9]+')->name('artists_update');
 
 
-Route::get('/types', [TypeController::class, 'index'])->name('type_index');
+Route::get('/types', [TypeController::class, 'index'])->name('types_index');
 Route::get('/types/{id}', [TypeController::class, 'show'])
-    ->where('id', '[0-9]+')->name('type_show');
+    ->where('id', '[0-9]+')->name('types_show');
 
-Route::get('/localities', [LocalityController::class, 'index'])->name('locality_index');
+Route::get('/localities', [LocalityController::class, 'index'])->name('localities_index');
 Route::get('/localities/{id}', [LocalityController::class, 'show'])
-    ->where('id', '[0-9]+')->name('locality_show');
+    ->where('id', '[0-9]+')->name('localities_show');
 
-Route::get('/roles', [RoleController::class, 'index'])->name('role_index');
+Route::get('/roles', [RoleController::class, 'index'])->name('roles_index');
 Route::get('/roles/{id}', [RoleController::class, 'show'])
-    ->where('id', '[0-9]+')->name('role_show');
+    ->where('id', '[0-9]+')->name('roles_show');
 
-Route::get('locations', [LocationController::class, 'index'])->name('location_index');
+Route::get('locations', [LocationController::class, 'index'])->name('locations_index');
 Route::get('locations/{id}', [LocationController::class, 'show'])
-->where('id', '[0-9]+')->name('location_show');
+->where('id', '[0-9]+')->name('locations_show');
 
 Route::get('/representations', [RepresentationController::class, 'index'])
-->name('representation_index');
+->name('representations_index');
 Route::get('/representations/{id}', [RepresentationController::class, 'show'])
-->where('id', '[0-9]+')->name('representation_show');
+->where('id', '[0-9]+')->name('representations_show');
 
 Route::get('/shows', [ShowController::class, 'index'])
-->name('show_index');
+->name('shows_index');
 Route::get('/shows/{id}', [ShowController::class, 'show'])
-->where('id', '[0-9]+')->name('show_show');
+->where('id', '[0-9]+')->name('shows_show');
+
+Route::get('/reservations/{id}', [ReservationController::class, 'show'])
+->where('id', '[0-9]+')->name('reservations_show');
+Route::get('/reservations/edit/{id}', [ReservationController::class, 'edit'])
+->where('id', '[0-9]+')->name('reservations_edit');
 
 
 
