@@ -58,5 +58,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    /**
+     * The roles that are defined by the user.
+     */
+    public function reservations(){
+        return $this->hasMany(Reservation::class);
+    }
+
     
 }

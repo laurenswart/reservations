@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Reservation;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -24,7 +25,8 @@ class DatabaseSeeder extends Seeder
             ArtistTypeSeeder::class,
             ArtistTypeShowSeeder::class,
             UserSeeder::class,
-            RoleUserSeeder::class
+            RoleUserSeeder::class,
+            ReservationSeeder::class,
         ]);
 
     }

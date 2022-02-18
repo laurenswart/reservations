@@ -49,6 +49,14 @@ class Representation extends Model
     {
         return $this->belongsTo(Show::class);
     }
+
+    /**
+     * Get the reservations for this representation
+     */
+    public function reservations()
+    {
+        return $this->hasMany(Reservations::class);
+    }
 }
 
 
