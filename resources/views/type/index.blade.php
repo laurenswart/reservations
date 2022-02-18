@@ -15,7 +15,7 @@
         @foreach($types as $type)
             <tr>
                 <td>
-                    <a href="{{ route('type_show', $type->id) }}">{{ $type->type }}</a>
+                    <a href="{{ route('types_show', $type->id) }}">{{ $type->type }}</a>
                 </td>
             </tr>
         @endforeach

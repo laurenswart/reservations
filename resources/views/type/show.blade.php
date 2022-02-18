@@ -3,7 +3,7 @@
 @section('title', 'Fiche d\'un type')
 
 @section('content')
-    <h1>{{ $type->type }}</h1>
+    <h1>{{ $type->type }} <a href="{{ route('types_edit', $type->id) }}">Modifier</a></h1>
 
     <h2>Liste des artistes</h2>
     <ul>
@@ -12,5 +12,5 @@
     @endforeach
     </ul>
 
-    <nav><a href="{{ route('type_index') }}">Retour à l'index</a></nav>
+    <nav><a href="{{ route('types_index') }}">Retour à l'index</a></nav>
 @endsection

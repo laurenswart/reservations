@@ -25,6 +25,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+//ARTISTS
 Route::get('/artists', [ArtistController::class, 'index'])->name('artists_index');
 Route::get('/artists/{id}', [ArtistController::class, 'show'])
 	->where('id', '[0-9]+')->name('artists_show');
@@ -33,10 +35,14 @@ Route::get('/artists/edit/{id}', [ArtistController::class, 'edit'])
 Route::put('/artists/{id}', [ArtistController::class, 'update'])
 	->where('id', '[0-9]+')->name('artists_update');
 
-
+//TYPES
 Route::get('/types', [TypeController::class, 'index'])->name('types_index');
 Route::get('/types/{id}', [TypeController::class, 'show'])
     ->where('id', '[0-9]+')->name('types_show');
+Route::get('/types/edit/{id}', [TypeController::class, 'edit'])
+	->where('id', '[0-9]+')->name('types_edit');
+Route::put('/types/{id}', [TypeController::class, 'update'])
+	->where('id', '[0-9]+')->name('types_update');
 
 Route::get('/localities', [LocalityController::class, 'index'])->name('localities_index');
 Route::get('/localities/{id}', [LocalityController::class, 'show'])
