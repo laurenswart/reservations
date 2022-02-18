@@ -10,6 +10,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ShowController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,7 +21,6 @@ use App\Http\Controllers\ShowController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -75,8 +75,8 @@ Route::get('/reservations/{id}', [ReservationController::class, 'show'])
 Route::get('/reservations/edit/{id}', [ReservationController::class, 'edit'])
 ->where('id', '[0-9]+')->name('reservations_edit');
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-
-
-
-
+require __DIR__.'/auth.php';
