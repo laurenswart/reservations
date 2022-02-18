@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Role;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class RoleController extends Controller
 {
@@ -66,7 +68,11 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = Role::find($id);
+
+        return view('role.edit', [
+            'role'=>$role
+        ]);
     }
 
     /**
@@ -78,7 +84,29 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //récupérer le role à modifier
+        $role = Role::find($id);
+
+        if($role==null){
+            return Redirect::route('roles.index');
+        }
+
+        //validation
+        $validated = $request->validate([
+            'role' => 'required|max:30',
+        ]);
+        //sauvegarder
+        $role->role = $validated['role'];
+        try{
+            $role->save();
+            return view('role.show',[
+                'role' => $role,
+            ]);
+        } catch (QueryException $e) {
+            return view('role.edit',[
+                'role' => $role,
+            ]);
+        }
     }
 
     /**

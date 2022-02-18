@@ -15,7 +15,7 @@
         @foreach($roles as $role)
             <tr>
                 <td>
-                    <a href="{{ route('role_show', $role->id) }}">{{ $role->role }}</a>
+                    <a href="{{ route('roles_show', $role->id) }}">{{ $role->role }}</a>
                 </td>
             </tr>
         @endforeach

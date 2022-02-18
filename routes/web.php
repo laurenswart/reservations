@@ -51,6 +51,10 @@ Route::get('/localities/{id}', [LocalityController::class, 'show'])
 Route::get('/roles', [RoleController::class, 'index'])->name('roles_index');
 Route::get('/roles/{id}', [RoleController::class, 'show'])
     ->where('id', '[0-9]+')->name('roles_show');
+Route::get('/roles/edit/{id}', [RoleController::class, 'edit'])
+    ->where('id', '[0-9]+')->name('roles_edit');
+Route::put('/roles/{id}', [RoleController::class, 'update'])
+    ->where('id', '[0-9]+')->name('roles_update');
 
 Route::get('locations', [LocationController::class, 'index'])->name('locations_index');
 Route::get('locations/{id}', [LocationController::class, 'show'])
