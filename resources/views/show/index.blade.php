@@ -8,7 +8,7 @@
     <ul>
     @foreach($shows as $show)
     <li>
-        <a href="{{ route('show_show', $show->id) }}">{{ $show->title }}</a>
+        <a href="{{ route('shows_show', $show->id) }}">{{ $show->title }}</a>
         @if($show->bookable)
         <span>{{ $show->price }} €</span>
         @endif

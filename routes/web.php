@@ -23,7 +23,7 @@ use App\Http\Controllers\ShowController;
 */
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 
 //ARTISTS
@@ -58,25 +58,25 @@ Route::put('/roles/{id}', [RoleController::class, 'update'])
 
 Route::get('locations', [LocationController::class, 'index'])->name('locations_index');
 Route::get('locations/{id}', [LocationController::class, 'show'])
-->where('id', '[0-9]+')->name('locations_show');
+    ->where('id', '[0-9]+')->name('locations_show');
 
 Route::get('/representations', [RepresentationController::class, 'index'])
-->name('representations_index');
+    ->name('representations_index');
 Route::get('/representations/{id}', [RepresentationController::class, 'show'])
-->where('id', '[0-9]+')->name('representations_show');
+    ->where('id', '[0-9]+')->name('representations_show');
 
 Route::get('/shows', [ShowController::class, 'index'])
-->name('shows_index');
+    ->name('shows_index');
 Route::get('/shows/{id}', [ShowController::class, 'show'])
-->where('id', '[0-9]+')->name('shows_show');
+    ->where('id', '[0-9]+')->name('shows_show');
 
 Route::get('/reservations/{id}', [ReservationController::class, 'show'])
-->where('id', '[0-9]+')->name('reservations_show');
+    ->where('id', '[0-9]+')->name('reservations_show');
 Route::get('/reservations/edit/{id}', [ReservationController::class, 'edit'])
-->where('id', '[0-9]+')->name('reservations_edit');
+    ->where('id', '[0-9]+')->name('reservations_edit');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+    return view('welcome');
+    })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
