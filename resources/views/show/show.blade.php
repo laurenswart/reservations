@@ -7,7 +7,7 @@
         <h1>{{ $show->title }}</h1>
             
         @if($show->poster_url)
-        <p><img src="{{ asset('images/'.$show->poster_url) }}" alt="{{ $show->title }}" width="200"></p>
+        <p><img src="{{ asset('images/show_posters/'.$show->poster_url) }}" alt="{{ $show->title }}" width="200"></p>
         @else
         <canvas width="200" height="100" style="border:1px solid #000000;"></canvas>
         @endif
@@ -58,5 +58,5 @@
 
     </article>
     
-    <nav><a href="{{ route('show_index') }}">Retour à l'index</a></nav>
+    <nav><a href="{{ route('shows_index') }}">Retour à l'index</a></nav>
 @endsection

@@ -1483,6 +1483,12 @@ select {
 }
 
 .auth-guest{
-  background: rgb(49,76,223);
-  background: linear-gradient(28deg, rgba(49,76,223,1) 0%, rgba(245,66,54,1) 100%);
+  background: #111114;
 }
+
+/*navigation*/
+
+nav *, #footer, nav .top-bar {
+  background-color: #111114;
+}
+
