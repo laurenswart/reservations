@@ -70,10 +70,13 @@ body {
   color: #fff;
   }
 
-/*navigation*/
-nav *, #footer, nav .top-bar {
-    background-color: #111114;
+
+
+  .thumbnail {
+    width: 300px; height: 337px; object-fit: cover;
   }
-  nav {
-    filter: drop-shadow(9px 4px 9px #aaaaaa44);
-  }
+
+  
+a.button {
+  background-color: #d7a32d;
+}

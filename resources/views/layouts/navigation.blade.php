@@ -3,7 +3,7 @@
     <div class="top-bar">
         <div class="top-bar-left">
             <ul class="menu">
-                <li class="menu-text">The Case of Shows</li>
+                <li class="menu-text"><img src="{{ asset('images/logo/logo_white.png') }}" style="height:40px;"></li>
             </ul>
         </div>
         <div class="top-bar-right">
@@ -16,12 +16,7 @@
             <li><!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
-                    <x-dropdown-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-dropdown-link>
+                    <a href="route('logout')" onclick="event.preventDefault();this.closest('form').submit();">{{ __('Log Out') }}</a>
                 </form>
             </li>
             @endauth

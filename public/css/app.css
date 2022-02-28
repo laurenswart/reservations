@@ -1421,13 +1421,3 @@ select {
 
 
 
-/*navigation*/
-
-nav *, #footer, nav .top-bar, nav a {
-  background-color: #111114;
-  color: whitesmoke;
-}
-nav {
-  filter: drop-shadow(9px 4px 9px #aaaaaa44);
-}
-

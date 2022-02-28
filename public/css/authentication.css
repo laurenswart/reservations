@@ -11,7 +11,7 @@
     color: #adadad;
   }
   .sign-in-form a:hover {
-    color: rgb(49,76,223);
+    color: #d7a32d;
   }
   
   .sign-in-form h4 {
@@ -57,8 +57,8 @@
   }
   
   .sign-in-form-button:hover {
-    background-color: rgb(49,76,223);
-    border-color: rgb(49,76,223);
+    background-color: #d7a32d;
+    border-color: #d7a32d;
   }
   
   .sign-in-form > * {
