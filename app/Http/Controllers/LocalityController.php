@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Locality;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class LocalityController extends Controller
@@ -66,7 +67,11 @@ class LocalityController extends Controller
      */
     public function edit($id)
     {
-        //
+        $locality = Locality::find($id);
+
+        return view('locality.edit', [
+            'locality'=>$locality
+        ]);
     }
 
     /**
@@ -78,7 +83,31 @@ class LocalityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //récupérer le role à modifier
+        $locality = Locality::find($id);
+
+        if($locality==null){
+            return Locality::route('localities.index');
+        }
+
+        //validation
+        $validated = $request->validate([
+            'locality' => 'required|max:60',
+            'postal_code' => 'required|max:6',
+        ]);
+        //sauvegarder
+        $locality->locality = $validated['locality'];
+        $locality->postal_code = $validated['postal_code'];
+        try{
+            $locality->save();
+            return view('locality.show',[
+                'locality' => $locality,
+            ]);
+        } catch (QueryException $e) {
+            return view('locality.edit',[
+                'locality' => $locality,
+            ]);
+        }
     }
 
     /**
