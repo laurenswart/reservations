@@ -3,24 +3,13 @@
 @section('title', 'Liste des artistes')
 
 @section('content')
-    <h1>Liste des {{ $resource }}</h1>
+    <h1 class="center">Les {{ $resource }}</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="flex-grid">
         @foreach($artists as $artist)
-            <tr>
-                <td>{{ $artist->firstname }}</td>
-                <td>
-                    <a href="{{ route('artists_show', $artist->id) }}">{{ $artist->lastname }}</a>
-                </td>
-            </tr>
+            <div class="flex-item">
+                <a href="{{ route('artists_show', $artist->id) }}">{{ $artist->firstname }}<br>{{ $artist->lastname }}</a>
+            </div>
         @endforeach
-        </tbody>
-    </table>
+    </div>
 @endsection
