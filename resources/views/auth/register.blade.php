@@ -26,18 +26,16 @@
                 </span>
                 <span class="d-flex justify-content-between">
                     <label for="sign-in-form-password">Password</label>
-                    <input type="text" class="sign-in-form-password" name="password" value="{{ old('password') ?? '' }}">
+                    <input type="password" class="sign-in-form-password" name="password" value="{{ old('password') ?? '' }}">
                 </span>
                 <span class="d-flex justify-content-between">
                     <label for="sign-in-form-password-conf">Confirmation</label>
-                    <input type="text" class="sign-in-form-input" id ="sign-in-form-password-conf" name="password_confirmation" value="{{ old('password_confirmation') ?? '' }}">
+                    <input type="password" class="sign-in-form-input" id ="sign-in-form-password-conf" name="password_confirmation" value="{{ old('password_confirmation') ?? '' }}">
                 </span>
                    
                 <button type="submit" class="sign-in-form-button"> {{ __('Register') }}</button>
 
-                    <a class="underline text-sm" href="{{ route('login') }}">
-                        {{ __('Already registered?') }}
-                    </a>
+                <a class="underline text-sm" href="{{ route('login') }}"> {{ __('Already registered?') }}</a>
 
             </div>
         </form>

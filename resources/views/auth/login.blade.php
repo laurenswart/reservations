@@ -1,10 +1,6 @@
 <x-guest-layout>
     <x-auth-card>
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        
 
         <form method="POST" action="{{ route('login') }}">
         @csrf
@@ -16,7 +12,7 @@
                 </span>
                 <span class="d-flex justify-content-between">
                     <label for="sign-in-form-password">Password</label>
-                    <input type="text" class="sign-in-form-password" name="password" id="sign-in-form-password">
+                    <input type="password" class="sign-in-form-password" name="password" id="sign-in-form-password">
                 </span>
                     <label for="remember_me" class="inline-flex items-center">
                         <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
@@ -26,9 +22,17 @@
                 @if (Route::has('password.request'))
                     <a class="underline text-sm" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
-                    </a>
+                    </a><br>
                 @endif
+                <a class="underline text-sm" href="{{ route('register') }}">{{ __('Not registered ?') }}</a>
             </div>
         </form>
+
+        <!-- Session Status -->
+        <x-auth-session-status class="mb-4" :status="session('status')" />
+
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4 errors" :errors="$errors" />
+
     </x-auth-card>
 </x-guest-layout>
