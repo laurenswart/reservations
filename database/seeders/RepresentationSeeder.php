@@ -44,6 +44,56 @@ class RepresentationSeeder extends Seeder
                 'show_slug'=>'ceci-nest-pas-un-chanteur-belge',
                 'when'=>'2012-10-16 20:30',
             ],
+            [
+                'location_slug'=>null,
+                'show_slug'=>'ceci-nest-pas-un-chanteur-belge',
+                'when'=>'2022-03-15 20:30',
+            ],
+            [
+                'location_slug'=>null,
+                'show_slug'=>'ceci-nest-pas-un-chanteur-belge',
+                'when'=>'2022-03-14 18:00',
+            ],
+            [
+                'location_slug'=>null,
+                'show_slug'=>'cible-mouvante',
+                'when'=>'2022-03-25 13:00',
+            ],
+            [
+                'location_slug'=>'dexia-art-center',
+                'show_slug'=>'ayiti',
+                'when'=>'2022-04-05 16:30',
+            ],
+            [
+                'location_slug'=>'espace-delvaux-la-venerie',
+                'show_slug'=>'ayiti',
+                'when'=>'2022-04-06 20:30',
+            ],
+            [
+                'location_slug'=>'espace-delvaux-la-venerie',
+                'show_slug'=>'promising-young-woman',
+                'when'=>'2022-04-05 20:30',
+            ],
+            [
+                'location_slug'=>'espace-delvaux-la-venerie',
+                'show_slug'=>'promising-young-woman',
+                'when'=>'2022-03-28 22:00',
+            ],
+            [
+                'location_slug'=>'dexia-art-center',
+                'show_slug'=>'promising-young-woman',
+                'when'=>'2022-03-14 16:30',
+            ],
+            [
+                'location_slug'=>'dexia-art-center',
+                'show_slug'=>'cezanne',
+                'when'=>'2022-04-06 20:30',
+            ],
+            [
+                'location_slug'=>'dexia-art-center',
+                'show_slug'=>'cezanne',
+                'when'=>'2022-03-14 16:30',
+            ],
         ];
         
         //Prepare the data

@@ -36,6 +36,11 @@ class ArtistSeeder extends Seeder
             ['firstname'=>'Laurence','lastname'=>'Warin'],
             ['firstname'=>'Pierre','lastname'=>'Wayburn'],
             ['firstname'=>'Gwendoline','lastname'=>'Gauthier'],
+            ['firstname'=>'Emerald','lastname'=>'Fennell'],
+            ['firstname'=>'Carey','lastname'=>'Mulligan'],
+            ['firstname'=>'Alison','lastname'=>'Brie'],
+            ['firstname'=>'Bo','lastname'=>'Burnham'],
+            ['firstname'=>'Sophie','lastname'=>'Bruneau'],
         ];
         
         //Insert data in the table

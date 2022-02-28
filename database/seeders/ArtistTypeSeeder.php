@@ -118,6 +118,31 @@ class ArtistTypeSeeder extends Seeder
                 'artist_lastname'=>'Gauthier',
                 'type'=>'comédien',
             ],
+            [
+                'artist_firstname'=>'Emerald',
+                'artist_lastname'=>'Fennell',
+                'type'=>'auteur',
+            ],
+            [
+                'artist_firstname'=>'Sophie',
+                'artist_lastname'=>'Bruneau',
+                'type'=>'auteur',
+            ],
+            [
+                'artist_firstname'=>'Bo',
+                'artist_lastname'=>'Burnham',
+                'type'=>'comédien',
+            ],
+            [
+                'artist_firstname'=>'Alison',
+                'artist_lastname'=>'Brie',
+                'type'=>'comédien',
+            ],
+            [
+                'artist_firstname'=>'Carey',
+                'artist_lastname'=>'Mulligan',
+                'type'=>'comédien',
+            ],
         ];
         
         //Prepare the data

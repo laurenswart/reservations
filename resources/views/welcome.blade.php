@@ -45,7 +45,8 @@
                 <div class="column">
                     <img class="thumbnail" src="{{ asset('images/show_posters/'.$representation->show->poster_url)}}">
                     <h5>{{ $representation->show->title}}</h5>
-                    <p>{{ $representation->when .'-'. $representation->location->designation }}</p>
+                    <p>{{ $representation->when }}<br>
+                    {{$representation->location->designation }}</p>
                     <a href="#" class="button expanded">Réserver</a>
                 </div>
                 @endforeach

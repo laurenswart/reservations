@@ -64,10 +64,29 @@ class ShowSeeder extends Seeder
                 'title'=>'Manneke… !',
                 'description'=>'A tour de rôle, Pierre se joue de ses oncles, '
                     . 'tantes, grands-parents et surtout de sa mère.',
-                'poster_url'=>'wayburn.jpg',
+                'poster_url'=>'wayburn.jfif',
                 'location_slug'=>'la-samaritaine',
                 'bookable'=>true,
                 'price'=>10.50,
+            ],
+            [
+                'slug'=>null,
+                'title'=>'Cézanne',
+                'description'=>'Les visiteurs et visiteuses arrivent des quatre coins du monde dans l’atelier de Cézanne,'
+                            .' sur les traces d’une révolution picturale qui a transformé l’art, le regard et la vie.',
+                'poster_url'=>'cezanne.jpg',
+                'location_slug'=>'espace-delvaux-la-venerie',
+                'bookable'=>true,
+                'price'=>9.50,
+            ],
+            [
+                'slug'=>null,
+                'title'=>'Promising Young Woman',
+                'description'=>'Cassie comptait devenir médecin jusqu’au jour où un incident dramatique a bouleversé sa vie.',
+                'poster_url'=>'promisingyoungwoman.jpeg',
+                'location_slug'=>'espace-delvaux-la-venerie',
+                'bookable'=>true,
+                'price'=>7.50,
             ],
         ];
         
