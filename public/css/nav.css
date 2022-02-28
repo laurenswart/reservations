@@ -7,10 +7,10 @@ nav {
     color: whitesmoke;
 }
 
-nav a {
+nav a, .nav a{
     color: whitesmoke!important;
 }
-nav a:hover{
+nav a:hover, .nav a:hover{
     color: #d7a32d!important;
     text-decoration: none!important;
 }
@@ -26,4 +26,11 @@ nav a:hover{
 }
 .top-bar ul {
     background-color: #111114;; 
+}
+
+/** back link */
+div.nav{
+    display: flex;
+    justify-content: flex-end;
+    padding:20px;
 }

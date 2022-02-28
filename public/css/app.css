@@ -1419,5 +1419,26 @@ select {
   }
 }
 
+main.container{
+  padding-top:50px;
+}
 
 
+.lib-desc p, .lib-desc h2{
+  margin-top:20px;
+}
+.lib-row h1, .lib-desc h2, .lib-desc strong{
+  font-weight: bold;
+  font-size: 18px;
+}
+.lib-desc h2, .lib-row h1 {
+  color:#d7a32d;
+}
+.lib-row h1{
+  font-size: 24px;
+}
+
+i{
+  color:#d7a32d;
+  padding:5px 20px;
+}
