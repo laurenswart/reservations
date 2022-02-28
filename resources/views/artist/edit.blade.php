@@ -28,6 +28,22 @@
         @enderror
     </div>
 
+    <!-- Check boxes for types-->
+    <div class="form-group">
+        @foreach($allTypes as $type)
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="{{$type->id}}" id="types_{{$type->id}}" name="types[]" <?= in_array($type->id, $checkedTypes) ? 'checked disabled="disabled"': '' ?>>
+            <label class="form-check-label" for="types_{{$type->id}}">
+               {{$type->type}}
+            </label>
+        </div>
+        @endforeach
+        @error('types')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    </div>
+
+
     <!-- Button -->
     <div class="form-group">
     <label class="col-md-4 control-label" for="submit"></label>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artist;
+use App\Models\Type;
 use Exception;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -72,9 +73,13 @@ class ArtistController extends Controller
     public function edit($id)
     {
         $artist = Artist::find($id);
+        $allTypes = Type::all();
+        $checkedTypes = $artist->types()->pluck('types.id')->toArray();
 
         return view('artist.edit', [
-            'artist'=>$artist
+            'artist'=>$artist,
+            'allTypes'=>$allTypes,
+            'checkedTypes'=>$checkedTypes
         ]);
     }
 
@@ -94,16 +99,26 @@ class ArtistController extends Controller
             return Redirect::route('artists.index');
         }
 
+        //var_dump($request->input('types'));
+        //exit;
+
+        
+
         //récupérer les données entrantes
         $firstname = $request->input('firstname');
         $lastname = $request->input('lastname');
+        $selectedTypes = $request->input('types');
 
         //validation
         $validated = $request->validate([
             'firstname' => 'required|max:60',
             'lastname' => 'required|max:60',
         ]);
-        //sauvegarder
+
+        //sauvegarder les types choisis
+        $artist->types()->syncWithoutDetaching($selectedTypes);
+
+        //sauvegarder l'artiste
         $artist->firstname = $validated['firstname'];
         $artist->lastname = $validated['lastname'];
         try{
