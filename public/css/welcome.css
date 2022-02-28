@@ -74,3 +74,6 @@ body {
 nav *, #footer, nav .top-bar {
     background-color: #111114;
   }
+  nav {
+    filter: drop-shadow(9px 4px 9px #aaaaaa44);
+  }

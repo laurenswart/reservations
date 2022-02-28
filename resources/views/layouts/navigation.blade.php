@@ -11,8 +11,7 @@
             <li><a href="{{route('welcome')}}">Home</a></li>
             <li><a href="{{ route('shows_index')}}">Shows</a></li>
             <li><a href="{{ route('artists_index')}}">Artists</a></li>
-            <li><a href="#">Five</a></li>
-            <li><a href="#">Six</a></li>
+            <li><a href="{{ route('locations_index')}}">Locations</a></li>
             @auth
             <li><!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
