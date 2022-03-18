@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArtistController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\LocalityController;
 use App\Http\Controllers\LocationController;
@@ -81,5 +82,17 @@ Route::get('/reservations/edit/{id}', [ReservationController::class, 'edit'])
 Route::get('/dashboard', function () {
     return view('welcome');
     })->middleware(['auth'])->name('dashboard');
+
+
+Route::get('/categories', [CategoryController::class, 'index'])
+    ->name('categories_index');
+Route::get('/categories/edit/{id}', [CategoryController::class, 'edit'])
+    ->where('id', '[0-9]+')->name('categories_edit');
+Route::put('/categories/{id}', [CategoryController::class, 'update'])
+	->where('id', '[0-9]+')->name('categories_update');
+Route::get('/categories/create', [CategoryController::class, 'create'])
+	->name('categories_create');
+Route::post('/categories/{id}', [CategoryController::class, 'save'])
+	->where('id', '[0-9]+')->name('categories_save');
 
 require __DIR__.'/auth.php';

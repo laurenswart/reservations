@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -36,6 +36,7 @@ class ShowSeeder extends Seeder
                 'location_slug'=>'espace-delvaux-la-venerie',
                 'bookable'=>true,
                 'price'=>8.50,
+                'category'=>'humoristique'
             ],
            [
                 'slug'=>null,
@@ -46,6 +47,7 @@ class ShowSeeder extends Seeder
                 'location_slug'=>'dexia-art-center',
                 'bookable'=>true,
                 'price'=>9.00,
+                'category'=>'tragédie'
             ],
             [
                 'slug'=>null,
@@ -58,6 +60,7 @@ class ShowSeeder extends Seeder
                 'location_slug'=>null,
                 'bookable'=>false,
                 'price'=>5.50,
+                'category'=>'dramatique'
             ],
             [
                 'slug'=>null,
@@ -68,6 +71,7 @@ class ShowSeeder extends Seeder
                 'location_slug'=>'la-samaritaine',
                 'bookable'=>true,
                 'price'=>10.50,
+                'category'=>'dramatique'
             ],
             [
                 'slug'=>null,
@@ -78,6 +82,7 @@ class ShowSeeder extends Seeder
                 'location_slug'=>'espace-delvaux-la-venerie',
                 'bookable'=>true,
                 'price'=>9.50,
+                'category'=>'absurde'
             ],
             [
                 'slug'=>null,
@@ -87,6 +92,7 @@ class ShowSeeder extends Seeder
                 'location_slug'=>'espace-delvaux-la-venerie',
                 'bookable'=>true,
                 'price'=>7.50,
+                'category'=>'tragédie'
             ],
         ];
         
@@ -96,8 +102,13 @@ class ShowSeeder extends Seeder
             $location = Location::firstWhere('slug',$data['location_slug']);
             unset($data['location_slug']);
 
+            //Search the category
+            $category = Category::firstWhere('name',$data['category']);
+            unset($data['category']);
+
             $data['slug'] = Str::slug($data['title'],'-');
             $data['location_id'] = $location->id ?? null;
+            $data['category_id'] = $category->id ?? null;
         }
         unset($data);
 

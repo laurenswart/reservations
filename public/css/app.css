@@ -1471,3 +1471,9 @@ h1.center {
   margin-bottom: 50px;
   font-weight: bold;
 }
+
+
+.category{
+  margin-left: 100px;
+    font-style: italic;
+}
