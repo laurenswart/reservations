@@ -98,12 +98,7 @@ class ArtistController extends Controller
         if($artist==null){
             return Redirect::route('artists.index');
         }
-
-        //var_dump($request->input('types'));
-        //exit;
-
         
-
         //récupérer les données entrantes
         $firstname = $request->input('firstname');
         $lastname = $request->input('lastname');

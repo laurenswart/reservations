@@ -1,16 +1,15 @@
 @extends('layouts.app')
 
-@section('title', 'Formulaire de modification d\'une categorie')
+@section('title', 'Formulaire de création d\'une catégorie')
 
 @section('content')
-<form class="form-horizontal" action="{{ route('categories_update', $category->id) }}" method="post">
+<form class="form-horizontal" action="{{ route('categories_store') }}" method="post">
     @csrf
-    @method('PUT')
     <!-- Text input-->
     <div class="form-group">
         <label class="col-md-4 control-label" for="name">Name</label>  
         <div class="col-md-4">
-            <input id="name" name="name" type="text" placeholder="" class="form-control input-md @error('name') is-invalid @enderror" required="" value="{{  old('name') ?? $category->name }}">
+            <input id="name" name="name" type="text" placeholder="" class="form-control input-md @error('name') is-invalid @enderror" required="" value="{{  old('name') ?? '' }}">
         </div>
         @error('name')
             <div class="alert alert-danger">{{ $message }}</div>

@@ -1477,3 +1477,7 @@ h1.center {
   margin-left: 100px;
     font-style: italic;
 }
+
+label{
+  color:white;
+}

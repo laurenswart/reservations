@@ -92,7 +92,7 @@ Route::put('/categories/{id}', [CategoryController::class, 'update'])
 	->where('id', '[0-9]+')->name('categories_update');
 Route::get('/categories/create', [CategoryController::class, 'create'])
 	->name('categories_create');
-Route::post('/categories/{id}', [CategoryController::class, 'save'])
-	->where('id', '[0-9]+')->name('categories_save');
+Route::post('/categories', [CategoryController::class, 'store'])
+	->name('categories_store');
 
 require __DIR__.'/auth.php';
