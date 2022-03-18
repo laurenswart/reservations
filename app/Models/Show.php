@@ -21,7 +21,8 @@ class Show extends Model
         'poster_url',
         'location_id',
         'bookable',
-        'price'
+        'price',
+        'category_id'
     ];
 
     /**
@@ -58,6 +59,13 @@ class Show extends Model
     public function artistTypes()
     {
         return $this->belongsToMany(ArtistType::class);
+    }
+
+    /**
+     * Get the category of the show
+     */
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
 
 }
