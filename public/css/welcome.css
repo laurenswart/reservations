@@ -77,7 +77,7 @@ body {
   }
 
   
-a.button {
+a.button, button.button {
   background-color: #d7a32d;
 }
 

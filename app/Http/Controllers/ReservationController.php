@@ -65,6 +65,20 @@ class ReservationController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function pay()
+    {
+        //retrieve info about representation
+
+        //display payment form
+        return view('reservation.pay');
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

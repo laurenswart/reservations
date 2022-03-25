@@ -48,7 +48,7 @@
                     <h5>{{ $representation->show->title}}</h5>
                     <p>{{ $representation->when }}<br>
                     {{$representation->location->designation }}</p>
-                    <a href="#" class="button expanded">Réserver</a>
+                    <a href="{{ route('representations_show', $representation->id) }}" class="button expanded">Réserver</a>
                 </div>
                 @endforeach
             @else 

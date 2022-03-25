@@ -1443,6 +1443,34 @@ i{
   padding:5px 20px;
 }
 
+.reserve{
+  margin:20px;
+  border:1px solid white;
+  display:flex;
+  align-items:center;
+  padding:10px;
+  justify-content:space-between;
+}
+
+.reserve button, .payment button{
+  padding: 0.85em 1em;
+  background-color: #d7a32d;
+   
+}
+
+.payment .button{
+  align-self: center;
+}
+
+.reserve button, .reserve input{
+  margin: 0 15px;
+}
+
+label{
+  color:white;
+  margin-right:20px;
+}
+
 
 .flex-grid{
   display: flex;
