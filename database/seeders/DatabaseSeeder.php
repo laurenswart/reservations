@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Reservation;
 use Illuminate\Database\Seeder;
+use App\Models\Admin;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,6 +29,6 @@ class DatabaseSeeder extends Seeder
             RoleUserSeeder::class,
             ReservationSeeder::class,
         ]);
-
+        Admin::factory(2)->create();
     }
 }
