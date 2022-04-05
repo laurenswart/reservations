@@ -55,6 +55,10 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
-    Route::post('reservations/pay', [ReservationController::class, 'pay'])
-        ->name('reservations_pay');
+    Route::post('reservations/checkout', [ReservationController::class, 'checkout'])
+        ->name('reservations_checkout');
+    Route::get('reservations/process', [ReservationController::class, 'processPayment'])
+        ->name('reservations_processPayment');
+    Route::get('reservations/all', [ReservationController::class, 'forUser'])
+        ->name('reservations_forUser');
 });

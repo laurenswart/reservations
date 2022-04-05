@@ -32,10 +32,11 @@
                 </p>
                 <div class="lib-desc">
                 <h2>Réserver</h2>
-                <form method="POST" class="reserve" action="{{ route('reservations_pay') }}">
+                <form method="POST" class="reserve" action="{{ route('reservations_checkout') }}">
                     @csrf
                     <label for="places">Places</label>
                     <input type="number" id="places" name="places" min="1" value=2>
+                    <input type="text" name="representation" value="{{ $representation->id }}" hidden>
                     <button type="submit" class="button expanded">Payer</button>
                 </form>
                 </div>
