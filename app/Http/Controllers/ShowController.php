@@ -2,11 +2,42 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Representation;
 use App\Models\Show;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ShowController extends Controller
 {
+    // : JsonResponse
+    public function search(Request $request)
+    {
+        if ($request->search && $request->fromDate) {
+            $shows = Show::where('title', $request->search)
+                ->whereDate('created_at', '=', $request->fromDate)
+                ->get();
+        }
+        // dd($request->search,$request->fromDate);
+
+        elseif ($request->search) {
+            $shows = Show::where('title', $request->search)->get();
+        } elseif ($request->fromDate) {
+            $shows = Show::whereDate('created_at', '=', $request->fromDate)
+                ->orWhere('title', $request->search)
+                ->get();
+        } elseif ($request->price) {
+            $shows = Show::where('price', '<=', $request->price)->get();
+        } else {
+            $shows = Show::all()->sortBy([
+                ['created_at', 'desc'],
+
+            ]);
+        }
+        return view('show.search', [
+            'shows' => $shows,
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,10 +45,10 @@ class ShowController extends Controller
      */
     public function index()
     {
-        $shows = Show::all();
+        $shows = Show::paginate(3);
         return view('show.index', [
-            'shows'=>$shows,
-            'resource'=>'shows',
+            'shows' => $shows,
+            'resource' => 'shows',
         ]);
     }
 
@@ -55,13 +86,13 @@ class ShowController extends Controller
         //Récupérer les artistes du spectacle et les grouper par type
         $collaborateurs = [];
 
-        foreach($show->artistTypes as $at) {
+        foreach ($show->artistTypes as $at) {
             $collaborateurs[$at->type->type][] = $at->artist;
         }
 
-                
+
         return view('show.show', [
-            'show'=>$show,
+            'show' => $show,
             'collaborateurs' => $collaborateurs,
         ]);
     }
