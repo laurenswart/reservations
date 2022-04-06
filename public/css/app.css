@@ -1458,12 +1458,41 @@ i{
    
 }
 
+h1.big-title{
+  font-size: 2rem;
+  text-align: center;
+  background-color: #555151;
+  padding: 10px;
+  margin: 0 0 20px 0;  
+}
+
 .payment .button{
   align-self: center;
 }
+button.sign-in-form-button.dark:hover{
+  color:white;
+  background-color: #212529;
+}
+button.sign-in-form-button.dark{
+  color:#212529;
+  background-color:#d7a32d;
+}
+
 
 .reserve button, .reserve input{
   margin: 0 15px;
+}
+
+.table, .table thead, .table tbody, .table tbody tr:nth-child(even){
+  background-color: #212529!important;
+  color: #fefefe !important;
+}
+
+.table tbody, .table thead{
+  border:none;
+}
+.table{
+  border:1px solid #555151;
 }
 
 label{

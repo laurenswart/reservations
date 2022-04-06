@@ -2,28 +2,29 @@
     <x-auth-card>
 
         <div class="container">
-            <div class=" sign-in-form">
+            <div class=" sign-in-form mb-3">
                 <div>
-                    Order for {{ $representation->show->title}}
+                    Show: {{ $representation->show->title}}
                 </div>
                 <div>
-                Date: {{ $representation->when}}
+                    Date: {{ $representation->when}}
                 </div>
                 <div>
-                Places: {{ $places}}
+                    Places: {{ $places}}
                 </div>
                 <div>
-                Total: {{ $representation->show->price * $places}} euros.
+                    Total: {{ $representation->show->price * $places}} euros.
                 </div>
             </div>
-            
+                <label for="card-holder-name">Card Holder Name</label>
                 <input id="card-holder-name" type="text">
 
                 <!-- Stripe Elements Placeholder -->
+                <label for="card-element">Card</label>
                 <div id="card-element"></div>
 
-                <button id="card-button" data-secret="{{ $intent->client_secret }}">
-                    Update Payment Method
+                <button class="mt-5 sign-in-form-button dark" id="card-button" data-secret="{{ $intent->client_secret }}">
+                    Pay
                 </button>
                 <div id="card-message"></div>
                 

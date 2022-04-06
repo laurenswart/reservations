@@ -55,10 +55,13 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
+    //Afficher le formulaire de paiement
     Route::post('reservations/checkout', [ReservationController::class, 'checkout'])
         ->name('reservations_checkout');
+    //Créer la réservation une fois le paiment reçu
     Route::get('reservations/process', [ReservationController::class, 'processPayment'])
         ->name('reservations_processPayment');
+    //Afficher les réservations du user authentifié
     Route::get('reservations/all', [ReservationController::class, 'forUser'])
         ->name('reservations_forUser');
 });

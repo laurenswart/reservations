@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Representation;
 use App\Models\Reservation;
+use Carbon\Carbon;
 use Error;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -70,7 +71,7 @@ class ReservationController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for paying a reservation
      *
      * @return \Illuminate\Http\Response
      */
@@ -78,19 +79,25 @@ class ReservationController extends Controller
     {
         //check we have necessare information
         if(empty( $request->post('places')) || empty( $request->post('representation'))){
-            return redirect(route('welcome'));
+            return view('reservation.fail');
         }
 
         //retrieve info about representation
         $representation = Representation::find($request->post('representation'));
         $nbPlaces = $request->post('places');
         if(empty($representation)){
-            return redirect(route('welcome'));
+            return view('reservation.fail');
         }
 
         //check representation is bookable
         if(!$representation->show->bookable){
-            return redirect(route('welcome'));
+            return view('reservation.fail', [
+                'message'=>'This show can not be booked.'
+            ]);
+        } else if ($representation->when < date('Y-m-d H:i:s')){
+            return view('reservation.fail', [
+                'message'=>'This show can not be booked as it has already passed.'
+            ]);
         }
         $intent = $request->user()->createSetupIntent();
 
@@ -103,22 +110,21 @@ class ReservationController extends Controller
     }
 
     /**
-     * Receive data from payment form
+     * Receive data from stripe payment form
      *
      * @return \Illuminate\Http\Response
      */
     public function processPayment(Request $request)
     {
-
+        //Create stripe customer if doesn't already exist
         $user = $request->user();
         if(empty($user->stripe_id)){
-            $stripeCustomer = $user->createAsStripeCustomer();
+            $user->createAsStripeCustomer();
         }
 
+        //retrieve payent method
         $paymentMethod = $request->query('paymentMethod');
-
         $user->addPaymentMethod($paymentMethod);
-        //dd($request->user()->paymentMethods());
 
         //Calculer prix
         $representation = Representation::find($request->query('representation'));
@@ -128,17 +134,34 @@ class ReservationController extends Controller
             $total, $paymentMethod
         );
 
+        //créer la réservations
         if($stripeCharge) {
             $reservation = new Reservation();
             $reservation->representation_id = $representation->id;
             $reservation->user_id = Auth::id();
             $reservation->places = $places;
+            $reservation->created_at = Carbon::now();
 
             if($reservation->save()) {
                 return redirect(route('reservations_forUser'));
             }
         }
-        return redirect(route('reservation_failed'));
+        return view('reservation.fail', [
+            'message'=>'Something went wrong. Your reservation could not be made.'
+        ]);
+    }
+
+    /**
+     * Get reservations for the authenticated user
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function forUser()
+    {
+        $reservations = Auth::user()->reservations;
+        return view('reservation.user_index', [
+            'reservations' => $reservations
+        ]);
     }
 
     /**

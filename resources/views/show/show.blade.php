@@ -33,15 +33,20 @@
                     @if($show->representations->count()>=1)
                     <ul>
                         @foreach ($show->representations as $representation)
-                            <li>{{ $representation->when }} 
-                            @if($representation->location)
-                            ({{ $representation->location->designation }})
-                            @elseif($representation->show->location)
-                            ({{ $representation->show->location->designation }})
-                            @else
-                            (lieu à déterminer)
-                            @endif
+                            <li>
+                                {{ $representation->when }} 
+                                @if($representation->location)
+                                    ({{ $representation->location->designation }})
+                                @elseif($representation->show->location)
+                                    ({{ $representation->show->location->designation }})
+                                @else
+                                    (lieu à déterminer)
+                                @endif
+                                @if($show->bookable && $representation->when > date('Y-m-d H:i:s'))
+                                    <a href="{{ route('representations_show', $representation->id) }}">Réserver</a>
+                                @endif
                             </li>
+                            
                         @endforeach
                     </ul>
                     @else
