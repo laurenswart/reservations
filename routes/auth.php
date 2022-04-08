@@ -69,7 +69,10 @@ Route::middleware('auth')->group(function () {
     //Afficher les données de compte de l'utilisateur authentifié
     Route::get('account', [UserController::class, 'account'])
         ->name('user_account');
-        //Afficher les données de compte de l'utilisateur authentifié
+    //Afficher le formulaire de modification données perso
     Route::get('account/edit', [UserController::class, 'edit'])
-    ->name('user_edit');
+        ->name('user_edit');
+    //Modifier données perso en db
+    Route::post('account/update', [UserController::class, 'update'])
+        ->name('user_update');
 });
