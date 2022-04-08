@@ -11,6 +11,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ShowController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\backend\AdminShowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,9 +95,24 @@ Route::prefix('admin')->group(function(){
 
     Route::get('/logout', [AdminController::class,'AdminLogout'])->name('admin.logout')->middleware('admin');
 
+    Route::prefix('shows')->group(function(){
+
+        Route::get('/manage', [AdminShowController::class, 'index'])->name('manage-show')->middleware('admin');
+
+        Route::get('/edit/{id}', [AdminShowController::class, 'edit'])->name('admin-show-edit')->middleware('admin');
+
+        Route::post('/update', [AdminShowController::class, 'update'])->name('admin-show-update');
+
+    });
 
 });
 
 // End Admin Routes //
+
+// Admin Shows Route //
+
+
+
+//End Admin Shows Route
 
 require __DIR__.'/auth.php';

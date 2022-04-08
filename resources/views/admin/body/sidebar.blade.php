@@ -54,14 +54,14 @@
             <li class="treeview">
                 <a href="#">
                     <i data-feather="file"></i>
-                    <span>Products</span>
+                    <span>Shows</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-right pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
                     <li class=""><i class="ti-more"></i>Add Shows</a></li>
-                    <li class=""><i class="ti-more"></i>Manage Shows</a></li>
+                    <li class=""><i class="ti-more"><a href="{{ route('manage-show') }}"></i>Manage Shows</a></li>
 
                 </ul>
             </li>
