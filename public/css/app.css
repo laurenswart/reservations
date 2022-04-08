@@ -1458,12 +1458,18 @@ i{
    
 }
 
-h1.big-title{
+.big-title{
   font-size: 2rem;
   text-align: center;
   background-color: #555151;
   padding: 10px;
   margin: 0 0 20px 0;  
+}
+h2.big-title{
+  font-size:1.8rem;
+}
+th {
+  white-space: nowrap;
 }
 
 .payment .button{
