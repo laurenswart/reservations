@@ -73,6 +73,6 @@ Route::middleware('auth')->group(function () {
     Route::get('account/edit', [UserController::class, 'edit'])
         ->name('user_edit');
     //Modifier données perso en db
-    Route::post('account/update', [UserController::class, 'update'])
+    Route::put('account/update', [UserController::class, 'update'])
         ->name('user_update');
 });

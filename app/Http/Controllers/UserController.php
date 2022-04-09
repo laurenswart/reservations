@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,32 +42,35 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update()
+    public function update(Request $request)
     {
-        //récupérer le type à modifier
-        $type = Type::find($id);
-
-        if($type==null){
-            return Redirect::route('types.index');
-        }
+        //récupérer l'utilisateur à modifier
+        $user = User::find(Auth::id());
 
         //validation
         $validated = $request->validate([
-            'type' => 'required|max:60',
+            'firstname' => 'required|max:60',
+            'lastname' => 'required|max:60',
+            'email' => 'required|unique:users,email,'.$user->id.'|max:100',
+            'login' => 'required|unique:users,login,'.$user->id.'|max:30',
+            'langue' => 'required|in:en,nl,fr'
         ]);
         //sauvegarder
-        $type->type = $validated['type'];
+        $user->firstname = $validated['firstname'];
+        $user->lastname = $validated['lastname'];
+        $user->email = $validated['email'];
+        $user->login = $validated['login'];
+        $user->langue = $validated['langue'];
         try{
-            $type->save();
-            return view('type.show',[
-                'type' => $type,
+            $user->save();
+            return view('user.account',[
+                'user' => $user,
             ]);
         } catch (QueryException $e) {
-            return view('type.edit',[
-                'type' => $type,
+            return view('user.edit',[
+                'user' => $user,
             ]);
         }
     }

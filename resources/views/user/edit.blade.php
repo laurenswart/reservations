@@ -13,9 +13,9 @@
         @method('PUT')
         <!-- Firtname-->
         <div class="form-group">
-            <label class=" control-label" for="type">Prénom</label>  
+            <label class=" control-label" for="firstname">Prénom</label>  
             <div class="">
-                <input id="type" name="type" type="text" placeholder="" class="form-control input-md @error('firstname') is-invalid @enderror" required="" value="{{  old('firstname') ?? $user->firstname }}">
+                <input id="firstname" name="firstname" type="text" placeholder="" class="form-control input-md @error('firstname') is-invalid @enderror" required="" value="{{  old('firstname') ?? $user->firstname }}">
             </div>
             @error('firstname')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -23,9 +23,9 @@
         </div>
         <!-- Lastname-->
         <div class="form-group">
-            <label class=" control-label" for="type">Nom</label>  
+            <label class=" control-label" for="lastname">Nom</label>  
             <div class="">
-                <input id="type" name="type" type="text" placeholder="" class="form-control input-md @error('lastname') is-invalid @enderror" required="" value="{{  old('lastname') ?? $user->lastname }}">
+                <input id="lastname" name="lastname" type="text" placeholder="" class="form-control input-md @error('lastname') is-invalid @enderror" required="" value="{{  old('lastname') ?? $user->lastname }}">
             </div>
             @error('lastname')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -33,9 +33,9 @@
         </div>
         <!-- Login-->
         <div class="form-group">
-            <label class=" control-label" for="type">Login</label>  
+            <label class=" control-label" for="login">Login</label>  
             <div class="">
-                <input id="type" name="type" type="text" placeholder="" class="form-control input-md @error('login') is-invalid @enderror" required="" value="{{  old('login') ?? $user->login }}">
+                <input id="login" name="login" type="text" placeholder="" class="form-control input-md @error('login') is-invalid @enderror" required="" value="{{  old('login') ?? $user->login }}">
             </div>
             @error('login')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -43,9 +43,9 @@
         </div>
         <!-- Email-->
         <div class="form-group">
-            <label class=" control-label" for="type">Email</label>  
+            <label class=" control-label" for="email">Email</label>  
             <div class="">
-                <input id="type" name="type" type="email" placeholder="" class="form-control input-md @error('email') is-invalid @enderror" required="" value="{{  old('email') ?? $user->email }}">
+                <input id="email" name="email" type="email" placeholder="" class="form-control input-md @error('email') is-invalid @enderror" required="" value="{{  old('email') ?? $user->email }}">
             </div>
             @error('email')
                 <div class="alert alert-danger">{{ $message }}</div>
