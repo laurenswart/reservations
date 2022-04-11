@@ -1,4 +1,6 @@
 require('./bootstrap');
+require('./search.js');
+
 
 import Alpine from 'alpinejs';
 

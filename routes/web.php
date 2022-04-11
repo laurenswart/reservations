@@ -24,6 +24,9 @@ use App\Http\Controllers\AdminController;
 */
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
+//SEARCH
+Route::get('/search', [ShowController::class, 'search']);
+Route::get('/search/filtre', [ShowController::class, 'filtre']);
 
 //ARTISTS
 Route::get('/artists', [ArtistController::class, 'index'])->name('artists_index');
