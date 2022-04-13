@@ -68,7 +68,7 @@
 
     <!-- Sunny Admin App attention deuxième script-->
     <script src="{{ asset('backend/js/template.js') }}"></script>
-    <script src="{{ asset('js/pages/dashboard.js') }}"></script>
+    {{-- <script src="{{ asset('js/pages/dashboard.js') }}"></script> --}}
 
     <!-- Toastr -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
