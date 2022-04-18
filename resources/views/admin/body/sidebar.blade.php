@@ -78,6 +78,21 @@
                 </ul>
             </li>
 
+            <li class="treeview ">
+                <a href="#">
+                    <i data-feather="file"></i>
+                    <span>Localities</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <a href="{{route('add_locality')}}"><li class=""><i class="ti-more"></i>add locality</a></li>
+                    <a href="{{route('localities_index')}}"><li class=""><i class="ti-more"></i>Localities</a></li>
+
+                </ul>
+            </li>
+
             <li class="header nav-small-cap">User Interface</li>
 
             <li class="treeview">
