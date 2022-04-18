@@ -24,6 +24,7 @@
             <h1  >add locality</h1>
            <div class="text-align">
             <form action="{{ route('save_locality') }}" method="POST" class="form-group" >
+                @csrf
                 <div class="form-column">
                     <div class="col-md-4 mb-3">
                         <label for="prenom">postal_code</label>
