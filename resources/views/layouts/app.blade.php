@@ -28,6 +28,9 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+
+        <!-- layouts (map) -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css" type="text/css">
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen">
