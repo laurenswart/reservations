@@ -17,7 +17,7 @@ class LocationController extends Controller
         $locations = Location::all();
 
         return view('location.index',[
-            'locations' => [['lon'=>4.35247 ,'lat'=>50.84673], ['lon'=>4.55 ,'lat'=>51.84673]],
+            'locations' => $locations,
             'resource' => 'lieux',
         ]);
 
