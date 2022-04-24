@@ -33,6 +33,8 @@ class LocationSeeder extends Seeder
                 'locality_postal_code'=>'1170',
                 'website'=>'https://www.lavenerie.be',
                 'phone'=>'+32 (0)2/663.85.50',
+                'latitude'=>50.809025,
+                'longitude'=>4.400475
             ],
             [
                 'slug'=>null,
@@ -41,6 +43,8 @@ class LocationSeeder extends Seeder
                 'locality_postal_code'=>'1000',
                 'website'=>null,
                 'phone'=>null,
+                'latitude'=>50.848826,
+                'longitude'=>4.353578
             ],
             [
                 'slug'=>null,
@@ -49,6 +53,8 @@ class LocationSeeder extends Seeder
                 'locality_postal_code'=>'1000',
                 'website'=>'http://www.lasamaritaine.be/',
                 'phone'=>null,
+                'latitude'=>50.840670,
+                'longitude'=>4.350648
             ],
             [
                 'slug'=>null,
@@ -57,6 +63,8 @@ class LocationSeeder extends Seeder
                 'locality_postal_code'=>'1000',
                 'website'=>'http://www.espacemagh.be',
                 'phone'=>'+32 (0)2/274.05.10',
+                'latitude'=>50.843651,
+                'longitude'=>4.346033
             ],
         ];
         

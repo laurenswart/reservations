@@ -5,7 +5,7 @@
 @section('content')
     <div id="map" class="map" style=" height: 600px;width: 100%;"></div>
 
-    <div id="popup-" class="ol-popup">
+    <div id="popup" class="ol-popup">
         <a href="#" id="popup-closer" class="ol-popup-closer"></a>
         <div id="popup-content"></div>
     </div>
