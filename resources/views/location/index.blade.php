@@ -59,8 +59,27 @@
                 <?= "new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([".$location->longitude." , ".$location->latitude."])), name: '".addslashes($location->designation)."', address:'".addslashes($location->address).'<br>'.$location->locality->postal_code.' '.$location->locality->locality."', website:'".$location->website."'}),"?>
              <?php } ?>
          ]
-     })
+     }),
+     
  });
+
+ layer.getSource().forEachFeature(function(feature){
+
+style = new ol.style.Style({
+    //I don't know how to get the color of your kml to fill each room
+    //fill: new ol.style.Fill({ color: '#000' }),
+    stroke: new ol.style.Stroke({ color: '#000' }),
+    text: new ol.style.Text({
+        text: feature.get('name'),
+        font: '20px Calibri,sans-serif',
+        fill: new ol.style.Fill({ color: '#000' }),
+        stroke: new ol.style.Stroke({
+            color: '#fff', width: 2
+        })
+    })
+});
+feature.setStyle(style);
+});
  map.addLayer(layer);
  
     var container = document.getElementById('popup');
