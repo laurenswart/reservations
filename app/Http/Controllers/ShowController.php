@@ -12,30 +12,32 @@ class ShowController extends Controller
     // : JsonResponse
     public function search(Request $request)
     {
-        if ($request->search && $request->fromDate) {
-            $shows = Show::where('title', $request->search)
-                ->whereDate('created_at', '=', $request->fromDate)
-                ->get();
-        }
-        // dd($request->search,$request->fromDate);
+            if ($request->search && $request->fromDate) {
+                $shows = Show::where('title', $request->search)
+                    ->whereDate('created_at', '=', $request->fromDate)
+                    ->get();
+                return redirect()->route('shows_index')->with("status" ,"la représentation de ". $request->search. "du" . $request->fromDate. "est  introuvable");
+            }
+            // dd($request->search,$request->fromDate);
 
-        elseif ($request->search) {
-            $shows = Show::where('title', $request->search)->get();
-        } elseif ($request->fromDate) {
-            $shows = Show::whereDate('created_at', '=', $request->fromDate)
-                ->orWhere('title', $request->search)
-                ->get();
-        } elseif ($request->price) {
-            $shows = Show::where('price', '<=', $request->price)->get();
-        } else {
-            $shows = Show::all()->sortBy([
-                ['created_at', 'desc'],
+            elseif ($request->search) {
+                $shows = Show::where('title', $request->search)->get();
+            } elseif ($request->fromDate) {  // affiche toutes les représentations de cette date
+                $shows = Show::whereDate('created_at', '=', $request->fromDate)
+                    ->orWhere('title', $request->search)
+                    ->get();
+            } elseif ($request->price) {   // affiche toutes les représentation dont les prix sont  inferieurs ou = au prix indiqué par le client 
+                $shows = Show::where('price', '<=', $request->price)->get();
+            } else {
+                $shows = Show::all()->sortBy([
+                    ['created_at', 'desc'],
 
+                ]);
+            }
+            return view('show.search', [
+                'shows' => $shows,
             ]);
-        }
-        return view('show.search', [
-            'shows' => $shows,
-        ]);
+            
     }
 
     /**
