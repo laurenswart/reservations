@@ -116,4 +116,7 @@ Route::prefix('admin')->group(function () {
 
 // End Admin Routes //
 
+//Route for flux-rss
+Route::feeds();
+
 require __DIR__ . '/auth.php';

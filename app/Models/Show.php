@@ -6,7 +6,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Show extends Model
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
+
+class Show extends Model implements Feedable
 {
     use HasFactory;
      /**
@@ -60,4 +63,22 @@ class Show extends Model
         return $this->belongsToMany(ArtistType::class);
     }
 
+
+    public function toFeedItem(): FeedItem
+    {
+        return FeedItem::create()
+            ->id($this->id)
+            ->title($this->title)
+            ->description($this->description)
+            ->poster_url($this->poster_url)
+            ->location_id($this->location_id)
+            ->price($this->price);
+    }
+
+    
+
+    public static function getFeedItems()
+    {
+    return Show::all();
+    }
 }
