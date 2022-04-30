@@ -15,7 +15,7 @@
             <form class="form-inline" action="{{ url('/search') }}" method="get">
                 <div>
                     <label>search</label>
-                    <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+                    <input id="search_product" class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
                 </div>
 
                 <!-- places -->
