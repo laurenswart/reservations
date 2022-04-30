@@ -26,7 +26,7 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 //SEARCH
 Route::get('/search', [ShowController::class, 'search']);
-Route::get('/search/filtre', [ShowController::class, 'filtre']);
+ Route::get('/show-list', [ShowController::class, 'show_list']);
 
 //ARTISTS
 Route::get('/artists', [ArtistController::class, 'index'])->name('artists_index');

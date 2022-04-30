@@ -7,32 +7,31 @@
     <div class="container">
 
         <nav class="navbar ">
-            <form class="form-inline" action="{{ url('/search') }}" method="get" >
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
+            <form class="form-inline" action="{{ url('/search') }}" method="get">
                 <div>
                     <label>search</label>
-                    <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+                    <input id="search_product" class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
                 </div>
 
                 <!-- places -->
-                <div>
-                    <label>Places</label>
-                    <input class="form-control mr-sm-2" type="number" name="nbPlace" value="2">
-                </div>
+
 
                 <!-- Date -->
                 <div>
-                    <label>From</label>
+                    <label>Calendrier</label>
                     <input class="form-control mr-sm-2" type="date" name="fromDate">
                 </div>
-                {{-- <div>
-                    <label>To</label>
-                    <input type="date" name="toDate" class="form-control mr-sm-2">
-                </div> --}}
+
 
                 <!-- price -->
                 <div>
                     <label>Maximum price</label>
-                    <input type="range" name="price" min="0" max="30" value="9.00"
+                    <input type="range" name="price" min="0" max="30" value="30.00"
                         onchange="this.nextElementSibling.innerText = this.value + '&euro;'" class="form-control mr-sm-2">
                     <span>30 &euro;</span>
                 </div>
@@ -40,7 +39,7 @@
             </form>
 
         </nav>
-        
+
 
         <div>
             <div class="image-flex shows">
@@ -60,6 +59,6 @@
                 </ul>
             </div>
         </div>
-        {{$shows->links()}}
+        {{ $shows->links() }}
     </div>
 @endsection

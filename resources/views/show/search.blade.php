@@ -3,7 +3,31 @@
 @section('title', 'Liste des spectacles')
 
 @section('content')
+    <nav class="navbar ">
+        <form class="form-inline" action="{{ url('/search') }}" method="get">
+            <div>
+                <label>search</label>
+                <input id="search_product" class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+            </div>
 
+
+            <!-- Date -->
+            <div>
+                <label>Calendrier</label>
+                <input class="form-control mr-sm-2" type="date" name="fromDate">
+            </div>
+
+            <!-- price -->
+            <div>
+                <label>Maximum price</label>
+                <input type="range" name="price" min="0" max="30" value="39.00"
+                    onchange="this.nextElementSibling.innerText = this.value + '&euro;'" class="form-control mr-sm-2">
+                <span>30 &euro;</span>
+            </div>
+            <button name="btn" class="btn btn-outline-success ml-3 mt-3" type="submit">Search</button>
+        </form>
+
+    </nav>
 
     <div>
         <div class="image-flex">

@@ -5566,33 +5566,33 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ (() => {
 
 var form = document.getElementById('search-form');
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
-  var token = document.querySelector('meta[name="csrf-token"]');
-  console.log(token);
-  var url = this.getAttribute('action');
-  var q = document.getElementById('q').value;
-  fetch(url, {
-    header: {
-      'Content-Type': 'application/json',
-      'X-CSRF-TOKEN': token
-    },
-    method: 'post',
-    body: JSON.stringify({
-      q: q
-    })
-  }).then(function (response) {
-    response.json().then(function (data) {
-      var shows = document.getElementsByClassName('shows');
-      shows.innerHTML += '';
-      Object.entries(data)[0].forEach(function (element) {
-        shows.innerHTML = "\n                        <h3>".concat(element.title, "</h3>\n                        ");
-      });
-    });
-  })["catch"](function (error) {
-    console.log(error);
-  });
-});
+// form.addEventListener('submit', function (e) {
+//   e.preventDefault();
+//   var token = document.querySelector('meta[name="csrf-token"]');
+//   console.log(token);
+//   var url = this.getAttribute('action');
+//   var q = document.getElementById('q').value;
+//   fetch(url, {
+//     header: {
+//       'Content-Type': 'application/json',
+//       'X-CSRF-TOKEN': token
+//     },
+//     method: 'post',
+//     body: JSON.stringify({
+//       q: q
+//     })
+//   }).then(function (response) {
+//     response.json().then(function (data) {
+//       var shows = document.getElementsByClassName('shows');
+//       shows.innerHTML += '';
+//       Object.entries(data)[0].forEach(function (element) {
+//         shows.innerHTML = "\n                        <h3>".concat(element.title, "</h3>\n                        ");
+//       });
+//     });
+//   })["catch"](function (error) {
+//     console.log(error);
+//   });
+// });
 
 /***/ }),
 
