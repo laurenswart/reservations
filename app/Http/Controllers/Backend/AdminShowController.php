@@ -51,14 +51,34 @@ class AdminShowController extends Controller
      */
     public function store(Request $request)
     {
-        Show::insertGetId([
-            'slug' => $request->slug,
-            'title' => $request->title,
-            'description' => $request->description,
-            'price' => $request->price,
-            // 'slug' => str_replace(' ', '-', $request->product_name_fr),
-            // 'bookable' => $request->bookable
-        ]);
+
+         //création d'un id + nom unique avec l'extension de l'image
+         $image = $request->file('product_thambnail');
+         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+         //l'extension laravel que nous avons installé
+         Image::make($image)->resize(917, 1000)->save('upload/products/thambnail/' . $name_gen);
+         $save_url = 'upload/products/thambnail/' . $name_gen;
+
+         $images = $request->file('multi_img');
+        foreach ($images as $img) {
+            $make_name = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+            Image::make($img)->resize(917, 1000)->save('upload/products/multi-image/' . $make_name);
+            $uploadPath = 'upload/products/multi-image/' . $make_name;
+
+            Show::insertGetId([
+                'slug' => $request->slug,
+                'title' => $request->title,
+                'description' => $request->description,
+                'price' => $request->price,
+                // 'slug' => str_replace(' ', '-', $request->product_name_fr),
+                // 'bookable' => $request->bookable
+                'poster_url' => $request->poster_url
+            ]);
+
+
+        }
+
+
     }
 
     /**

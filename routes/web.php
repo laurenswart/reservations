@@ -105,6 +105,8 @@ Route::prefix('admin')->group(function(){
 
         Route::get('/add', [AdminShowController::class, 'add'])->name('admin-show-add');
 
+        Route::get('/store', [AdminShowController::class, 'store'])->name('admin-show-store');
+
     });
 
 });

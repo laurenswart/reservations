@@ -9,7 +9,7 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <div class="table-responsive">
-                    <form method="POST" action="{{ route('admin-show-add') }}">
+                    <form method="POST" action="{{ route('admin-show-store') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group">
@@ -43,6 +43,7 @@
                         </div>
 
                         <div class="form-group">
+                            <h5>Bookable <span class="text-danger">*</span></h5>
                             <div>
                                 <input type="radio" id="bookable1" name="bookable" value="1" checked>
                                 <label for="bookable1">YES</label>
@@ -52,6 +53,12 @@
                                 <input type="radio" id="bookable2" name="bookable" value="0">
                                 <label for="bookable2">NO</label>
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h5>Price <span class="text-danger">*</span></h5>
+                            <input type="number"  name="price">
+
                         </div>
 
                         <div class="form-group">
