@@ -103,6 +103,8 @@ Route::prefix('admin')->group(function(){
 
         Route::post('/update', [AdminShowController::class, 'update'])->name('admin-show-update');
 
+        Route::get('/add', [AdminShowController::class, 'add'])->name('admin-show-add');
+
     });
 
 });

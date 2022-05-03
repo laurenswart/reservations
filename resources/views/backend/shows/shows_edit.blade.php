@@ -1,24 +1,8 @@
 @extends('admin.admin_master')
 @section('admin')
-
     <div class="container-full">
         <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="d-flex align-items-center">
-                <div class="mr-auto">
-                    <h3 class="page-title">Data Tables</h3>
-                    <div class="d-inline-block align-items-center">
-                        <nav>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
-                                <li class="breadcrumb-item" aria-current="page">Tables</li>
-                                <li class="breadcrumb-item active" aria-current="page">Data Tables</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
         <!-- Main content -->
         <section class="content">
@@ -38,9 +22,10 @@
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $shows->id }}">
                                     <div class="form-group">
-                                        <h5>Show Name  <span class="text-danger">*</span></h5>
+                                        <h5>Show Name <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text" name="title" class="form-control" value="{{ $shows->title }}" >
+                                            <input type="text" name="title" class="form-control"
+                                                value="{{ $shows->title }}">
                                             @error('title')
                                                 <span class="text-danger">{{ $message }} </span>
                                             @enderror
@@ -50,35 +35,58 @@
                                     <div class="form-group">
                                         <h5>Show description <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text" name="description" class="form-control" value="{{ $shows->description}}">
+                                            <input type="text" name="description" class="form-control"
+                                                value="{{ $shows->description }}">
                                             @error('description')
                                                 <span class="text-danger">{{ $message }} </span>
                                             @enderror
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <h5>Show Price <span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <input type="text" name="price" class="form-control"
+                                                value="{{ $shows->price }}">
+                                            @error('price')
+                                                <span class="text-danger">{{ $message }} </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    {{-- <div class="form-group">
+                                        <h5>Show Locations <span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <div>
+                                                <select name="locations">
+                                                    @foreach ($locations as $location)
+                                                        <option name="location_id" value="{{ $location->address }}"
+                                                            id="{{ $location->id }}"> {{ $location->address }} </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div> --}}
 
 
                                     <div class="text-xs-right">
                                         <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
                                     </div>
 
+
                             </div>
+                            </form>
                         </div>
-                        </form>
                     </div>
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.box-body -->
+                <!-- /.box -->
+
+                <!-- /.box -->
             </div>
-            <!-- /.box -->
-
-            <!-- /.box -->
-    </div>
-    <!-- /.row -->
+            <!-- /.row -->
 
 
-    </section>
-    <!-- /.content -->
+        </section>
+        <!-- /.content -->
 
     </div>
-
 @endsection

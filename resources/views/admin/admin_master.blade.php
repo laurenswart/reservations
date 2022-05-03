@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="{{ asset('backend/images/favicon.ico') }}">
 
-    <title>Easy Ecommerce Admin - Dashboard</title>
+    <title>Reservations Admin - Dashboard</title>
 
 
     <!-- Vendors Style-->

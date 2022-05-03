@@ -3,22 +3,7 @@
 
     <div class="container-full">
         <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="d-flex align-items-center">
-                <div class="mr-auto">
-                    <h3 class="page-title">Data Tables</h3>
-                    <div class="d-inline-block align-items-center">
-                        <nav>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
-                                <li class="breadcrumb-item" aria-current="page">Tables</li>
-                                <li class="breadcrumb-item active" aria-current="page">Data Tables</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
         <!-- Main content -->
         <section class="content">
@@ -68,6 +53,54 @@
                     <!-- /.box -->
                 </div>
                 <!-- /.col -->
+
+                <div class="col-4">
+
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Add Shows</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                <form method="POST" action="">
+                                    @csrf
+
+                                    <div class="form-group">
+                                        <h5>Slug <span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <input type="text" name="subcategory_name_en" class="form-control">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <h5>title <span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <input type="text" name="subcategory_name_fr" class="form-control">
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <h5>Description <span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <input type="text" name="subcategory_name_fr" class="form-control">
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="text-xs-right">
+                                        <input type="submit" class="btn btn-rounded btn-primary mb-5"
+                                            value="Add New ">
+                                    </div>
+
+                            </div>
+                        </div>
+                        </form>
+                    </div>
 
 
                 <!-- /.box-body -->
