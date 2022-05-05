@@ -5,9 +5,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
+
 
 class Show extends Model implements Feedable
 {
@@ -33,7 +33,7 @@ class Show extends Model implements Feedable
      * @var string
      */
     protected $table = 'shows';
-  
+
     /**
      * Indicates if the model should be timestamped.
      *
@@ -63,22 +63,21 @@ class Show extends Model implements Feedable
         return $this->belongsToMany(ArtistType::class);
     }
 
-
     public function toFeedItem(): FeedItem
     {
         return FeedItem::create()
             ->id($this->id)
             ->title($this->title)
-            ->description($this->description)
-            ->poster_url($this->poster_url)
-            ->location_id($this->location_id)
-            ->price($this->price);
+            ->summary($this->description)
+            ->updated($this->updated_at == null ? "pas de date" : $this->updated_at)    //Gérer le cas ou le champ est null
+            ->link('')                        //Fournir l'URL qui affiche le show
+            ->authorName('')                         //Peut laisser à '' ou l'auteur du spectacle
+            ->authorEmail('');
     }
-
-    
 
     public static function getFeedItems()
     {
-    return Show::all();
+       return Show::all();
     }
+
 }

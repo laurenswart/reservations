@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+        @include('feed::links')
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -26,7 +27,7 @@
                 <ul class="items">
                 @foreach($showsForSlider as $i => $showForSlider)
                 <li class="item" style="background-image:url({{ asset('images/show_posters/'.$showForSlider->poster_url)}}">{{ $showForSlider->title }}</li>
-                @endforeach 
+                @endforeach
                 </ul>
             </div>
             <button onclick="next()"><i class="fa-solid fa-angle-right"></i></button>
@@ -51,7 +52,7 @@
                     <a href="{{ route('representations_show', $representation->id) }}" class="button expanded">Réserver</a>
                 </div>
                 @endforeach
-            @else 
+            @else
                 <p>Aucune représentation à venir.</p>
             @endif
         </div>
@@ -80,8 +81,6 @@
                 </div>
             @endif
             @endforeach
-                
-           
         </div>
 
         <footer class="callout large secondary" id="footer">
