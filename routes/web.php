@@ -11,6 +11,9 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ShowController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AdminController;
+
+use App\Http\Controllers\Backend\CategoryController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -112,6 +115,21 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'Dashboard'])->name('admin.dashboard')->middleware('admin');
 
     Route::get('/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout')->middleware('admin');
+
+
+    Route::prefix('categories')->group(function(){
+
+        Route::get('/manage', [CategoryController::class, 'IndexCategory'])->name('manage-category')->middleware('admin');
+
+        Route::get('/edit/{id}',[CategoryController::class, 'EditCategory'])->name('category-edit')->middleware('admin');
+
+        Route::post('/update',[CategoryController::class, 'UpdateCategory'])->name('category-update');
+
+        Route::get('/add',[CategoryController::class, 'AddCategory'])->name('category-add');
+
+
+    });
+
 });
 
 // End Admin Routes //
