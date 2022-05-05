@@ -92,4 +92,15 @@ class ShowController extends Controller
     {
         return Show::destroy($id);
     }
+
+    /**
+     * search for a name.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function search($title)
+    {
+        return Show::where('title','like','%'.$title.'%')->get();
+    }
 }

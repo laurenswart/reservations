@@ -20,6 +20,9 @@ use App\Http\Controllers\Api\ShowController;
 // Route::get('/shows', [ShowController::class, 'index']);
 
 Route::resource('shows', ShowController::class);
+Route::get('/shows/search/{title}', [ShowController::class, 'search']);
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
