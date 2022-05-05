@@ -25,7 +25,7 @@ class ShowController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -36,7 +36,14 @@ class ShowController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // $request->validate([
+        //     'title'=>'required',
+        //     'description'=>'required',
+        //     'price'=> 'required',
+        // ]);
+
+        return Show::create($request->all());
     }
 
     /**
@@ -47,7 +54,7 @@ class ShowController extends Controller
      */
     public function show($id)
     {
-        //
+        return Show::find($id);
     }
 
     /**
@@ -70,7 +77,9 @@ class ShowController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $show =  Show::find($id);
+        $show->update($request->all());
+        return $show;
     }
 
     /**
@@ -81,6 +90,6 @@ class ShowController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return Show::destroy($id);
     }
 }
