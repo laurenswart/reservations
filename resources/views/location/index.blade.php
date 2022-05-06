@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.right-sidebar')
 
-@section('title', 'Liste des lieux de spectacle')
+
 
 @section('content')
     <div id="map" class="map" style=" height: 600px;width: 100%;"></div>
@@ -9,16 +9,15 @@
         <a href="#" id="popup-closer" class="ol-popup-closer"></a>
         <div id="popup-content"></div>
     </div>
+@endsection   
+@section('sidebar')
 
-
-    <div class="row my-4">
+    <div class="my-4">
     @foreach($locations as $location)
-        <div class="media-object col-6 col-md-4 my-4">
+        <div class="media-object my-4">
+            
             <div class="media-object-section">
-            <a href="{{ $location->website }}"><i class="fa-solid fa-link"></i></a>
-            </div>
-            <div class="media-object-section">
-                <h5><a href="{{ $location->website }}">{{ $location->designation }}</a></h5>
+                <h5><a href="{{ $location->website ?? '#' }}" class="button w-100">{{ $location->designation }}</a></h5>
                 <p>{{ $location->address }}<br>{{ $location->locality->postal_code }} {{ $location->locality->locality }}</p>
                 <button onclick="afficher({{ $location->id }})" class="mapButton"><i class="fas fa-map-marker-alt pl-0"></i>Afficher sur la carte</button>
             </div>
@@ -115,6 +114,7 @@ closer.onclick = function() {
         closer.blur();
         return false;
     };
+    /*
 map.on('pointermove', function (event) {
      if (map.hasFeatureAtPixel(event.pixel) === true) {
          var coordinate = event.coordinate;
@@ -130,7 +130,7 @@ map.on('pointermove', function (event) {
          overlay.setPosition(undefined);
          closer.blur();
      }
- });
+ });*/
 
  function afficher(locationId){
     //find feature with id = locationId
@@ -139,7 +139,7 @@ map.on('pointermove', function (event) {
             //found the feature
             let point = feature.getGeometry();
             view.fit(point, { minResolution: 5, duration:500});
-            document.body.scrollTop = document.documentElement.scrollTop = 0;
+            document.body.scrollTop = document.documentElement.scrollTop = 250;
         }
         });
  }

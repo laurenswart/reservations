@@ -18,7 +18,7 @@ class LocationController extends Controller
 
         return view('location.index',[
             'locations' => $locations,
-            'resource' => 'lieux',
+            'resource' => 'Locations',
         ]);
 
     }

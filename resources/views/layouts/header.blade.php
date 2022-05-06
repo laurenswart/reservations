@@ -9,8 +9,10 @@
 		<title>Left Sidebar - Helios by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
 		<link rel="stylesheet" href="{{ asset('css/main.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+		
 		<noscript><link rel="stylesheet" href="{{ asset('css/noscript.css') }}" /></noscript>
 	</head>
 	<body class="left-sidebar is-preload">

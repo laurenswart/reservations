@@ -1515,8 +1515,8 @@ label{
 }
 
 a:hover{
-  color: #d7a32d!important;
-  text-decoration: none!important;
+  color: #d7a32d;
+  text-decoration: none;
 }
 
 
@@ -1564,8 +1564,10 @@ h1.center {
 
 .mapButton{
   color:#d7a32d;
+  padding-right:10px;
 }
 .mapButton:hover, .mapButton:hover i{
-  color:#9ca3af;
+  color:crimson;
+  background-color: white;;
 }
 
