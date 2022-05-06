@@ -31,5 +31,5 @@
         </ul>
     </article>
 
-    <nav><a href="{{ route('location_index') }}">Retour à l'index</a></nav>
+    <nav><a href="{{ route('locations_index') }}">Retour à l'index</a></nav>
 @endsection

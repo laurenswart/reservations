@@ -160,7 +160,6 @@ table {
 button,
 input,
 optgroup,
-select,
 textarea {
   font-family: inherit; /* 1 */
   font-size: 100%; /* 1 */
@@ -1455,12 +1454,18 @@ i{
    
 }
 
-h1.big-title{
+.big-title{
   font-size: 2rem;
   text-align: center;
   background-color: #555151;
   padding: 10px;
   margin: 0 0 20px 0;  
+}
+h2.big-title{
+  font-size:1.8rem;
+}
+th {
+  white-space: nowrap;
 }
 
 .payment .button{
@@ -1524,6 +1529,7 @@ h1.center {
   
 }
 
+
 .avatar img{
   width: 50px; height: 50px;
   display:inline;
@@ -1536,3 +1542,30 @@ h1.center {
 .back-nav{
   text-align: end;
 }
+
+.ol-popup > div {
+  background-color: #212529;
+  padding: 15px;
+}
+
+.ol-popup > div a {
+  font-weight:bold;
+  color: #d7a32d!important;;
+}
+
+.ol-popup > div p {
+  font-size: 0.8rem;;
+}
+
+.ol-popup > div a:hover::after {
+  content: '   \2192';
+  
+}
+
+.mapButton{
+  color:#d7a32d;
+}
+.mapButton:hover, .mapButton:hover i{
+  color:#9ca3af;
+}
+

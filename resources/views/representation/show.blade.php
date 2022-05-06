@@ -3,7 +3,7 @@
 @section('title', 'Fiche d\'une représentation')
 
 @section('content')
-<div class="nav">
+    <div class="nav">
         <a href="{{ route('representations_index') }}"><i class="fa-solid fa-chevron-left"></i>Retour à l'index</a>
     </div>
 <div class="lib-item" data-category="view">
