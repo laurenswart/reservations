@@ -96,12 +96,6 @@ Route::get('/reservations/edit/{id}', [ReservationController::class, 'edit'])
 // Route::get('/reservations/edit/{id}', [CategoryController::class, 'edit'])->name('admin_category');
 
 
-
-
-Route::get('/dashboard', function () {
-    return view('welcome');
-})->middleware(['auth'])->name('dashboard');
-
 // Admin Routes //
 Route::prefix('admin')->group(function () {
 

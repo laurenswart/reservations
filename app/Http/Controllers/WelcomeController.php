@@ -8,6 +8,7 @@ use App\Models\Show;
 use Exception;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 class WelcomeController extends Controller
@@ -24,10 +25,21 @@ class WelcomeController extends Controller
         $nextRepresentations = Representation::where('when', '>', date('Y-m-d H:m:s'))->orderby('when','desc')->take(4)->get()->reverse();
         $showsForSlider = Show::all();
 
+        $popularShows = DB::select('SELECT futurShows.id, futurShows.title, futurShows.bookable, sum(places), futurShows.poster_url, futurShows.price  from 
+        ( SELECT shows.id, shows.title, shows.poster_url, shows.price, shows.bookable from shows 
+         join representations on representations.show_id = shows.id
+         where  representations.when > CURRENT_TIMESTAMP
+        ) as futurShows
+    join representations on representations.show_id=futurShows.id
+    join reservations on reservations.representation_id=representations.id
+    group by futurShows.id');
+
+    //dd($popularShows);
+
         return view('welcome',[
             'locations' => $locations,
             'nextRepresentations' => $nextRepresentations,
-            'showsForSlider' => $showsForSlider,
+            'popularShows'=>$popularShows
         ]);
 
     }
