@@ -13,6 +13,7 @@
             <li><a href="{{ route('artists_index')}}">Artists</a></li>
             <li><a href="{{ route('locations_index')}}">Locations</a></li>
             @auth
+            <li><a href="{{ route('user_account')}}">Mon Compte</a></li>
             <li><!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf

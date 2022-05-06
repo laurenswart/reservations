@@ -10,15 +10,15 @@
                 <h4 class="text-center">Register</h4>
                 <span class="d-flex justify-content-between">
                     <label for="sign-in-form-firstname">Firstname</label>
-                    <input type="text" class="sign-in-form-input" name="firstname">
+                    <input type="text" class="sign-in-form-input" name="firstname" value="{{ old('firstname') ?? '' }}">
                 </span>
                 <span class="d-flex justify-content-between">
                     <label for="sign-in-form-lastname">Lastname</label>
-                    <input type="text" class="sign-in-form-input" name="lastname">
+                    <input type="text" class="sign-in-form-input" name="lastname" value="{{ old('lastname') ?? '' }}">
                 </span>
                 <span class="d-flex justify-content-between">
                     <label for="sign-in-form-login">Username</label>
-                    <input type="text" class="sign-in-form-input" name="login"  id="sign-in-form-username">
+                    <input type="text" class="sign-in-form-input" name="login"  id="sign-in-form-username" value="{{ old('login') ?? '' }}">
                 </span>
                 <span class="d-flex justify-content-between">
                     <label for="sign-in-form-email">Email</label>
