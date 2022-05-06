@@ -115,10 +115,19 @@ class ShowController extends Controller
             $collaborateurs[$at->type->type][] = $at->artist;
         }
 
+        //get shows with a same artist
+        $artist_ids = $show->artistTypes->pluck('artist_id');
+        foreach(Show::all() as $row){
+            if(count($row->artistTypes->whereIn('artist_id', $artist_ids)) > 0 && $row->id!=$id){
+                $similarShows[] = $row;
+            }
+        }
 
         return view('show.show', [
             'show' => $show,
             'collaborateurs' => $collaborateurs,
+            'resource'=>$show->title,
+            'similarShows' => $similarShows
         ]);
     }
 
