@@ -1545,4 +1545,13 @@ h1.center {
 
 .ol-popup > div a:hover::after {
   content: '   \2192';
+  
+}
+
+
+.mapButton{
+  color:#d7a32d;
+}
+.mapButton:hover, .mapButton:hover i{
+  color:#9ca3af;
 }
