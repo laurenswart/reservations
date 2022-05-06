@@ -1,8 +1,7 @@
 @extends('layouts.left-sidebar')
 
-@section('content')
-<div class="row gtr-200">
-    <div class="col-4 col-12-mobile" id="sidebar">
+@section('sidebar')
+
         <hr class="first" />
         <section>
             <a href="#" class="image featured"><img  src="{{ asset('images/show_posters/'.$show->poster_url) }}" alt="{{ $show->title }}" /></a>
@@ -37,8 +36,8 @@
                 <a href="{{ route('shows_index') }}" class="button">All our Shows</a>
             </footer>
         </section>
-    </div>
-    <div class="col-8 col-12-mobile imp-mobile" id="content">
+    @endsection
+    @section('content')
         <article id="main">
             <section>
                 <div class="lib-item" data-category="view">
@@ -102,6 +101,5 @@
                 </div>
             </section>
         </article>
-    </div>
-</div>
+    
 @endsection
