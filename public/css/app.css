@@ -1533,3 +1533,30 @@ h1.center {
   margin-bottom: 50px;
   font-weight: bold;
 }
+
+.ol-popup > div {
+  background-color: #212529;
+  padding: 15px;
+}
+
+.ol-popup > div a {
+  font-weight:bold;
+  color: #d7a32d!important;;
+}
+
+.ol-popup > div p {
+  font-size: 0.8rem;;
+}
+
+.ol-popup > div a:hover::after {
+  content: '   \2192';
+  
+}
+
+
+.mapButton{
+  color:#d7a32d;
+}
+.mapButton:hover, .mapButton:hover i{
+  color:#9ca3af;
+}
