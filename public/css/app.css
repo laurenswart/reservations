@@ -43,7 +43,6 @@ body {
   margin: 0; /* 1 */
   line-height: inherit; /* 2 */
   background-color: #0a0a0a!important;
-  color: whitesmoke;
 }
 
 /*
@@ -590,9 +589,7 @@ select {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
-.container {
-  width: 100%;
-}
+
 @media (min-width: 640px) {
 
   .container {
@@ -1517,9 +1514,6 @@ label{
   flex: 1 1 150px;
 }
 
-a{
-  color: whitesmoke!important;
-}
 a:hover{
   color: #d7a32d!important;
   text-decoration: none!important;
@@ -1532,6 +1526,21 @@ h1.center {
   text-align:center;
   margin-bottom: 50px;
   font-weight: bold;
+  
+}
+
+
+.avatar img{
+  width: 50px; height: 50px;
+  display:inline;
+}
+.avatar.featured{
+  margin: 0 0 5px 0;
+  text-align:center;
+}
+
+.back-nav{
+  text-align: end;
 }
 
 .ol-popup > div {
@@ -1553,10 +1562,10 @@ h1.center {
   
 }
 
-
 .mapButton{
   color:#d7a32d;
 }
 .mapButton:hover, .mapButton:hover i{
   color:#9ca3af;
 }
+
