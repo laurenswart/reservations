@@ -55,7 +55,7 @@
                             <td><a href="{{ route('locations_show', $reservation->representation->location_id) }}">{{ $reservation->representation->location->designation }}</a></td>
                             <td><a href="{{ route('shows_show', $reservation->representation->show_id) }}">{{ $reservation->representation->show->title }}</a></td>
                             <td>{{ $reservation->places }}</td>
-                            <td>{{ $reservation->places * $reservation->representation->show->price }} &#8364</td>
+                            <td>{{ $reservation->places * $reservation->representation->show->price }} &#8364;</td>
                             <td>{{ date('d/m/Y', $reservation->created_at->timestamp ) }}</td>
                         </tr>
                         @endif
@@ -63,7 +63,7 @@
                     </tbody>
                 </table>
             @else 
-                <p>Aucune réservation à venir.
+                <p>Aucune réservation à venir.</p>
             @endif
             <div class="nav">
                 <a href="{{ route('reservations_forUser') }}"><i class="fa-solid fa-chevron-right"></i>Voir toutes mes réservations</a>
