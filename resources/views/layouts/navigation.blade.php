@@ -14,11 +14,18 @@
         </li>
         @endguest
         @auth
-        <li><!-- Authentication -->
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <a href="route('logout')" onclick="event.preventDefault();this.closest('form').submit();">{{ __('Log Out') }}</a>
-            </form>
+        <li>
+            <a href="#">My Account</a>
+            <ul>
+                <li><a href="{{ route('user_account') }}">My Profile</a></li>
+                <li><a href="{{ route('reservations_forUser') }}">My Reservations</a></li>
+                <li><!-- Authentication -->
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a href="route('logout')" onclick="event.preventDefault();this.closest('form').submit();">{{ __('Log Out') }}</a>
+                    </form>
+                </li>
+            </ul>
         </li>
         @endauth       
     </ul>
