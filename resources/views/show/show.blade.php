@@ -52,28 +52,22 @@
                                 @if($show->location)
                                     <p><strong>Lieu de création:</strong> {{ $show->location->designation }}</p>
                                 @endif
-                                <p><strong>Prix:</strong> {{ $show->price }} €
-                                    @if($show->bookable)
-                                        <em>Réservable</em>
-                                    @else
-                                        <em>Non réservable</em>
-                                    @endif
-                                </p>
+                                <p><strong>Prix:</strong> {{ $show->price }} €</p>
                                 <h2>Représentations</h2>
                                 @if($show->representations->count()>=1)
                                 <ul>
                                     @foreach ($show->representations as $representation)
-                                        <li>
+                                        <li class="py-2">
                                             {{ $representation->when }} 
                                             @if($representation->location)
-                                                ({{ $representation->location->designation }})
-                                            @elseif($representation->show->location)
-                                                ({{ $representation->show->location->designation }})
+                                                ( <a href="{{ route('locations_index') }}">{{ $representation->location->designation }} </a>)
                                             @else
                                                 (lieu à déterminer)
                                             @endif
                                             @if($show->bookable && $representation->when > date('Y-m-d H:i:s'))
-                                                <a href="{{ route('representations_show', $representation->id) }}">Réserver</a>
+                                            <span style="float:right">
+                                                <a class="button py-1" href="{{ route('representations_show', $representation->id) }}">Réserver</a>
+                                            </span>
                                             @endif
                                         </li>
                                         
@@ -86,12 +80,16 @@
                                 <h2>Artistes</h2>
                                 @foreach ($collaborateurs as $collabName => $collabData)
                                     <p><strong>{{ ucfirst($collabName) }}s:</strong>
+                                    
                                     @foreach ($collabData as $auteur)
+                                    <a href="{{ route('artists_show', $auteur->id) }}">
                                         {{ $auteur->firstname }} 
                                         {{ $auteur->lastname }}
+                                    </a>
                                         @if($loop->iteration == $loop->count-1) et 
                                         @elseif(!$loop->last), 
                                         @endif
+                                    
                                     @endforeach
                                     </p>
                                 @endforeach

@@ -1,39 +1,48 @@
-@extends('layouts.app')
-
-@section('title', 'Liste des spectacles')
+@extends('layouts.no-sidebar')
 
 @section('content')
-    <nav class="navbar ">
-        <form class="form-inline" action="{{ url('/search') }}" method="get">
-            <div>
-                <label>search</label>
-                <input id="search_product" class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+     <nav class="navbar d-flex flex-column align-items-center">
+     @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
+        <form class="d-flex" action="{{ url('/search') }}" method="get">
+        <div class="mx-2">
+                <label>Search</label>
+                <input id="search_product" class="form-control mr-sm-2" name="search" type="search" placeholder="Search.." aria-label="Search">
             </div>
 
 
             <!-- Date -->
-            <div>
-                <label>Calendrier</label>
+            <div class="mx-2">
+                <label>When</label>
                 <input class="form-control mr-sm-2" type="date" name="fromDate">
             </div>
 
             <!-- price -->
-            <div>
+            <div class="mx-2">
                 <label>Maximum price</label>
-                <input type="range" name="price" min="0" max="30" value="39.00"
-                    onchange="this.nextElementSibling.innerText = this.value + '&euro;'" class="form-control mr-sm-2">
-                <span>30 &euro;</span>
+                <div class="d-flex">
+                    <input type="range" name="price" min="0" max="30" value="39.00"
+                    onchange="this.nextElementSibling.innerText = this.value + '&euro;'" class="form-control mr-sm-2 w-auto">
+                    <span class="ml-2">30 &euro;</span>
+                </div>
             </div>
-            <button name="btn" class="btn btn-outline-success ml-3 mt-3" type="submit">Search</button>
-        </form>
+            <div class="ml-3 mt-3 px-5 d-flex flex-column justify-content-end">
+                <button name="btn" class="button" type="submit">Search</button>
+                </div>
+            </form>
 
-    </nav>
+    </nav> 
+    <hr style="top:0;" class="my-4">
 
-    <div>
+
+    <div class="mb-4">
         <div class="image-flex">
             <ul>
                 @foreach ($shows as $show)
-                    <li class="image-container">
+                    <li class="image-container ps-0">
                         <a href="{{ route('shows_show', $show->id) }}">
                             <img src="{{ asset('images/show_posters/' . $show->poster_url) }}" style="width:200px">
                             <div class="info">

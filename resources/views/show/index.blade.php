@@ -1,9 +1,6 @@
 @extends('layouts.no-sidebar')
 
 @section('content')
-
-    <div class="container">
-
         <nav class="navbar d-flex flex-column align-items-center">
             @if (session('status'))
                 <div class="alert alert-success">
@@ -59,5 +56,4 @@
             </div>
         </div>
         {{ $shows->links() }}
-    </div>
 @endsection

@@ -47,6 +47,7 @@ class ShowController extends Controller
         }
         return view('show.search', [
             'shows' => $shows,
+            'resource' => 'Our Shows',
         ]);
     }
     /**
@@ -73,7 +74,7 @@ class ShowController extends Controller
         $shows = Show::paginate(3);
         return view('show.index', [
             'shows' => $shows,
-            'resource' => 'shows',
+            'resource' => 'Our Shows',
         ]);
     }
 
