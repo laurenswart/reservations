@@ -117,6 +117,7 @@ class ShowController extends Controller
 
         //get shows with a same artist
         $artist_ids = $show->artistTypes->pluck('artist_id');
+        $similarShows = [];
         foreach(Show::all() as $row){
             if(count($row->artistTypes->whereIn('artist_id', $artist_ids)) > 0 && $row->id!=$id){
                 $similarShows[] = $row;

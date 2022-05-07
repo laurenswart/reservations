@@ -1485,17 +1485,7 @@ button.sign-in-form-button.dark{
   margin: 0 15px;
 }
 
-.table, .table thead, .table tbody, .table tbody tr:nth-child(even){
-  background-color: #212529!important;
-  color: #fefefe !important;
-}
 
-.table tbody, .table thead{
-  border:none;
-}
-.table{
-  border:1px solid #555151;
-}
 
 label{
   color:white;

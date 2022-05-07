@@ -30,8 +30,8 @@
             </tr>
         </tbody>
     </table>
-    <div class="nav">
-        <a href="{{ route('user_edit') }}" class="back-link"><i class="fas fa-pen"></i>Modifier mes données</a>
+    <div class="back-nav">
+        <a href="{{ route('user_edit') }}" ><i class="fas fa-pen"></i>Modifier mes données</a>
     </div>
  
 @endsection
@@ -39,7 +39,7 @@
 @section('content')
 <h2 class="big-title">Réservations à venir</h2>
 @if(count($user->reservations) != 0 )
-    <table class="table table-dark table-striped">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">Date</th>
@@ -54,8 +54,9 @@
         @foreach($user->reservations as $reservation)
             @if($reservation->representation->when > date('Y-m-d H:i:s'))
             <tr>
+                
                 <th>{{ date('d/m/Y  H:i', strtotime($reservation->representation->when) ) }}</th>
-                <td><a href="{{ route('locations_show', $reservation->representation->location_id) }}">{{ $reservation->representation->location->designation }}</a></td>
+                <td><a href="{{ route('locations_index') }}">{{ $reservation->representation->location->designation }}</a></td>
                 <td><a href="{{ route('shows_show', $reservation->representation->show_id) }}">{{ $reservation->representation->show->title }}</a></td>
                 <td>{{ $reservation->places }}</td>
                 <td>{{ $reservation->places * $reservation->representation->show->price }} &#8364;</td>
@@ -65,9 +66,9 @@
         @endforeach
         </tbody>
     </table>
-<div class="nav">
-    <a href="{{ route('reservations_forUser') }}"><i class="fa-solid fa-chevron-right"></i>Voir toutes mes réservations</a>
-</div>
+    <div class="back-nav">
+        <a href="{{ route('reservations_forUser') }}"><i class="fas fa-chevron-right"></i>Voir toutes mes réservations</a>
+    </div>
 @else 
     <p>Aucune réservation à venir.</p>
 @endif
