@@ -1,8 +1,5 @@
 @extends('layouts.left-sidebar')
 
-
-
- 
 @section('sidebar')
         
     <h2 class="big-title">Mon Profil</h2>
