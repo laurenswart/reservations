@@ -2,7 +2,7 @@
 @section('admin')
     <div class="container-full">
         <!-- Content Header (Page header) -->
-        
+
 
         <!-- Main content -->
         <section class="content">
@@ -45,26 +45,37 @@
                                     <div class="form-group">
                                         <h5>Show Price <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text" name="price" class="form-control"
+                                            <input type="number" name="price" class="form-control"
                                                 value="{{ $shows->price }}">
                                             @error('price')
                                                 <span class="text-danger">{{ $message }} </span>
                                             @enderror
                                         </div>
                                     </div>
-                                    {{-- <div class="form-group">
+                                    <div class="form-group">
                                         <h5>Show Locations <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <div>
-                                                <select name="locations">
+                                                <select name="location_id">
                                                     @foreach ($locations as $location)
-                                                        <option name="location_id" value="{{ $location->address }}"
-                                                            id="{{ $location->id }}"> {{ $location->address }} </option>
+                                                        <option value="{{ $location->id }}" id="{{$location->id}}"> {{ $location->address }} </option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                         </div>
-                                    </div> --}}
+                                    </div>
+
+                                    <div class="form-group">
+                                        <h5>Bookable <span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <div>
+                                                <select name="bookable">
+                                                        <option value="1">Yes</option>
+                                                        <option value="0">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
 
 
                                     <div class="text-xs-right">

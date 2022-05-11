@@ -52,33 +52,23 @@ class AdminShowController extends Controller
     public function store(Request $request)
     {
 
-         //création d'un id + nom unique avec l'extension de l'image
-         $image = $request->file('product_thambnail');
-         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-         //l'extension laravel que nous avons installé
-         Image::make($image)->resize(917, 1000)->save('upload/products/thambnail/' . $name_gen);
-         $save_url = 'upload/products/thambnail/' . $name_gen;
+        Show::insertGetId([
+            'title' => $request->title,
+            'description' => $request->description,
+            'price' => $request->price,
+            'location_id' => $request->location_id,
+            'bookable' => $request->bookable,
+            'slug' =>$request->slug,
+            'poster_url' => $request->poster_url
+        ]);
 
-         $images = $request->file('multi_img');
-        foreach ($images as $img) {
-            $make_name = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
-            Image::make($img)->resize(917, 1000)->save('upload/products/multi-image/' . $make_name);
-            $uploadPath = 'upload/products/multi-image/' . $make_name;
+        return redirect()->route('manage-show');
+    }
 
-            Show::insertGetId([
-                'slug' => $request->slug,
-                'title' => $request->title,
-                'description' => $request->description,
-                'price' => $request->price,
-                // 'slug' => str_replace(' ', '-', $request->product_name_fr),
-                // 'bookable' => $request->bookable
-                'poster_url' => $request->poster_url
-            ]);
-
-
-        }
-
-
+    public function LocationAdd()
+    {
+        $locations = Location::all();
+        return view('backend.shows.shows_add', compact('locations'));
     }
 
     /**
@@ -129,26 +119,24 @@ class AdminShowController extends Controller
     {
         $show_id = $request->id;
 
-
         Show::findOrFail($show_id)->update([
             'title' => $request->title,
             'description' => $request->description,
-
+            'location_id' => $request->location_id,
+            'price' => $request->price,
+            'bookable' => $request->bookable,
         ]);
 
 
-        //    dd($request);
-        return redirect()->route('admin.dashboard');
+        // dd($request);
+        return redirect()->route('manage-show');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    function delete($id)
     {
-        //
+
+        Show::findOrFail($id)->delete();
+
+        return redirect()->route('manage-show');
     }
 }

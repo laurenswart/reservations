@@ -9,23 +9,22 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <div class="table-responsive">
-                    <form method="POST" action="{{ route('admin-show-store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('admin-show-store') }}">
                         @csrf
-
+                        <input type="hidden" name="id" value="">
                         <div class="form-group">
                             <h5>Slug <span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="text" name="slug" class="form-control">
+                                <input type="text" name="slug" class="form-control" value="">
                                 @error('slug')
                                     <span class="text-danger">{{ $message }} </span>
                                 @enderror
                             </div>
                         </div>
-
                         <div class="form-group">
-                            <h5>Title <span class="text-danger">*</span></h5>
+                            <h5>Show Name <span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="text" name="title" class="form-control">
+                                <input type="text" name="title" class="form-control" value="">
                                 @error('title')
                                     <span class="text-danger">{{ $message }} </span>
                                 @enderror
@@ -33,46 +32,48 @@
                         </div>
 
                         <div class="form-group">
-                            <h5>Description <span class="text-danger">*</span></h5>
+                            <h5>Show description <span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="text" name="description" class="form-control">
+                                <input type="text" name="description" class="form-control" value="">
                                 @error('description')
                                     <span class="text-danger">{{ $message }} </span>
                                 @enderror
                             </div>
                         </div>
+                        <div class="form-group">
+                            <h5>Show Price <span class="text-danger">*</span></h5>
+                            <div class="controls">
+                                <input type="number" name="price" class="form-control" value="">
+                                @error('price')
+                                    <span class="text-danger">{{ $message }} </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h5>Show Locations <span class="text-danger">*</span></h5>
+                            <div class="controls">
+                                <div>
+                                    <select name="location_id">
+                                        @foreach ($locations as $location)
+                                            <option value="{{ $location->id }}" id="{{ $location->id }}">
+                                                {{ $location->address }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <h5>Bookable <span class="text-danger">*</span></h5>
-                            <div>
-                                <input type="radio" id="bookable1" name="bookable" value="1" checked>
-                                <label for="bookable1">YES</label>
-                            </div>
-
-                            <div>
-                                <input type="radio" id="bookable2" name="bookable" value="0">
-                                <label for="bookable2">NO</label>
+                            <div class="controls">
+                                <div>
+                                    <select name="bookable">
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <h5>Price <span class="text-danger">*</span></h5>
-                            <input type="number"  name="price">
-
-                        </div>
-
-                        <div class="form-group">
-                            @foreach ( $locations as $location )
-
-                            <div>
-                                <input type="radio" id="{{$location->id}}" name="location_id"
-
-                                value="{{$location->id}}" checked >
-                                <label for="location_id">{{ $location->address }}</label>
-                            </div>
-                            @endforeach
-                        </div>
-
 
                         <div class="col-md-4">
                             <div class="form-group">
@@ -88,18 +89,18 @@
 
 
                             <div class="text-xs-right">
-                                <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add New ">
+                                <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
                             </div>
 
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- /.box-body -->
-    </div>
-    <!-- /.box -->
 
-    <!-- /.box -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+
+        <!-- /.box -->
     </div>
 @endsection

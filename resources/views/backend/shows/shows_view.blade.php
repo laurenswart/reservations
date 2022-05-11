@@ -38,8 +38,11 @@
                                                 <th>{{ $show->location->address ?? "pas d'adresse disponible" }}</th>
                                                 <th>{{ $show->bookable }}</th>
                                                 <th>{{ $show->price }}</th>
-                                                <th> <a href="{{ route('admin-show-edit', $show->id) }}">Edit</a> or
-                                                    delete ?</th>
+                                                <th> <a href="{{ route('admin-show-edit', $show->id) }}">Edit</a>
+                                                    or
+                                                    <a href="{{ route('admin-show-delete', $show->id) }}"> delete </a>
+                                                    ?
+                                                </th>
                                             </tr>
                                         @endforeach
                                     </tbody>
