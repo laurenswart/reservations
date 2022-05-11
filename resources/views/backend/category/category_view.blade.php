@@ -49,7 +49,7 @@
                                                     <a href="{{ route('category-edit', $category->id) }}"
                                                         class="btn btn-info"><i class="fa fa-pencil"
                                                             title="Edit"></i></a>
-                                                    <a href="" class="btn btn-danger" id="delete" title="Delete"><i
+                                                    <a href="{{ route('category-delete',$category->id) }}" class="btn btn-danger" id="delete" title="Delete"><i
                                                             class="fa fa-trash"></i></a>
                                                 </td>
                                             </tr>
@@ -81,7 +81,7 @@
                                     <div class="form-group">
                                         <h5>Name of the category <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text" name="subcategory_name_fr" class="form-control">
+                                            <input type="text" name="type" class="form-control">
                                             @error('subcategory_name_fr')
                                                 <span class="text-danger">{{ $message }} </span>
                                             @enderror

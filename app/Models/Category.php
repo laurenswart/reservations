@@ -14,7 +14,7 @@ class Category extends Model
      *
      * @var array
      */
-    protected $fillable = ['category'];
+    protected $fillable = ['type'];
 
     /**
      * The table associated with the model.
@@ -30,5 +30,5 @@ class Category extends Model
      */
     public $timestamps = false;
 
-   
+
 }

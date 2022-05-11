@@ -8,17 +8,17 @@ use App\Models\Category;
 
 class CategoryController extends Controller
 {
-    function IndexCategory ()
+    function IndexCategory()
     {
         $categories = Category::all();
 
         return view('backend.category.category_view', [
-            'categories'=> $categories,
-        ]) ;
+            'categories' => $categories,
+        ]);
     }
 
 
-    function AddCategory (Request $request)
+    function AddCategory(Request $request)
     {
         $request->validate([
             'type' => 'required',
@@ -27,31 +27,41 @@ class CategoryController extends Controller
 
         ]);
 
-        Category::insert([
-           'type' => $request->type
+        Category::insertGetId([
+            'type' => $request->type
         ]);
 
+        // dd($request);
+
         return redirect()->back();
+    } //end method
 
-    }//end method
 
-
-    function EditCategory ($id)
+    function EditCategory($id)
     {
         $category = Category::find($id);
 
         return view('backend.category.category_edit', compact('category'));
-    }//end method
+    } //end method
 
-    function UpdateCategory (Request $request)
+    function UpdateCategory(Request $request)
     {
         $category_id = $request->id;
 
         Category::FindOrFail($category_id)->update([
-            'type'=> $request->type
+            'type' => $request->type
         ]);
 
-        return redirect()->route('manage-category');
 
-    }//end method
+
+        return redirect()->route('manage-category');
+    } //end method
+
+
+    function DeleteCategory($id)
+    {
+        Category::findOrFail($id)->delete();
+
+        return redirect()->route('manage-category');
+    }
 }

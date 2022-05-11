@@ -125,8 +125,9 @@ Route::prefix('admin')->group(function () {
 
         Route::post('/update',[CategoryController::class, 'UpdateCategory'])->name('category-update');
 
-        Route::get('/add',[CategoryController::class, 'AddCategory'])->name('category-add');
+        Route::post('/add',[CategoryController::class, 'AddCategory'])->name('category-add');
 
+        Route::get('/delete/{id}',[CategoryController::class, 'DeleteCategory'])->name('category-delete');
 
     });
 
