@@ -20,8 +20,9 @@ class CategoryController extends Controller
 
     function AddCategory(Request $request)
     {
+        /* Validating the input. */
         $request->validate([
-            'type' => 'required',
+            'type' => 'required|max:60|filled',
         ], [
             'type' => 'You must choose a name !',
 
@@ -47,6 +48,14 @@ class CategoryController extends Controller
     function UpdateCategory(Request $request)
     {
         $category_id = $request->id;
+
+        /* Validating the input. */
+        $request->validate([
+            'type' => 'required|max:60|filled',
+        ], [
+            'type' => 'You must choose a name !',
+
+        ]);
 
         Category::FindOrFail($category_id)->update([
             'type' => $request->type
