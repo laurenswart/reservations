@@ -55,7 +55,7 @@ class AdminShowController extends Controller
         /* Validating the input. */
         $request->validate([
             'title' => 'required|max:60|filled',
-            'description' => 'required|max:120|filled',
+            'description' => 'required|max:500|filled',
             'price' => 'required',
             'location_id' => 'required',
             'bookable' => 'required',
@@ -139,24 +139,6 @@ class AdminShowController extends Controller
     {
 
          /* It's validating the input. */
-         $request->validate([
-            'title' => 'required|max:60|filled',
-            'description' => 'required|max:120|filled',
-            'price' => 'required',
-            'location_id' => 'required',
-            'bookable' => 'required',
-            'slug' => 'required',
-            'poster_url' => 'required',
-        ], [
-            'type' => 'You must choose a name !',
-            'description' => 'You must put a description !',
-            'price' => 'You must choose a price !',
-            'location_id' => 'You must choose a location !',
-            'bookable' => 'Choose between yes or no !',
-            'Slug' => 'The slug is required !',
-            'poster_url' => "Don't Forget to choose an image !",
-
-        ]);
 
 
         $show_id = $request->id;
@@ -165,6 +147,7 @@ class AdminShowController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'location_id' => $request->location_id,
+            'slug' => $request->slug,
             'price' => $request->price,
             'bookable' => $request->bookable,
         ]);

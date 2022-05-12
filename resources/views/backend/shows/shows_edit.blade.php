@@ -22,6 +22,17 @@
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $shows->id }}">
                                     <div class="form-group">
+                                        <h5>Slug <span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <input type="text" name="slug" class="form-control"
+                                                value="{{ $shows->slug }}">
+                                            @error('title')
+                                                <span class="text-danger">{{ $message }} </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
                                         <h5>Show Name <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="text" name="title" class="form-control"
