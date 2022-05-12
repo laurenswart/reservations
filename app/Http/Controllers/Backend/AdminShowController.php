@@ -52,13 +52,33 @@ class AdminShowController extends Controller
     public function store(Request $request)
     {
 
+        /* Validating the input. */
+        $request->validate([
+            'title' => 'required|max:60|filled',
+            'description' => 'required|max:120|filled',
+            'price' => 'required',
+            'location_id' => 'required',
+            'bookable' => 'required',
+            'slug' => 'required',
+            'poster_url' => 'required',
+        ], [
+            'type' => 'You must choose a name !',
+            'description' => 'You must put a description !',
+            'price' => 'You must choose a price !',
+            'location_id' => 'You must choose a location !',
+            'bookable' => 'Choose between yes or no !',
+            'Slug' => 'The slug is required !',
+            'poster_url' => "Don't Forget to choose an image !",
+
+        ]);
+
         Show::insertGetId([
             'title' => $request->title,
             'description' => $request->description,
             'price' => $request->price,
             'location_id' => $request->location_id,
             'bookable' => $request->bookable,
-            'slug' =>$request->slug,
+            'slug' => $request->slug,
             'poster_url' => $request->poster_url
         ]);
 
@@ -117,6 +137,28 @@ class AdminShowController extends Controller
      */
     public function update(Request $request)
     {
+
+         /* It's validating the input. */
+         $request->validate([
+            'title' => 'required|max:60|filled',
+            'description' => 'required|max:120|filled',
+            'price' => 'required',
+            'location_id' => 'required',
+            'bookable' => 'required',
+            'slug' => 'required',
+            'poster_url' => 'required',
+        ], [
+            'type' => 'You must choose a name !',
+            'description' => 'You must put a description !',
+            'price' => 'You must choose a price !',
+            'location_id' => 'You must choose a location !',
+            'bookable' => 'Choose between yes or no !',
+            'Slug' => 'The slug is required !',
+            'poster_url' => "Don't Forget to choose an image !",
+
+        ]);
+
+
         $show_id = $request->id;
 
         Show::findOrFail($show_id)->update([

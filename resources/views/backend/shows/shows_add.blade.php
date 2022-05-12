@@ -43,7 +43,7 @@
                         <div class="form-group">
                             <h5>Show Price <span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="number" name="price" class="form-control" value="">
+                                <input type="number" name="price" class="form-control" step="0.1" value="">
                                 @error('price')
                                     <span class="text-danger">{{ $message }} </span>
                                 @enderror
@@ -89,7 +89,7 @@
 
 
                             <div class="text-xs-right">
-                                <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
+                                <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add new Show">
                             </div>
 
 
