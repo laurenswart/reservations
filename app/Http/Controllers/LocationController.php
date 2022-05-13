@@ -56,6 +56,7 @@ class LocationController extends Controller
         
         return view('location.show',[
             'location' => $location,
+            'resource' => $location->designation,
         ]);
 
     }

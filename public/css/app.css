@@ -70,7 +70,7 @@ abbr:where([title]) {
 Remove the default font size and weight for headings.
 */
 
-h1,
+
 h2,
 h3,
 h4,
@@ -1548,6 +1548,7 @@ h1.center {
 .mapButton{
   color:#d7a32d;
   padding-right:10px;
+  background: none;
 }
 .mapButton:hover, .mapButton:hover i{
   color:crimson;

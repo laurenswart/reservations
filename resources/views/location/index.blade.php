@@ -17,7 +17,7 @@
         <div class="media-object my-4">
             
             <div class="media-object-section">
-                <h5><a href="{{ $location->website ?? '#' }}" class="button w-100">{{ $location->designation }}</a></h5>
+                <h5><a href="{{ route('locations_show', $location->id) }}" class="button w-100">{{ $location->designation }}</a></h5>
                 <p>{{ $location->address }}<br>{{ $location->locality->postal_code }} {{ $location->locality->locality }}</p>
                 <button onclick="afficher({{ $location->id }})" class="mapButton"><i class="fas fa-map-marker-alt pl-0"></i>Afficher sur la carte</button>
             </div>
