@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -40,5 +41,31 @@ class AdminController extends Controller
         Auth::guard('admin')->logout();
 
         return redirect()->route('login_form');
+    }
+
+    public function exportView(){
+        return view('admin.export');
+    }
+
+    public function exportGet($resource, $format){
+        if(!in_array($resource, ['artists', 'shows'])){
+            return view('admin.export', [
+                'error' => 'Ressource Inconnue.'
+            ]);
+        }
+        if(!in_array($format, ['csv', 'json', 'xml'])){
+            return view('admin.export', [
+                'error' => 'Format Inconnu.'
+            ]);
+        }
+
+        $lignes = DB::table($resource)->get();
+        $fp = fopen("exports/$resource.$format", "w");
+        foreach($lignes as $ligne){
+            fputcsv($fp, json_decode(json_encode($ligne), true), ';');
+        }
+        fclose($fp);
+
+        return view('admin.export');
     }
 }
