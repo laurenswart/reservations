@@ -109,6 +109,9 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/export', [AdminController::class, 'exportView'])->name('admin.export.view')->middleware('admin');
     Route::get('/export/{resource}/{format}', [AdminController::class, 'exportGet'])->name('admin.export.get')->middleware('admin');
+
+    Route::get('/import', [AdminController::class, 'importView'])->name('admin.import.view')->middleware('admin');
+    Route::post('/import/{resource}/{format}', [AdminController::class, 'importStore'])->name('admin.import.store')->middleware('admin');
 });
 
 // End Admin Routes //

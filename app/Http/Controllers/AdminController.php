@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Artist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -47,6 +48,10 @@ class AdminController extends Controller
         return view('admin.export');
     }
 
+    public function importView(){
+        return view('admin.import');
+    }
+
     public function exportGet($resource, $format){
         if(!in_array($resource, ['artists', 'shows'])){
             return view('admin.export', [
@@ -67,5 +72,47 @@ class AdminController extends Controller
         fclose($fp);
 
         return view('admin.export');
+    }
+
+    public function importStore(Request $request, $resource, $format){
+        
+        if(!in_array($resource, ['artists', 'shows'])){
+            return view('admin.import', [
+                'error' => 'Ressource Inconnue.'
+            ]);
+        }
+        if(!in_array($format, ['csv', 'json', 'xml'])){
+            return view('admin.import', [
+                'error' => 'Format Inconnu.'
+            ]);
+        }
+
+        $filename = $request->file('rows')->store('public/imports');
+        $filename = str_replace('public/', 'storage/', $filename);
+
+        $fp = fopen($filename, "r");
+
+        $count = 0;
+        while( ($ligne = fgetcsv($fp, 2048, ";"))!==false){
+            $lignes[] = $ligne;
+            $artist = Artist::where([
+                'firstname'=>$ligne[1],
+                'lastname'=>$ligne[2],
+            ])->first();
+            if(empty($artist)){
+                $a = new Artist();
+                $a->firstname = $ligne[1];
+                $a->lastname = $ligne[2];
+                $a->save();
+                $count++;
+            }
+        }
+        fclose($fp);
+
+        
+
+        return view('admin.import', [
+            'count'=>$count
+        ]);
     }
 }
