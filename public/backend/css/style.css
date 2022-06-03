@@ -24039,3 +24039,10 @@ img.away, img.busy, img.offline, img.online {
   z-index: -1; }
 
 /*# sourceMappingURL=style.css.map */
+
+
+.visible{
+  position: relative!important;
+  left:0!important;
+  opacity: 100!important;
+}
