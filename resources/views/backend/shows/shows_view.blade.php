@@ -40,7 +40,7 @@
                                                 <th>{{ $show->price }}</th>
                                                 <th> <a href="{{ route('admin-show-edit', $show->id) }}">Edit</a>
                                                     or
-                                                    <a href="{{ route('admin-show-delete', $show->id) }}"> delete </a>
+                                                    <a href="{{ route('admin-show-delete', $show->id) }}" title="delete" class="delete" onclick="return confirm('Are you sure you want to delete this item')"> delete </a>
                                                     ?
                                                 </th>
                                             </tr>

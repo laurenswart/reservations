@@ -49,8 +49,9 @@
                                                     <a href="{{ route('category-edit', $category->id) }}"
                                                         class="btn btn-info"><i class="fa fa-pencil"
                                                             title="Edit"></i></a>
-                                                    <a href="{{ route('category-delete',$category->id) }}" class="btn btn-danger" id="delete" title="Delete"><i
-                                                            class="fa fa-trash"></i></a>
+                                                    <a href="{{ route('category-delete',$category->id) }}" class="btn btn-danger" title="delete" class="delete" onclick="return confirm('Are you sure you want to delete this item')"><i
+                                                            class="fa fa-trash" class="delete" onclick="return confirm('Are you sure you want to delete this item')"></i></a>
+
                                                 </td>
                                             </tr>
                                         @endforeach
