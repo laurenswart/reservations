@@ -8,8 +8,8 @@
                 <a href="index.html">
                     <!-- logo for regular state and mobile devices -->
                     <div class="d-flex align-items-center justify-content-center">
-                        <img src="{{ asset('backend/images/logo-dark.png') }}" alt="">
-                        <h3><b>Easy</b> Shop</h3>
+                        <img src="" alt="">
+                        {{-- <h3><b>Easy</b> Shop</h3> --}}
                     </div>
                 </a>
             </div>
@@ -46,7 +46,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class=""><i class="ti-more"></i>All Category</a></li>
+                    <li class=""><a href="{{ route('manage-category') }}">><i class="ti-more"></i>All Category</a></li>
                 </ul>
             </li>
 
@@ -90,6 +90,19 @@
                     <a href="{{route('add_locality')}}"><li class=""><i class="ti-more"></i>add locality</a></li>
                     <a href="{{route('localities_index')}}"><li class=""><i class="ti-more"></i>Localities</a></li>
 
+                </ul>
+            </li>
+            <li class="treeview ">
+                <a href="#">
+                    <i data-feather="file"></i>
+                    <span>Representations</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <a href="{{ route('manage-representations')  }}"><li class=""><i class="ti-more"></i>Manage representations</a></li>
+                    <a href="{{ route('admin-representation-add') }}"><li class=""><i class="ti-more"></i>Add representations</a></li>
                 </ul>
             </li>
 

@@ -11,6 +11,11 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ShowController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AdminController;
+
+
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\AdminRepresentationController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -110,6 +115,40 @@ Route::prefix('admin')->group(function () {
     Route::get('/api', [AdminController::class, 'apiIndex'])->name('admin.apiIndex')->middleware('admin');
     Route::post('/api/search', [AdminController::class, 'apiSearch'])->name('admin.apiSearch')->middleware('admin');
     Route::post('/api/import', [AdminController::class, 'apiImport'])->name('admin.apiImport')->middleware('admin');
+
+
+    Route::prefix('categories')->group(function(){
+
+        Route::get('/manage', [CategoryController::class, 'IndexCategory'])->name('manage-category')->middleware('admin');
+
+        Route::get('/edit/{id}',[CategoryController::class, 'EditCategory'])->name('category-edit')->middleware('admin');
+
+        Route::post('/update',[CategoryController::class, 'UpdateCategory'])->name('category-update');
+
+        Route::post('/add',[CategoryController::class, 'AddCategory'])->name('category-add');
+
+        Route::get('/delete/{id}',[CategoryController::class, 'DeleteCategory'])->name('category-delete');
+
+    });
+
+
+    Route::prefix('representations')->group(function () {
+
+        Route::get('/manage', [AdminRepresentationController::class, 'ViewRepresentation'])->name('manage-representations');
+
+        Route::get('/edit/{id}', [AdminRepresentationController::class, 'EditRepresentation'])->name('admin-representation-edit');
+
+        Route::post('/update', [AdminRepresentationController::class, 'UpdateRepresentation'])->name('admin-representation-update');
+
+        Route::get('/delete/{id}', [AdminRepresentationController::class, 'DeleteRepresentation'])->name('admin-representation-delete');
+
+        Route::get('/add', [AdminRepresentationController::class, 'AddRepresentations'])->name('admin-representation-add');
+
+        Route::post('/store', [AdminRepresentationController::class, 'StoreRepresentations'])->name('admin-representation-store');
+
+
+    });
+
 });
 
 // End Admin Routes //
