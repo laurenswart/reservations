@@ -64,14 +64,15 @@ class AdminController extends Controller
             ]);
         }
 
+        $fileName = "exports/$resource.$format";
         $lignes = DB::table($resource)->get();
-        $fp = fopen("exports/$resource.$format", "w");
+        $fp = fopen($fileName, "w");
         foreach($lignes as $ligne){
             fputcsv($fp, json_decode(json_encode($ligne), true), ';');
         }
         fclose($fp);
-
-        return view('admin.export');
+        
+        return response()->download($fileName,"$resource.csv")->deleteFileAfterSend(true);
     }
 
     public function importStore(Request $request, $resource, $format){
