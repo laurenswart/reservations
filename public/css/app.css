@@ -43,7 +43,6 @@ body {
   margin: 0; /* 1 */
   line-height: inherit; /* 2 */
   background-color: #0a0a0a!important;
-  color: whitesmoke;
 }
 
 /*
@@ -71,7 +70,7 @@ abbr:where([title]) {
 Remove the default font size and weight for headings.
 */
 
-h1,
+
 h2,
 h3,
 h4,
@@ -161,7 +160,6 @@ table {
 button,
 input,
 optgroup,
-select,
 textarea {
   font-family: inherit; /* 1 */
   font-size: 100%; /* 1 */
@@ -185,14 +183,7 @@ select {
 2. Remove default button styles.
 */
 
-button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
-  -webkit-appearance: button; /* 1 */
-  background-color: transparent; /* 2 */
-  background-image: none; /* 2 */
-}
+
 
 /*
 Use the modern Firefox focus style for all focusable elements.
@@ -591,9 +582,7 @@ select {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
-.container {
-  width: 100%;
-}
+
 @media (min-width: 640px) {
 
   .container {
@@ -1458,12 +1447,18 @@ i{
    
 }
 
-h1.big-title{
+.big-title{
   font-size: 2rem;
   text-align: center;
-  background-color: #555151;
+  color: #d7a32d;
   padding: 10px;
   margin: 0 0 20px 0;  
+}
+h2.big-title{
+  font-size:1.8rem;
+}
+th {
+  white-space: nowrap;
 }
 
 .payment .button{
@@ -1483,17 +1478,7 @@ button.sign-in-form-button.dark{
   margin: 0 15px;
 }
 
-.table, .table thead, .table tbody, .table tbody tr:nth-child(even){
-  background-color: #212529!important;
-  color: #fefefe !important;
-}
 
-.table tbody, .table thead{
-  border:none;
-}
-.table{
-  border:1px solid #555151;
-}
 
 label{
   color:white;
@@ -1512,12 +1497,9 @@ label{
   flex: 1 1 150px;
 }
 
-a{
-  color: whitesmoke!important;
-}
 a:hover{
-  color: #d7a32d!important;
-  text-decoration: none!important;
+  color: #d7a32d;
+  text-decoration: none;
 }
 
 
@@ -1527,4 +1509,49 @@ h1.center {
   text-align:center;
   margin-bottom: 50px;
   font-weight: bold;
+  
 }
+
+
+.avatar img{
+  width: 50px; height: 50px;
+  display:inline;
+}
+.avatar.featured{
+  margin: 0 0 5px 0;
+  text-align:center;
+}
+
+.back-nav{
+  text-align: end;
+}
+
+.ol-popup > div {
+  background-color: #212529;
+  padding: 15px;
+}
+
+.ol-popup > div a {
+  font-weight:bold;
+  color: #d7a32d!important;;
+}
+
+.ol-popup > div p {
+  font-size: 0.8rem;;
+}
+
+.ol-popup > div a:hover::after {
+  content: '   \2192';
+  
+}
+
+.mapButton{
+  color:#d7a32d;
+  padding-right:10px;
+  background: none;
+}
+.mapButton:hover, .mapButton:hover i{
+  color:crimson;
+  background-color: white;;
+}
+

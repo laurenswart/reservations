@@ -22,7 +22,7 @@ class ArtistController extends Controller
         
         return view('artist.index',[
             'artists' => $artists,
-            'resource' => 'artistes',
+            'resource' => 'Les Artistes',
         ]);
 
     }
@@ -60,6 +60,7 @@ class ArtistController extends Controller
         
         return view('artist.show',[
             'artist' => $artist,
+            'resource' => $artist->firstname.' '.$artist->lastname
         ]);
 
     }

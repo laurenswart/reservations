@@ -92,6 +92,19 @@
 
                 </ul>
             </li>
+            <li class="treeview ">
+                <a href="#">
+                    <i data-feather="file"></i>
+                    <span>Representations</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <a href="{{ route('manage-representations')  }}"><li class=""><i class="ti-more"></i>Manage representations</a></li>
+                    <a href="{{ route('admin-representation-add') }}"><li class=""><i class="ti-more"></i>Add representations</a></li>
+                </ul>
+            </li>
 
             <li class="header nav-small-cap">User Interface</li>
 

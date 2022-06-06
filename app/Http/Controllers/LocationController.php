@@ -18,7 +18,7 @@ class LocationController extends Controller
 
         return view('location.index',[
             'locations' => $locations,
-            'resource' => 'lieux',
+            'resource' => 'Locations',
         ]);
 
     }
@@ -56,6 +56,7 @@ class LocationController extends Controller
         
         return view('location.show',[
             'location' => $location,
+            'resource' => $location->designation,
         ]);
 
     }
