@@ -25,9 +25,13 @@
          <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/imageflex.css') }}">
         <link rel="stylesheet" href="{{ asset('css/nav.css')}}">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+
+        <!-- layouts (map) -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css" type="text/css">
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen">
@@ -41,6 +45,26 @@
         </div>
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+        <script>
+           
+              var availableTags = [];
+              $.ajax({
+                  type: "GET",
+                  url: "/show-list",
+                  success: function (response) {
+                      //console.log(response);
+                      autoComplete(response);
+                    }
+              });
+              function autoComplete(availableTags){
+                $( "#search_product" ).autocomplete({
+                source: availableTags
+              });    
+              }
+              
+           
+            </script>
         <script>
         $(document).foundation();
         </script>

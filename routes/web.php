@@ -13,6 +13,10 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\backend\AdminShowController;
 
+
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\AdminRepresentationController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,35 +27,50 @@ use App\Http\Controllers\backend\AdminShowController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
+//SEARCH
+Route::get('/search', [ShowController::class, 'search']);
+ Route::get('/show-list', [ShowController::class, 'show_list']);
 
 //ARTISTS
 Route::get('/artists', [ArtistController::class, 'index'])->name('artists_index');
 Route::get('/artists/{id}', [ArtistController::class, 'show'])
-	->where('id', '[0-9]+')->name('artists_show');
+    ->where('id', '[0-9]+')->name('artists_show');
 Route::get('/artists/edit/{id}', [ArtistController::class, 'edit'])
-	->where('id', '[0-9]+')->name('artists_edit');
+    ->where('id', '[0-9]+')->name('artists_edit');
 Route::put('/artists/{id}', [ArtistController::class, 'update'])
-	->where('id', '[0-9]+')->name('artists_update');
+    ->where('id', '[0-9]+')->name('artists_update');
 
 //TYPES
 Route::get('/types', [TypeController::class, 'index'])->name('types_index');
 Route::get('/types/{id}', [TypeController::class, 'show'])
     ->where('id', '[0-9]+')->name('types_show');
 Route::get('/types/edit/{id}', [TypeController::class, 'edit'])
-	->where('id', '[0-9]+')->name('types_edit');
+    ->where('id', '[0-9]+')->name('types_edit');
 Route::put('/types/{id}', [TypeController::class, 'update'])
-	->where('id', '[0-9]+')->name('types_update');
+    ->where('id', '[0-9]+')->name('types_update');
 
 //LOCALITIES
 Route::get('/localities', [LocalityController::class, 'index'])->name('localities_index');
 Route::get('/localities/{id}', [LocalityController::class, 'show'])
     ->where('id', '[0-9]+')->name('localities_show');
 Route::get('/localities/edit/{id}', [LocalityController::class, 'edit'])
-	->where('id', '[0-9]+')->name('localities_edit');
+    ->where('id', '[0-9]+')->name('localities_edit');
 Route::put('/localities/{id}', [LocalityController::class, 'update'])
-	->where('id', '[0-9]+')->name('localities_update');
+    ->where('id', '[0-9]+')->name('localities_update');
+Route::get('/addlocality', [LocalityController::class, 'addlocality'])->name('add_locality');
+Route::post('/savelocality', [LocalityController::class, 'store'])->name('save_locality');
+Route::get('/editlocality/{id}', [LocalityController::class, 'edit'])->name('edit_locality');
+Route::post('/updatelocality/{id}', [LocalityController::class, 'update'])->name('update_locality');
+Route::get('/deletelocality/{id}', [LocalityController::class, 'destroy'])->name('delete_locality');
+
+
+
+
+
+
 
 Route::get('/roles', [RoleController::class, 'index'])->name('roles_index');
 Route::get('/roles/{id}', [RoleController::class, 'show'])
@@ -80,20 +99,52 @@ Route::get('/reservations/{id}', [ReservationController::class, 'show'])
 Route::get('/reservations/edit/{id}', [ReservationController::class, 'edit'])
     ->where('id', '[0-9]+')->name('reservations_edit');
 
-Route::get('/dashboard', function () {
-    return view('welcome');
-    })->middleware(['auth'])->name('dashboard');
+// Route::get('/reservations/edit/{id}', [CategoryController::class, 'edit'])->name('admin_category');
+
 
 // Admin Routes //
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')->group(function () {
 
-    Route::get('/login', [AdminController::class,'Index'])->name('login_form');
+    Route::get('/login', [AdminController::class, 'Index'])->name('login_form');
 
-    Route::post('/login/owner', [AdminController::class,'Login'])->name('admin.login');
+    Route::post('/login/owner', [AdminController::class, 'Login'])->name('admin.login');
 
-    Route::get('/dashboard', [AdminController::class,'Dashboard'])->name('admin.dashboard')->middleware('admin');
+    Route::get('/dashboard', [AdminController::class, 'Dashboard'])->name('admin.dashboard')->middleware('admin');
 
-    Route::get('/logout', [AdminController::class,'AdminLogout'])->name('admin.logout')->middleware('admin');
+    Route::get('/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout')->middleware('admin');
+
+
+
+    Route::prefix('categories')->group(function(){
+
+        Route::get('/manage', [CategoryController::class, 'IndexCategory'])->name('manage-category')->middleware('admin');
+
+        Route::get('/edit/{id}',[CategoryController::class, 'EditCategory'])->name('category-edit')->middleware('admin');
+
+        Route::post('/update',[CategoryController::class, 'UpdateCategory'])->name('category-update');
+
+        Route::post('/add',[CategoryController::class, 'AddCategory'])->name('category-add');
+
+        Route::get('/delete/{id}',[CategoryController::class, 'DeleteCategory'])->name('category-delete');
+
+    });
+
+
+    Route::prefix('representations')->group(function () {
+
+        Route::get('/manage', [AdminRepresentationController::class, 'ViewRepresentation'])->name('manage-representations');
+
+        Route::get('/edit/{id}', [AdminRepresentationController::class, 'EditRepresentation'])->name('admin-representation-edit');
+
+        Route::post('/update', [AdminRepresentationController::class, 'UpdateRepresentation'])->name('admin-representation-update');
+
+        Route::get('/delete/{id}', [AdminRepresentationController::class, 'DeleteRepresentation'])->name('admin-representation-delete');
+
+        Route::get('/add', [AdminRepresentationController::class, 'AddRepresentations'])->name('admin-representation-add');
+
+        Route::post('/store', [AdminRepresentationController::class, 'StoreRepresentations'])->name('admin-representation-store');
+
+
 
     Route::prefix('shows')->group(function(){
 
@@ -115,6 +166,7 @@ Route::prefix('admin')->group(function(){
 
 // End Admin Routes //
 
+
 // Admin Shows Route //
 
 
@@ -122,3 +174,4 @@ Route::prefix('admin')->group(function(){
 //End Admin Shows Route
 
 require __DIR__.'/auth.php';
+

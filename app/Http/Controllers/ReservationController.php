@@ -160,7 +160,8 @@ class ReservationController extends Controller
     {
         $reservations = Auth::user()->reservations;
         return view('reservation.user_index', [
-            'reservations' => $reservations
+            'reservations' => $reservations,
+            'resource' => 'My Reservations'
         ]);
     }
 

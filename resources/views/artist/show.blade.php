@@ -1,15 +1,14 @@
-@extends('layouts.app')
-
-@section('title', 'Fiche d\'un artiste')
+@extends('layouts.no-sidebar')
 
 @section('content')
-    <h1>{{ $artist->firstname }} {{ $artist->lastname }}</h1>
+<div class="back-nav">
+    <a href="{{ route('artists_index') }}"><i class="fas fa-angle-left"></i>All Artists</a>
+</div>
+
     <h2>Liste des types</h2>
     <ul>
     @foreach($artist->types as $type)    
         <li>{{ $type->type }}</li>
     @endforeach
     </ul>
-    <div><a href="{{ route('artists_edit' ,$artist->id) }}">Modifier</a></div>
-    <nav><a href="{{ route('artists_index') }}">Retour à l'index</a></nav>
 @endsection

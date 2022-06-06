@@ -2,6 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+// use App\Http\Controllers\ShowController;
+use App\Http\Controllers\Api\ShowController;
+use App\Http\Controllers\Api\AutheaController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +19,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::get('/shows', [ShowController::class, 'index']);
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::get('/shows', [ShowController::class, 'index']);
+Route::get('/shows/{id}', [ShowController::class, 'show']);
+Route::get('/shows/search/{title}', [ShowController::class, 'search']);
+
+
+
+Route::group(['middleware'=>['auth:sanctum']], function () {
+Route::post('/shows', [ShowController::class, 'store']);
+Route::put('/shows/{id}', [ShowController::class, 'update']);
+Route::delete('/shows/{id}', [ShowController::class, 'destroy']);
+Route::get('/shows/search/{title}', [ShowController::class, 'search']);
+
 });
