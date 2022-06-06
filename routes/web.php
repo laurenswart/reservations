@@ -113,6 +113,9 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout')->middleware('admin');
 
+    Route::get('/api', [AdminController::class, 'apiIndex'])->name('admin.apiIndex')->middleware('admin');
+    Route::post('/api/search', [AdminController::class, 'apiSearch'])->name('admin.apiSearch')->middleware('admin');
+    Route::post('/api/import', [AdminController::class, 'apiImport'])->name('admin.apiImport')->middleware('admin');
 
 
     Route::prefix('categories')->group(function(){
