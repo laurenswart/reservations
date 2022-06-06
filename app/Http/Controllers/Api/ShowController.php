@@ -37,11 +37,11 @@ class ShowController extends Controller
     public function store(Request $request)
     {
 
-        // $request->validate([
-        //     'title'=>'required',
-        //     'description'=>'required',
-        //     'price'=> 'required',
-        // ]);
+        $request->validate([
+            'title'=>'required',
+            'description'=>'required',
+            'price'=> 'required',
+        ]);
 
         return Show::create($request->all());
     }
@@ -77,6 +77,11 @@ class ShowController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'title'=>'required',
+            'description'=>'required',
+            'price'=> 'required',
+        ]);
         $show =  Show::find($id);
         $show->update($request->all());
         return $show;

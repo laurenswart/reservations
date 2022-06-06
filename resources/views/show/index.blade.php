@@ -13,6 +13,7 @@
                 </div>
             @endif
             <form class="form-inline" action="{{ url('/search') }}" method="get">
+                @csrf
                 <div>
                     <label>search</label>
                     <input id="search_product" class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">

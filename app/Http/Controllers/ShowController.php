@@ -9,45 +9,42 @@ use Illuminate\Http\Request;
 
 class ShowController extends Controller
 {
-    // : JsonResponse
+   /**
+    * rechercher un spectacle par titre, date, prix, ou tous ces critères.
+    * </code>
+    * 
+    * @param Request request The request object.
+    */
     public function search(Request $request)
     {
         $search_prod = $request->search;
-        // if ($search_prod != '') {
-        //     $shows = Show::where('title', 'like', '%' . $search_prod . '%')->get();
-        //     if ($shows) {
-        //         return view('show.search', [
-        //             'shows' => $shows,
-        //         ]);
-        //     } 
-        // } else {
-        //     return redirect()->back();
-        // }
-        if ($search_prod && $request->fromDate) {
-            $shows = Show::where('title', 'like', '%' . $request->search . '%')
-                ->whereDate('created_at', '=', $request->fromDate)
-                ->get();
-         
-        }
-        // dd($request->search,$request->fromDate);
 
-        elseif ($request->search) {
-            $shows = Show::where('title', 'like', '%' . $request->search . '%')->get();
-        } elseif ($request->fromDate) {  // affiche toutes les représentations de cette date
-            $shows = Show::whereDate('created_at', '=', $request->fromDate)
-                ->orWhere('title', $request->search)
-                ->get();
-        } elseif ($request->price) {   // affiche toutes les représentation dont les prix sont  inferieurs ou = au prix indiqué par le client 
-            $shows = Show::where('price', '<=', $request->price)->get();
-        } else {
-            $shows = Show::all()->sortBy([
-                ['created_at', 'desc'],
+            if ($search_prod && $request->fromDate) {
+                $shows = Show::where('title', 'like', '%' . $request->search . '%')
+                    ->whereDate('created_at', '=', $request->fromDate)
+                    ->get();
+            }
+            // dd($request->search,$request->fromDate);
 
+            elseif ($request->search) {
+                $shows = Show::where('title', 'like', '%' . $request->search . '%')->get();
+            } elseif ($request->fromDate) {  // affiche toutes les représentations de cette date
+                $shows = Show::whereDate('created_at', '=', $request->fromDate)
+                    ->orWhere('title', $request->search)
+                    ->get();
+            } elseif ($request->price) {   // affiche toutes les représentation dont les prix sont  inferieurs ou = au prix indiqué par le client 
+                $shows = Show::where('price', '<=', $request->price)->get();
+            }
+            //  else {
+            //     $shows = Show::all()->sortBy([
+            //         ['created_at', 'desc'],
+
+            //     ]);
+            // }
+            return view('show.search', [
+                'shows' => $shows,
             ]);
-        }
-        return view('show.search', [
-            'shows' => $shows,
-        ]);
+        
     }
     /**
      * affiche tous les spectacles 
