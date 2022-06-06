@@ -8,6 +8,9 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\RepresentationController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -53,4 +56,23 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
+    //Afficher le formulaire de paiement
+    Route::post('reservations/checkout', [ReservationController::class, 'checkout'])
+        ->name('reservations_checkout');
+    //Créer la réservation une fois le paiment reçu
+    Route::get('reservations/process', [ReservationController::class, 'processPayment'])
+        ->name('reservations_processPayment');
+    //Afficher les réservations du user authentifié
+    Route::get('reservations/all', [ReservationController::class, 'forUser'])
+        ->name('reservations_forUser');
+
+    //Afficher les données de compte de l'utilisateur authentifié
+    Route::get('account', [UserController::class, 'account'])
+        ->name('user_account');
+    //Afficher le formulaire de modification données perso
+    Route::get('account/edit', [UserController::class, 'edit'])
+        ->name('user_edit');
+    //Modifier données perso en db
+    Route::put('account/update', [UserController::class, 'update'])
+        ->name('user_update');
 });

@@ -15,11 +15,10 @@ class RepresentationController extends Controller
      */
     public function index()
     {
-        $representations = Representation::all();
-
+        $representations = Representation::all()->groupBy('show_id');
         return view('representation.index', [
             'representations' => $representations,
-            'resource' => 'représentations',
+            'resource' => 'Representations',
         ]);
     }
 
@@ -63,6 +62,8 @@ class RepresentationController extends Controller
         ]);
 
     }
+
+    
 
     /**
      * Show the form for editing the specified resource.

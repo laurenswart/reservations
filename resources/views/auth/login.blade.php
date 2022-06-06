@@ -8,7 +8,7 @@
                 <h4 class="text-center">Sign In</h4>
                 <span class="d-flex justify-content-between">
                     <label for="sign-in-form-username">Username</label>
-                    <input type="text" class="sign-in-form-username" name="login" id="sign-in-form-username">
+                    <input type="text" class="sign-in-form-username" name="login" id="sign-in-form-username" value="{{ old('login') ?? '' }}">
                 </span>
                 <span class="d-flex justify-content-between">
                     <label for="sign-in-form-password">Password</label>

@@ -10,7 +10,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ShowController;
 use App\Http\Controllers\WelcomeController;
-
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +21,7 @@ use App\Http\Controllers\WelcomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 //SEARCH
@@ -30,29 +31,40 @@ Route::get('/search', [ShowController::class, 'search']);
 //ARTISTS
 Route::get('/artists', [ArtistController::class, 'index'])->name('artists_index');
 Route::get('/artists/{id}', [ArtistController::class, 'show'])
-	->where('id', '[0-9]+')->name('artists_show');
+    ->where('id', '[0-9]+')->name('artists_show');
 Route::get('/artists/edit/{id}', [ArtistController::class, 'edit'])
-	->where('id', '[0-9]+')->name('artists_edit');
+    ->where('id', '[0-9]+')->name('artists_edit');
 Route::put('/artists/{id}', [ArtistController::class, 'update'])
-	->where('id', '[0-9]+')->name('artists_update');
+    ->where('id', '[0-9]+')->name('artists_update');
 
 //TYPES
 Route::get('/types', [TypeController::class, 'index'])->name('types_index');
 Route::get('/types/{id}', [TypeController::class, 'show'])
     ->where('id', '[0-9]+')->name('types_show');
 Route::get('/types/edit/{id}', [TypeController::class, 'edit'])
-	->where('id', '[0-9]+')->name('types_edit');
+    ->where('id', '[0-9]+')->name('types_edit');
 Route::put('/types/{id}', [TypeController::class, 'update'])
-	->where('id', '[0-9]+')->name('types_update');
+    ->where('id', '[0-9]+')->name('types_update');
 
 //LOCALITIES
 Route::get('/localities', [LocalityController::class, 'index'])->name('localities_index');
 Route::get('/localities/{id}', [LocalityController::class, 'show'])
     ->where('id', '[0-9]+')->name('localities_show');
 Route::get('/localities/edit/{id}', [LocalityController::class, 'edit'])
-	->where('id', '[0-9]+')->name('localities_edit');
+    ->where('id', '[0-9]+')->name('localities_edit');
 Route::put('/localities/{id}', [LocalityController::class, 'update'])
-	->where('id', '[0-9]+')->name('localities_update');
+    ->where('id', '[0-9]+')->name('localities_update');
+Route::get('/addlocality', [LocalityController::class, 'addlocality'])->name('add_locality');
+Route::post('/savelocality', [LocalityController::class, 'store'])->name('save_locality');
+Route::get('/editlocality/{id}', [LocalityController::class, 'edit'])->name('edit_locality');
+Route::post('/updatelocality/{id}', [LocalityController::class, 'update'])->name('update_locality');
+Route::get('/deletelocality/{id}', [LocalityController::class, 'destroy'])->name('delete_locality');
+
+
+
+
+
+
 
 Route::get('/roles', [RoleController::class, 'index'])->name('roles_index');
 Route::get('/roles/{id}', [RoleController::class, 'show'])
@@ -81,8 +93,21 @@ Route::get('/reservations/{id}', [ReservationController::class, 'show'])
 Route::get('/reservations/edit/{id}', [ReservationController::class, 'edit'])
     ->where('id', '[0-9]+')->name('reservations_edit');
 
-Route::get('/dashboard', function () {
-    return view('welcome');
-    })->middleware(['auth'])->name('dashboard');
+// Route::get('/reservations/edit/{id}', [CategoryController::class, 'edit'])->name('admin_category');
 
-require __DIR__.'/auth.php';
+
+// Admin Routes //
+Route::prefix('admin')->group(function () {
+
+    Route::get('/login', [AdminController::class, 'Index'])->name('login_form');
+
+    Route::post('/login/owner', [AdminController::class, 'Login'])->name('admin.login');
+
+    Route::get('/dashboard', [AdminController::class, 'Dashboard'])->name('admin.dashboard')->middleware('admin');
+
+    Route::get('/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout')->middleware('admin');
+});
+
+// End Admin Routes //
+
+require __DIR__ . '/auth.php';

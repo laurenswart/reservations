@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class LocalityController extends Controller
 {
+
+    public function addlocality(){
+        return view('admin.locality.addlocality');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +23,7 @@ class LocalityController extends Controller
     {
         $localities = Locality::all();
 
-        return view('locality.index', [
+        return view('admin.locality.locality', [
             'localities'=>$localities,
             'resource'=>'localities'
         ]);
@@ -41,7 +47,19 @@ class LocalityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'postal_code' => 'required',
+            'locality' => 'required',
+        ]);
+
+        $locality = new Locality();
+
+        $locality->postal_code = $request->input('postal_code');
+        $locality->locality = $request->input('locality');
+
+        $locality->save();
+
+        return back()->with('status', 'locality has been created successful');
     }
 
     /**
@@ -69,7 +87,7 @@ class LocalityController extends Controller
     {
         $locality = Locality::find($id);
 
-        return view('locality.edit', [
+        return view('admin.locality.edit', [
             'locality'=>$locality
         ]);
     }
@@ -118,6 +136,9 @@ class LocalityController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $locality = Locality::find($id);
+        $locality->delete();
+
+        return back()->with('status', 'locality has been delete success');
     }
 }

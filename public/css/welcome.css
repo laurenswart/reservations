@@ -72,12 +72,12 @@ body {
 
 
 
-  .thumbnail {
-    width: 300px; height: 337px; object-fit: cover;
+  .featured img {
+    width: 300px; height: 300px; object-fit: cover;
   }
 
   
-a.button {
+a.button, button.button {
   background-color: #d7a32d;
 }
 
