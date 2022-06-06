@@ -7,10 +7,11 @@
                     {{ session('status') }}
                 </div>
             @endif
-            <form class="d-flex" action="{{ url('/search') }}" method="get">
-                <div class="mx-2">
-                    <label>Search</label>
-                    <input id="search_product" class="form-control mr-sm-2" name="search" type="search" placeholder="Search.." aria-label="Search">
+            <form class="form-inline" action="{{ url('/search') }}" method="get">
+                @csrf
+                <div>
+                    <label>search</label>
+                    <input id="search_product" class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
                 </div>
 
                 <!-- Date -->
