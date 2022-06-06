@@ -35,7 +35,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class=""><a href="{{ route('manage-category') }}">><i class="ti-more"></i>All Category</a></li>
+                    <li class=""><a href="{{ route('manage-category') }}"><i class="ti-more"></i>All Category</a></li>
                 </ul>
             </li>
 
@@ -49,21 +49,9 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class=""><i class="ti-more"><a href="{{ route('admin-show-add') }}"></i>Add Shows</a></li>
-                    <li class=""><i class="ti-more"><a href="{{ route('manage-show') }}"></i>Manage Shows</a></li>
+                    <li class=""><a href="{{ route('admin-show-add') }}"><i class="ti-more"></i>Add Shows</a></li>
+                    <li class=""><a href="{{ route('manage-show') }}"><i class="ti-more"></i>Manage Shows</a></li>
 
-                </ul>
-            </li>
-            <li class="treeview ">
-                <a href="#">
-                    <i data-feather="file"></i>
-                    <span>Slider</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-right pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class=""><i class="ti-more"></i>Manage Slider</a></li>
                 </ul>
             </li>
 

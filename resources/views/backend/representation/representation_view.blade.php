@@ -27,14 +27,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($representations as $item )
+                                        @foreach ($representations as $item)
                                             <tr>
-                                                <th>{{$item->when }}</th>
-                                                <th>{{ $item->location->address  ?? "pas d'adresse disponible" }}</th>
-                                                <th>{{ $item->show->title  ?? "pas de show disponible" }}</th>
-                                                <th> <a href="{{ route('admin-representation-edit', $item->id) }}">Edit</a>
+                                                <th>{{ $item->when }}</th>
+                                                <th>{{ $item->location->address ?? "pas d'adresse disponible" }}</th>
+                                                <th>{{ $item->show->title ?? 'pas de show disponible' }}</th>
+                                                <th> <a
+                                                        href="{{ route('admin-representation-edit', $item->id) }}">Edit</a>
                                                     or
-                                                    <a href="{{ route('admin-representation-delete',$item->id) }}"> delete </a>
+                                                    {{-- <a href="{{ route('admin-representation-delete',$item->id) }}"> delete </a> --}}
+                                                    <a href="{{ route('admin-representation-delete',$item->id) }}" title="delete" class="delete" onclick="return confirm('Are you sure you want to delete this item')">Delete</a>
                                                     ?
                                                 </th>
                                             </tr>
