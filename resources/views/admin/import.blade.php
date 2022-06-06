@@ -6,6 +6,8 @@
 <!-- Main content -->
 @if(isset($error))
     <div class="alert alert-danger">{{ $error }}</div>
+@elseif(isset($count))
+<div class="alert alert-success">Successful imports : {{ $count }}</div>
 @endif
 <section class="content">
     <div class="row">
