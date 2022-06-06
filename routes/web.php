@@ -11,6 +11,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ShowController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\backend\AdminShowController;
 
 
 use App\Http\Controllers\Backend\CategoryController;
@@ -147,10 +148,33 @@ Route::prefix('admin')->group(function () {
         Route::post('/store', [AdminRepresentationController::class, 'StoreRepresentations'])->name('admin-representation-store');
 
 
+
+    Route::prefix('shows')->group(function(){
+
+        Route::get('/manage', [AdminShowController::class, 'index'])->name('manage-show')->middleware('admin');
+
+        Route::get('/edit/{id}', [AdminShowController::class, 'edit'])->name('admin-show-edit')->middleware('admin');
+
+        Route::post('/update', [AdminShowController::class, 'update'])->name('admin-show-update');
+
+        Route::get('/add', [AdminShowController::class, 'add'])->name('admin-show-add');
+
+        Route::post('/store', [AdminShowController::class, 'store'])->name('admin-show-store');
+
+        Route::get('/delete/{id}', [AdminShowController::class, 'delete'])->name('admin-show-delete');
+
     });
 
 });
 
 // End Admin Routes //
 
-require __DIR__ . '/auth.php';
+
+// Admin Shows Route //
+
+
+
+//End Admin Shows Route
+
+require __DIR__.'/auth.php';
+

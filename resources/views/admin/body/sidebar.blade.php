@@ -8,8 +8,10 @@
                 <a href="index.html">
                     <!-- logo for regular state and mobile devices -->
                     <div class="d-flex align-items-center justify-content-center">
-                        <img src="" alt="">
-                        {{-- <h3><b>Easy</b> Shop</h3> --}}
+
+                        {{-- <img src="{{ asset('backend/images/logo-dark.png') }}" alt=""> --}}
+                        <h3><b>Reservations</b> Admin</h3>
+
                     </div>
                 </a>
             </div>
@@ -23,19 +25,6 @@
                     <i data-feather="pie-chart"></i>
                     <span>Dashboard</span>
                 </a>
-            </li>
-
-            <li class="treeview">
-                <a href="#">
-                    <i data-feather="message-circle"></i>
-                    <span>Brand</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-right pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class=""><i class="ti-more"></i>All Brand</a></li>
-                </ul>
             </li>
 
             <li class="treeview">
@@ -54,14 +43,14 @@
             <li class="treeview">
                 <a href="#">
                     <i data-feather="file"></i>
-                    <span>Products</span>
+                    <span>Shows</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-right pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class=""><i class="ti-more"></i>Add Shows</a></li>
-                    <li class=""><i class="ti-more"></i>Manage Shows</a></li>
+                    <li class=""><i class="ti-more"><a href="{{ route('admin-show-add') }}"></i>Add Shows</a></li>
+                    <li class=""><i class="ti-more"><a href="{{ route('manage-show') }}"></i>Manage Shows</a></li>
 
                 </ul>
             </li>
