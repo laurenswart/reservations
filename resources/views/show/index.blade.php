@@ -1,4 +1,5 @@
 @extends('layouts.no-sidebar')
+{{-- @extends('layouts.app') --}}
 
 @section('content')
         <nav class="navbar d-flex flex-column align-items-center">
