@@ -8,8 +8,8 @@
                 <a href="index.html">
                     <!-- logo for regular state and mobile devices -->
                     <div class="d-flex align-items-center justify-content-center">
-                        <img src="{{ asset('backend/images/logo-dark.png') }}" alt="">
-                        <h3><b>Easy</b> Shop</h3>
+                        <img src="" alt="">
+                        {{-- <h3><b>Easy</b> Shop</h3> --}}
                     </div>
                 </a>
             </div>
@@ -46,7 +46,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class=""><i class="ti-more"></i>All Category</a></li>
+                    <li class=""><a href="{{ route('manage-category') }}">><i class="ti-more"></i>All Category</a></li>
                 </ul>
             </li>
 

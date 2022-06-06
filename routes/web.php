@@ -11,7 +11,11 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ShowController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AdminController;
+
+
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\AdminRepresentationController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -108,6 +112,23 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout')->middleware('admin');
 
+
+
+    Route::prefix('categories')->group(function(){
+
+        Route::get('/manage', [CategoryController::class, 'IndexCategory'])->name('manage-category')->middleware('admin');
+
+        Route::get('/edit/{id}',[CategoryController::class, 'EditCategory'])->name('category-edit')->middleware('admin');
+
+        Route::post('/update',[CategoryController::class, 'UpdateCategory'])->name('category-update');
+
+        Route::post('/add',[CategoryController::class, 'AddCategory'])->name('category-add');
+
+        Route::get('/delete/{id}',[CategoryController::class, 'DeleteCategory'])->name('category-delete');
+
+    });
+
+
     Route::prefix('representations')->group(function () {
 
         Route::get('/manage', [AdminRepresentationController::class, 'ViewRepresentation'])->name('manage-representations');
@@ -124,6 +145,7 @@ Route::prefix('admin')->group(function () {
 
 
     });
+
 });
 
 // End Admin Routes //
