@@ -98,15 +98,14 @@
             <li class="treeview">
                 <a href="#">
                     <i data-feather="grid"></i>
-                    <span>Components</span>
+                    <span>Import Shows</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-right pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="components_alerts.html"><i class="ti-more"></i>Alerts</a></li>
-                    <li><a href="components_badges.html"><i class="ti-more"></i>Badge</a></li>
-                    <li><a href="components_buttons.html"><i class="ti-more"></i>Buttons</a></li>
+                    <li><a href="components_alerts.html"><i class="ti-more"></i>Upload File</a></li>
+                    <li><a href="{{ route('admin.apiIndex') }}"><i class="ti-more"></i>Theatre API</a></li>
                 </ul>
             </li>
 

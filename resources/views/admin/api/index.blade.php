@@ -60,6 +60,23 @@
             </form>
 
         </div>
+        @else
+            @if(!empty($passed))
+                <h2>Successful imports</h2>
+                <ul>
+                @foreach($passed as $passId)
+                    <li>{{$shows[$passId]['title']}}</li>
+                @endforeach
+                </ul>
+            @endif
+            @if(!empty($failed))
+                <h2>Failed imports</h2>
+                <ul>
+                @foreach($failed as $failedData)
+                    <li>{{$shows[$failedData['id']]['title']}} : {{$failedData['msg']}}</li>
+                @endforeach
+                </ul>
+            @endif
         @endif
 </section>
 <!-- /.content -->
