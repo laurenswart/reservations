@@ -16,6 +16,7 @@ use App\Http\Controllers\backend\AdminShowController;
 
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\AdminRepresentationController;
+use App\Http\Controllers\Backend\AdminArtistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,7 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 //SEARCH
 Route::get('/search', [ShowController::class, 'search']);
- Route::get('/show-list', [ShowController::class, 'show_list']);
+Route::get('/show-list', [ShowController::class, 'show_list']);
 
 //ARTISTS
 Route::get('/artists', [ArtistController::class, 'index'])->name('artists_index');
@@ -118,18 +119,17 @@ Route::prefix('admin')->group(function () {
     Route::post('/api/import', [AdminController::class, 'apiImport'])->name('admin.apiImport')->middleware('admin');
 
 
-    Route::prefix('categories')->group(function(){
+    Route::prefix('categories')->group(function () {
 
         Route::get('/manage', [CategoryController::class, 'IndexCategory'])->name('manage-category')->middleware('admin');
 
-        Route::get('/edit/{id}',[CategoryController::class, 'EditCategory'])->name('category-edit')->middleware('admin');
+        Route::get('/edit/{id}', [CategoryController::class, 'EditCategory'])->name('category-edit')->middleware('admin');
 
-        Route::post('/update',[CategoryController::class, 'UpdateCategory'])->name('category-update');
+        Route::post('/update', [CategoryController::class, 'UpdateCategory'])->name('category-update');
 
-        Route::post('/add',[CategoryController::class, 'AddCategory'])->name('category-add');
+        Route::post('/add', [CategoryController::class, 'AddCategory'])->name('category-add');
 
-        Route::get('/delete/{id}',[CategoryController::class, 'DeleteCategory'])->name('category-delete');
-
+        Route::get('/delete/{id}', [CategoryController::class, 'DeleteCategory'])->name('category-delete');
     });
 
 
@@ -149,24 +149,35 @@ Route::prefix('admin')->group(function () {
 
 
 
-    Route::prefix('shows')->group(function(){
+        Route::prefix('shows')->group(function () {
 
-        Route::get('/manage', [AdminShowController::class, 'index'])->name('manage-show')->middleware('admin');
+            Route::get('/manage', [AdminShowController::class, 'index'])->name('manage-show')->middleware('admin');
 
-        Route::get('/edit/{id}', [AdminShowController::class, 'edit'])->name('admin-show-edit')->middleware('admin');
+            Route::get('/edit/{id}', [AdminShowController::class, 'edit'])->name('admin-show-edit')->middleware('admin');
 
-        Route::post('/update', [AdminShowController::class, 'update'])->name('admin-show-update');
+            Route::post('/update', [AdminShowController::class, 'update'])->name('admin-show-update');
 
-        Route::get('/add', [AdminShowController::class, 'add'])->name('admin-show-add');
+            Route::get('/add', [AdminShowController::class, 'add'])->name('admin-show-add');
 
-        Route::post('/store', [AdminShowController::class, 'store'])->name('admin-show-store');
+            Route::post('/store', [AdminShowController::class, 'store'])->name('admin-show-store');
 
-        Route::get('/delete/{id}', [AdminShowController::class, 'delete'])->name('admin-show-delete');
-
+            Route::get('/delete/{id}', [AdminShowController::class, 'delete'])->name('admin-show-delete');
+        });
     });
 
-});
+    Route::prefix('artist')->group(function () {
+        Route::get('/manage', [AdminArtistController::class, 'ViewArtist'])->name('manage-artist')->middleware('admin');
 
+        Route::get('/edit/{id}', [AdminArtistController::class, 'ArtistEdit'])->name('admin-artist-edit')->middleware('admin');
+
+        Route::post('/update', [AdminArtistController::class, 'UpdateArtist'])->name('admin-artist-update');
+
+        Route::get('/add', [AdminArtistController::class, 'add'])->name('admin-show-add');
+
+        Route::post('/store', [AdminArtistController::class, 'store'])->name('admin-show-store');
+
+        Route::get('/delete/{id}', [AdminArtistController::class, 'delete'])->name('admin-show-delete');
+    });
 });
 
 // End Admin Routes //
@@ -178,5 +189,4 @@ Route::prefix('admin')->group(function () {
 
 //End Admin Shows Route
 
-require __DIR__.'/auth.php';
-
+require __DIR__ . '/auth.php';
