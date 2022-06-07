@@ -1555,3 +1555,16 @@ h1.center {
   background-color: white;;
 }
 
+a.outlined{
+  border:1px solid #d7a32d;
+  color:#d7a32d;
+  background-color: none;
+  border-radius: 0.5em;
+  padding: 0.65em 3em 0.65em 3em;
+}
+
+a.outlined:hover{
+  border:1px solid #d7a32d;
+  color:whitesmoke;
+  background-color: #d7a32d;
+}

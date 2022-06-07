@@ -16,6 +16,7 @@ use App\Http\Controllers\backend\AdminShowController;
 
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\AdminRepresentationController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,6 +99,8 @@ Route::get('/reservations/{id}', [ReservationController::class, 'show'])
     ->where('id', '[0-9]+')->name('reservations_show');
 Route::get('/reservations/edit/{id}', [ReservationController::class, 'edit'])
     ->where('id', '[0-9]+')->name('reservations_edit');
+
+
 
 // Route::get('/reservations/edit/{id}', [CategoryController::class, 'edit'])->name('admin_category');
 

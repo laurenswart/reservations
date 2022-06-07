@@ -74,4 +74,26 @@ class UserController extends Controller
             ]);
         }
     }
+
+    public function confirmDelete(){
+        return view('user.confirmDelete');
+    }
+
+    public function delete(){
+        //delete data
+        $user = Auth::user();
+        $user->update([
+            'login' => 'login'.$user->id,
+            'email' => 'email'.$user->id,
+            'firstname' => 'firstname'.$user->id,
+            'lastname' => 'lastname'.$user->id,
+            'password' => 'password',
+        ]);
+
+        //logout
+        Auth::guard('web')->logout();
+
+        //redirect to home page
+        return redirect(route('welcome'));
+    }
 }

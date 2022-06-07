@@ -1,6 +1,9 @@
 @extends('layouts.no-sidebar')
 
 @section('content')
+    <div class="back-nav">
+        <a href="{{ route('user_account') }}"><i class="fas fa-angle-left"></i>Account</a>
+    </div>
     @if(count($reservations) > 0)
         <table class="table table-striped">
             <thead>
