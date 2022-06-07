@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -26,10 +27,26 @@ class UserSeeder extends Seeder
         $users = [
             [
                 'login'=>'lauren',
-                'password'=>'epfc',
+                'password'=> bcrypt('password'),
                 'firstname'=>'Lauren',
                 'lastname'=>'Swart',
                 'email'=>'lauren.swart@gmail.com',
+                'langue'=>'fr'
+            ],
+            [
+                'login'=>'aboubacar',
+                'password'=> bcrypt('password'),
+                'firstname'=>'Aboubacar',
+                'lastname'=>'Toure',
+                'email'=>'aboubacar.toure@gmail.com',
+                'langue'=>'fr'
+            ],
+            [
+                'login'=>'amine',
+                'password'=> bcrypt('password'),
+                'firstname'=>'Amine',
+                'lastname'=>'AminoPapy',
+                'email'=>'amine.papy@gmail.com',
                 'langue'=>'fr'
             ],
         ];
