@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Artist;
 use App\Models\Show;
+use DateTime;
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -127,8 +128,8 @@ class AdminController extends Controller
                     $s->location_id = is_integer($ligne[2]) ? $ligne[2] : null;
                     $s->bookable = $ligne[3] == 1 ? 1 : 0;
                     $s->price =  is_float($ligne[4]) ? $ligne[4] : null;
-                    $s->created_at =  $ligne[5] ? strtotime($ligne[5]) : now();
-                    $s->updated_at =  $ligne[6] ? strtotime($ligne[6]) : now();
+                    $s->created_at =  !empty($ligne[5]) ? DateTime::createFromFormat('d/m/Y H:i', $ligne[5]) : now();
+                    $s->updated_at =  !empty($ligne[6]) ? DateTime::createFromFormat('d/m/Y H:i', $ligne[6])  : now();
                     $s->slug = $slug;
                     $s->poster_url = 'unavailable.png';
                     $s->save();
