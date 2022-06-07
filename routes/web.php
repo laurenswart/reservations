@@ -165,6 +165,14 @@ Route::prefix('admin')->group(function () {
 
     });
 
+    Route::prefix('users')->group(function(){
+
+        Route::get('/manage', [AdminShowController::class, 'getUser'])->name('manage-user')->middleware('admin');
+        Route::get('/edit/{id}', [AdminShowController::class, 'editRole'])->name('admin-user-edit')->middleware('admin');
+        Route::post('/update-role', [AdminShowController::class, 'updateRole'])->name('admin-user-update');
+
+    });
+
 });
 
 });

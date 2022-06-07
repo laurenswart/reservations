@@ -42,20 +42,20 @@
 <script src="{{ asset('js/util.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-<script>
-	var availableTags = [];
-	$.ajax({
-		type: "GET",
-		url: "/show-list",
-		success: function(response) {
-			//console.log(response);
-			autoComplete(response);
-		}
-	});
+  <script>
+        var availableTags = [];
+        $.ajax({
+            type: "GET",
+            url: "/show-list",
+            success: function(response) {
+                //console.log(response);
+                autoComplete(response);
+            }
+        });
 
-	function autoComplete(availableTags) {
-		$("#search_product").autocomplete({
-			source: availableTags
-		});
-	}
-</script>
+        function autoComplete(availableTags) {
+            $("#search_product").autocomplete({
+                source: availableTags
+            });
+        }
+    </script>

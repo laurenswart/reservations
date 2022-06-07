@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-   
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <title>Reservations Admin - Dashboard</title>
 
@@ -59,12 +60,12 @@
     <script src="{{ asset('../assets/vendor_components/datatable/datatables.min.js') }}"></script>
     <script src="{{ asset('backend/js/pages/data-table.js') }}"></script>
     <!-- Tags input Script -->>
-    <script src="{{asset('../assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js')}}"></script>
+    <script src="{{ asset('../assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js') }}"></script>
 
     <!-- Text CK Editor-->
-    <script src="{{asset('../assets/vendor_components/ckeditor/ckeditor.js')}} "></script>
-	<script src="{{asset('../assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js')}}"></script>
-	<script src="{{asset('backend/js/pages/editor.js')}}"></script>
+    <script src="{{ asset('../assets/vendor_components/ckeditor/ckeditor.js') }} "></script>
+    <script src="{{ asset('../assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js') }}"></script>
+    <script src="{{ asset('backend/js/pages/editor.js') }}"></script>
 
 
     <!-- Sunny Admin App attention deuxième script-->
@@ -76,7 +77,32 @@
 
     <!-- Sweet Alert -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- <script>
+        $('#buttonRole').click(function(e) {
+            e.preventDefault();
+            var role_id = $(this).closest('.data_role').find('.roleId').val();
+            var user_id = $(this).closest('.data_role').find('.userId').val();
 
+            //  alert(user_id);
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: "POST",
+                url: "/update-role",
+                data: {
+                    'role_id': role_id,
+                    'user_id': user_id,
+                },
+                success: function(response) {
+                    console.log(response.status);
+                }
+            });
+        });
+    </script> --}}
 </body>
 
 </html>

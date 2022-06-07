@@ -5,7 +5,11 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Show;
+use App\Models\User;
 use App\Models\Location;
+use App\Models\Role;
+use App\Models\RoleUser;
+
 use Carbon\Carbon;
 use Image;
 
@@ -138,7 +142,7 @@ class AdminShowController extends Controller
     public function update(Request $request)
     {
 
-         /* It's validating the input. */
+        /* It's validating the input. */
 
 
         $show_id = $request->id;
@@ -163,5 +167,43 @@ class AdminShowController extends Controller
         Show::findOrFail($id)->delete();
 
         return redirect()->route('manage-show');
+    }
+    /**
+     * It gets all the users from the database and returns them to the view.
+     * 
+     * @return The view is being returned.
+     */
+    public function getUser()
+    {
+        $users = User::all();
+        return view('backend.user.index', [
+            'users' => $users
+        ]);
+    }
+
+  /**
+   * It takes the id of a user, finds the user, gets all the roles, and returns a view with the user
+   * and roles.
+   * 
+   * @param id The id of the user you want to edit
+   * 
+   * @return The user and roles are being returned.
+   */
+    public function editRole($id){
+        $user = User::findOrFail($id);
+        $roles = Role::all();
+        return view('backend.user.edit', compact('user', 'roles'));
+    }
+
+    public function updateRole(Request $request ){
+        
+        $user_id = $request->input('userId');
+        $role_id = $request->role_id;
+        RoleUser::create([
+            'user_id' => $user_id,
+            'role_id' => $role_id
+        ]);
+        // return response()->json(['status' => "modifié"]);
+        return redirect()->route('manage-user');
     }
 }
