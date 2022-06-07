@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="{{ asset('css/main.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
 		<link rel="stylesheet" href="{{ asset('css/imageFlex.css') }}" />
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 		
 		<noscript><link rel="stylesheet" href="{{ asset('css/noscript.css') }}" /></noscript>
 	</head>

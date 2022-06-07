@@ -30,7 +30,7 @@ class Show extends Model
      * @var string
      */
     protected $table = 'shows';
-  
+
     /**
      * Indicates if the model should be timestamped.
      *

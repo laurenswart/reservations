@@ -1,16 +1,18 @@
 @extends('layouts.no-sidebar')
+{{-- @extends('layouts.app') --}}
 
 @section('content')
-     <nav class="navbar d-flex flex-column align-items-center">
-     @if (session('status'))
+    <nav class="navbar ">
+        @if (session('status'))
                 <div class="alert alert-success">
                     {{ session('status') }}
                 </div>
             @endif
-        <form class="d-flex" action="{{ url('/search') }}" method="get">
-        <div class="mx-2">
-                <label>Search</label>
-                <input id="search_product" class="form-control mr-sm-2" name="search" type="search" placeholder="Search.." aria-label="Search">
+        <form class="form-inline" action="{{ url('/search') }}" method="get">
+            @csrf
+            <div>
+                <label>search</label>
+                <input id="search_product" class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
             </div>
 
 
