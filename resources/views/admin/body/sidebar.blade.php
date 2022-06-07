@@ -93,7 +93,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <a href="{{ route('manage-artist')  }}"><li class=""><i class="ti-more"></i>All Artist</a></li>
-                    <a href="{{ route('admin-representation-add') }}"><li class=""><i class="ti-more"></i>Add an artist</a></li>
+                    <a href="{{ route('admin-artist-add') }}"><li class=""><i class="ti-more"></i>Add an artist</a></li>
                 </ul>
             </li>
 

@@ -172,11 +172,14 @@ Route::prefix('admin')->group(function () {
 
         Route::post('/update', [AdminArtistController::class, 'UpdateArtist'])->name('admin-artist-update');
 
-        Route::get('/add', [AdminArtistController::class, 'add'])->name('admin-show-add');
+        Route::get('/add', [AdminArtistController::class, 'AddArtist'])->name('admin-artist-add');
 
-        Route::post('/store', [AdminArtistController::class, 'store'])->name('admin-show-store');
+        Route::post('/store', [AdminArtistController::class, 'StoreArtist'])->name('admin-artist-store');
 
-        Route::get('/delete/{id}', [AdminArtistController::class, 'delete'])->name('admin-show-delete');
+        Route::get('/delete/{id}', [AdminArtistController::class, 'delete'])->name('admin-artist-delete');
+
+        Route::get('/info/{id}', [AdminArtistController::class, 'ArtistInfo'])->name('admin-artist-info');
+
     });
 });
 

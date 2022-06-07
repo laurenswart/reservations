@@ -10,30 +10,26 @@
                 <div class="col-12">
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Edit {{ $artists->firstname }}</h3>
+                            <h3 class="box-title">Artist : {{ $artists->firstname }}</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="table-responsive">
-                                <form method="POST" action="{{ route('admin-artist-update') }}">
+                                <form method="POST" action="">
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $artists->id }}">
                                     <div class="form-group">
                                         <h5> Firstname <span class="text-danger">*</span></h5>
-                                        <input type="text" name="firstname" value="{{ $artists->firstname }}">
+                                        {{ $artists->firstname }}
                                     </div>
                                     <div class="form-group">
                                         <h5> Lastname <span class="text-danger">*</span></h5>
-                                        <input type="text" name="lastname" value="{{ $artists->lastname }}">
+                                        {{ $artists->firstname }}
                                     </div>
                                     <div class="form-group">
                                         <h5> Text about the artist <span class="text-danger">*</span></h5>
-                                        <textarea name="information" cols="40" rows="5">{{ $artists->information }}</textarea>
+                                        {{ $artists->information }}
                                     </div>
-                                    <div class="text-xs-right">
-                                        <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
-                                    </div>
-
                             </div>
                             </form>
                         </div>

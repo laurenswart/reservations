@@ -47,18 +47,24 @@ class AdminArtistController extends Controller
     public function StoreArtist(Request $request)
     {
         Artist::insertGetId([
-            'informations' => $request->informations,
-            'firstname' => $request->firtname,
+            'information' => $request->information,
+            'firstname' => $request->firtsname,
             'lastname' => $request->lastname,
         ]);
 
-        return redirect()->route('manage-representations');
+        return redirect()->route('manage-artist');
     }
 
     public function AddArtist()
     {
         $artists = Artist::all();
-        return view('backend.representation.representation_add', compact('artists'));
+        return view('backend.artist.artist_add', compact('artists'));
+    }
+
+    public function ArtistInfo($id)
+    {
+        $artists = Artist::findOrFail($id);
+        return view('backend.artist.artist_info', compact('artists'));
     }
 
 }

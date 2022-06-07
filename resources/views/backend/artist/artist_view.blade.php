@@ -34,7 +34,7 @@
                                                     <a href="{{ route('admin-representation-delete',$item->id) }}" title="delete" class="delete" onclick="return confirm('Are you sure you want to delete this item')">Delete</a>
                                                     or
                                                     {{-- <a href="{{ route('admin-representation-delete',$item->id) }}"> delete </a> --}}
-                                                    <a href="{{ route('admin-representation-delete',$item->id) }}" title="delete" class="delete" onclick="return confirm('Are you sure you want to delete this item')">More info</a>
+                                                    <a href="{{ route('admin-artist-info',$item->id)}}" >More info</a>
                                                     ?
                                                 </th>
                                             </tr>
