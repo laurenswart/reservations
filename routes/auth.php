@@ -75,4 +75,8 @@ Route::middleware('auth')->group(function () {
     //Modifier données perso en db
     Route::put('account/update', [UserController::class, 'update'])
         ->name('user_update');
+    Route::get('/account/delete', [UserController::class, 'confirmDelete'])
+        ->name('account_confirmDelete');
+    Route::post('/account/delete', [UserController::class, 'delete'])
+        ->name('account_delete');
 });

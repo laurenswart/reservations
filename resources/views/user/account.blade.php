@@ -29,6 +29,10 @@
     </table>
     <div class="back-nav">
         <a href="{{ route('user_edit') }}" ><i class="fas fa-pen"></i>Modifier mes données</a>
+        
+    </div>
+    <div class="back-nav">
+    <a href="{{ route('account_confirmDelete') }}" ><i class="fas fa-trash"></i>Supprimer mon compte</a>
     </div>
  
 @endsection
