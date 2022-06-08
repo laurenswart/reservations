@@ -114,7 +114,14 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/dashboard', [AdminController::class, 'Dashboard'])->name('admin.dashboard')->middleware('admin');
 
-    Route::get('/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout')->middleware('admin');
+    Route::post('/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout')->middleware('admin');
+
+
+    Route::get('/export', [AdminController::class, 'exportView'])->name('admin.export.view')->middleware('admin');
+    Route::get('/export/{resource}/{format}', [AdminController::class, 'exportGet'])->name('admin.export.get')->middleware('admin');
+
+    Route::get('/import', [AdminController::class, 'importView'])->name('admin.import.view')->middleware('admin');
+    Route::post('/import/{resource}/{format}', [AdminController::class, 'importStore'])->name('admin.import.store')->middleware('admin');
 
     Route::get('/api', [AdminController::class, 'apiIndex'])->name('admin.apiIndex')->middleware('admin');
     Route::post('/api/search', [AdminController::class, 'apiSearch'])->name('admin.apiSearch')->middleware('admin');
@@ -193,6 +200,7 @@ Route::prefix('admin')->group(function () {
 });
 
 });
+
 
 // End Admin Routes //
 
