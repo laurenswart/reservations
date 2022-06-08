@@ -101,18 +101,29 @@
             <li class="treeview">
                 <a href="#">
                     <i data-feather="grid"></i>
-                    <span>Import Shows</span>
+                    <span>Import Data</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-right pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="components_alerts.html"><i class="ti-more"></i>Upload File</a></li>
+                    <li><a href="{{ route('admin.import.view') }}"><i class="ti-more"></i>Upload File</a></li>
                     <li><a href="{{ route('admin.apiIndex') }}"><i class="ti-more"></i>Theatre API</a></li>
                 </ul>
+                
+            </li>
+            <li>
+                <a href="{{ route('admin.export.view') }}">
+                    <i data-feather="grid"></i>
+                    <span>Export Data</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
             </li>
 
         </ul>
+        
     </section>
 
     <div class="sidebar-footer">
