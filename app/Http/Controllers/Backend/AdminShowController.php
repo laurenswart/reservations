@@ -59,7 +59,7 @@ class AdminShowController extends Controller
 
         /* Validating the input. */
         $request->validate([
-            'title' => 'required|max:60|filled',
+            'title' => 'required|max:60|filled|unique:shows',
             'description' => 'required|max:500|filled',
             'price' => 'required',
             'location_id' => 'required',
