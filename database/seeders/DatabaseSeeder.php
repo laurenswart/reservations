@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             RoleUserSeeder::class,
             ReservationSeeder::class,
+            CategorySeeder::class,
         ]);
         Admin::factory(2)->create();
     }

@@ -24,6 +24,7 @@
                                             <th>Title</th>
                                             <th>Description</th>
                                             <th>locations</th>
+                                            <th>Category</th>
                                             <th>Bookable</th>
                                             <th>Price</th>
                                             <th>Action</th>
@@ -36,6 +37,7 @@
                                                 <th>{{ $show->title }}</th>
                                                 <th>{{ $show->description }}</th>
                                                 <th>{{ $show->location->address ?? "pas d'adresse disponible" }}</th>
+                                                <th>{{ $show->category->type ?? "pas de category attribué" }}</th>
                                                 <th>{{ $show->bookable }}</th>
                                                 <th>{{ $show->price }}</th>
                                                 <th> <a href="{{ route('admin-show-edit', $show->id) }}">Edit</a>

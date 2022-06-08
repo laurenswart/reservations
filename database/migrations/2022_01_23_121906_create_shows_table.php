@@ -28,7 +28,7 @@ class CreateShowsTable extends Migration
 
             $table->foreign('location_id')->references('id')->on('locations')
                 ->onDelete('cascade')->onUpdate('cascade');
-
+            
         });
     }
 

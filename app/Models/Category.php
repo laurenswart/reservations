@@ -30,5 +30,9 @@ class Category extends Model
      */
     public $timestamps = false;
 
+    public function shows()
+    {
+        return $this->hasMany(Show::class);
+    }
 
 }
