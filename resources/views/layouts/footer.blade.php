@@ -11,19 +11,17 @@
 						</header>
 						<p>Come and join us on our many social media accounts and keep up to date with all the buzz going on !</p>
 						<ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-pinterest"><span class="label">Pinterest</span></a></li>
-							<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-							<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">Linkedin</span></a></li>
+							<li><a href="https://twitter.com/theatredenamur" class="icon brands fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
+							<li><a href="https://www.facebook.com/letheatredenamur/" class="icon brands fa-facebook-f" target="_blank"><span class="label">Facebook</span></a></li>
+							<li><a href="https://www.instagram.com/theatredenamur/" class="icon brands fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
+							<li><a href="https://www.linkedin.com/company/th%C3%A9%C3%A2tre-de-namur?originalSubdomain=be" target="_blank" class="icon brands fa-linkedin-in"><span class="label">Linkedin</span></a></li>
 						</ul>
 					</section>
 
 				<!-- Copyright -->
 					<div class="copyright">
 						<ul class="menu">
-							<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							<li>&copy; TheCaseOfShows. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 						</ul>
 					</div>
 
