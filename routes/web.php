@@ -188,7 +188,7 @@ Route::prefix('admin')->group(function () {
 
 // Admin Shows Route //
 
-
+Route::feeds();
 
 //End Admin Shows Route
 
