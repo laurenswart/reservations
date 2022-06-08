@@ -60,4 +60,9 @@ class Show extends Model
         return $this->belongsToMany(ArtistType::class);
     }
 
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
+    
 }

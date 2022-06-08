@@ -20,6 +20,7 @@ class CreateShowsTable extends Migration
             $table->text('description')->nullable();
             $table->string('poster_url', 255);
             $table->foreignId('location_id')->nullable();
+            $table->foreignId('category_id')->nullable();
             $table->boolean('bookable')->default(false);
             $table->decimal('price',10,2)->nullable();
             $table->timestamp('created_at')->useCurrent();
@@ -28,7 +29,8 @@ class CreateShowsTable extends Migration
 
             $table->foreign('location_id')->references('id')->on('locations')
                 ->onDelete('cascade')->onUpdate('cascade');
-
+                $table->foreign('category_id')->references('id')->on('categories')
+                ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

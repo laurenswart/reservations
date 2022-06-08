@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Show;
 use App\Models\Location;
@@ -38,8 +39,8 @@ class AdminShowController extends Controller
     public function add()
     {
         $locations = Location::all();
-
-        return view('backend.shows.shows_add', compact('locations'));
+        $categories = Category::all();
+        return view('backend.shows.shows_add', compact('locations','categories'));
     }
 
 
@@ -77,6 +78,7 @@ class AdminShowController extends Controller
             'description' => $request->description,
             'price' => $request->price,
             'location_id' => $request->location_id,
+            'category_id' => $request->category_id,
             'bookable' => $request->bookable,
             'slug' => $request->slug,
             'poster_url' => $request->poster_url
@@ -88,7 +90,7 @@ class AdminShowController extends Controller
     public function LocationAdd()
     {
         $locations = Location::all();
-        return view('backend.shows.shows_add', compact('locations'));
+        return view('backend.shows.shows_add', compact('locations','categories'));
     }
 
     /**
@@ -125,7 +127,8 @@ class AdminShowController extends Controller
     {
         $shows = Show::findOrFail($id);
         $locations = Location::all();
-        return view('backend.shows.shows_edit', compact('shows', 'locations'));
+        $categories = Category::all();
+        return view('backend.shows.shows_edit', compact('shows', 'locations','categories'));
     }
 
     /**
@@ -147,12 +150,13 @@ class AdminShowController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'location_id' => $request->location_id,
+            'category_id' => $request->category_id,
             'slug' => $request->slug,
             'price' => $request->price,
             'bookable' => $request->bookable,
         ]);
 
-
+        //dd($request->category_id);
         // dd($request);
         return redirect()->route('manage-show');
     }
