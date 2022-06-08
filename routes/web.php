@@ -176,6 +176,20 @@ Route::prefix('admin')->group(function () {
 
     });
 
+    Route::prefix('roles')->group(function(){
+
+        Route::get('/manage', [RoleController::class, 'index'])->name('manage-role')->middleware('admin');
+
+        Route::get('/edit/{id}', [RoleController::class, 'edit'])->name('admin-role-edit')->middleware('admin');
+
+        Route::post('/update', [RoleController::class, 'update'])->name('admin-role-update');
+
+        Route::post('/add', [RoleController::class, 'addRole'])->name('admin-role-add');
+
+        Route::get('/delete/{id}', [RoleController::class, 'delete'])->name('admin-role-delete');
+
+    });
+
 });
 
 });

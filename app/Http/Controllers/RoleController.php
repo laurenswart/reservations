@@ -18,10 +18,30 @@ class RoleController extends Controller
     {
         $roles = Role::all();
 
-        return view('role.index', [
+        return view('backend.role.index', [
             'roles'=>$roles,
             'resource'=>'roles'
         ]);
+    }
+
+
+    function AddRole(Request $request)
+    {
+        /* Validating the input. */
+        $request->validate([
+            'type' => 'required|max:60|filled',
+        ], [
+            'type' => 'You must choose a name !',
+
+        ]);
+
+        Role::insertGetId([
+            'role' => $request->type
+        ]);
+
+        // dd($request);
+
+        return redirect()->back();
     }
 
     /**
@@ -70,7 +90,7 @@ class RoleController extends Controller
     {
         $role = Role::find($id);
 
-        return view('role.edit', [
+        return view('backend.role.edit', [
             'role'=>$role
         ]);
     }
@@ -82,31 +102,25 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //récupérer le role à modifier
-        $role = Role::find($id);
+        $role_id = $request->id;
 
-        if($role==null){
-            return Redirect::route('roles.index');
-        }
+        /* Validating the input. */
+        $request->validate([
+            'type' => 'required|max:60|filled',
+        ], [
+            'type' => 'You must choose a name !',
 
-        //validation
-        $validated = $request->validate([
-            'role' => 'required|max:30',
         ]);
-        //sauvegarder
-        $role->role = $validated['role'];
-        try{
-            $role->save();
-            return view('role.show',[
-                'role' => $role,
-            ]);
-        } catch (QueryException $e) {
-            return view('role.edit',[
-                'role' => $role,
-            ]);
-        }
+
+        Role::FindOrFail($role_id)->update([
+            'role' => $request->type
+        ]);
+
+
+
+        return redirect()->route('manage-role');
     }
 
     /**
@@ -115,8 +129,10 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        Role::findOrFail($id)->delete();
+
+        return redirect()->route('manage-role');
     }
 }

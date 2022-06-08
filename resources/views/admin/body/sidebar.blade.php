@@ -36,7 +36,20 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class=""><a href="{{ route('manage-user') }}"><i class="ti-more"></i>Manage Shows</a></li>
+                    <li class=""><a href="{{ route('manage-user') }}"><i class="ti-more"></i>Manage Users</a></li>
+
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i data-feather="file"></i>
+                    <span>Roles</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class=""><a href="{{ route('manage-role') }}"><i class="ti-more"></i>Manage roles</a></li>
 
                 </ul>
             </li>
