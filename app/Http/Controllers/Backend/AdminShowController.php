@@ -8,7 +8,10 @@ use Illuminate\Http\Request;
 use App\Models\Show;
 use App\Models\Location;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 use Image;
+use Illuminate\Support\Str;
+
 
 class AdminShowController extends Controller
 {
@@ -52,6 +55,7 @@ class AdminShowController extends Controller
      */
     public function store(Request $request)
     {
+        
 
         /* Validating the input. */
         $request->validate([
@@ -60,19 +64,25 @@ class AdminShowController extends Controller
             'price' => 'required',
             'location_id' => 'required',
             'bookable' => 'required',
-            'slug' => 'required',
-            'poster_url' => 'required',
+            'poster_url' => 'required|image',
         ], [
             'type' => 'You must choose a name !',
             'description' => 'You must put a description !',
             'price' => 'You must choose a price !',
             'location_id' => 'You must choose a location !',
             'bookable' => 'Choose between yes or no !',
-            'Slug' => 'The slug is required !',
             'poster_url' => "Don't Forget to choose an image !",
 
         ]);
+        //dd($request->post());
 
+        $slug = Str::slug($request->title,'-');
+        //save image
+        $extension = $request->file('poster_url')->getClientOriginalExtension();
+        $filename = $slug.'.'.$extension; 
+        $path = Storage::disk('public')->putFileAs('images/show_posters', $request->file('poster_url'), $filename);
+        //dd($path);
+        //create show
         Show::insertGetId([
             'title' => $request->title,
             'description' => $request->description,
@@ -80,8 +90,8 @@ class AdminShowController extends Controller
             'location_id' => $request->location_id,
             'category_id' => $request->category_id,
             'bookable' => $request->bookable,
-            'slug' => $request->slug,
-            'poster_url' => $request->poster_url
+            'slug' => $slug,
+            'poster_url' => $filename
         ]);
 
         return redirect()->route('manage-show');
