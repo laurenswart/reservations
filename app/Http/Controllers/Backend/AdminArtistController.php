@@ -52,6 +52,8 @@ class AdminArtistController extends Controller
             'lastname' => $request->lastname,
         ]);
 
+        //dd($request->information)
+
         return redirect()->route('manage-artist');
     }
 
