@@ -207,20 +207,24 @@ class AdminShowController extends Controller
 
         //update artists
         $newArtistTypes = [];
-        foreach($request->newArtists as $typeId=>$artistsForType){
-            foreach($artistsForType as $artistId){
-                $artistType = ArtistType::firstOrCreate([
-                    'type_id'=>$typeId,
-                    'artist_id'=>$artistId
-                ]);
-                $newArtistTypes[] = $artistType->id;
+        if(count($request->newArtists)>0){
+            foreach($request->newArtists as $typeId=>$artistsForType){
+                foreach($artistsForType as $artistId){
+                    $artistType = ArtistType::firstOrCreate([
+                        'type_id'=>$typeId,
+                        'artist_id'=>$artistId
+                    ]);
+                    $newArtistTypes[] = $artistType->id;
+                }
             }
         }
         //find artistTypes that should no longer exist in this show
         $removedFromShow = [];
-        foreach( $show->artistTypes as $oldAT){
-            if(!in_array($oldAT->id, $newArtistTypes)){
-                $removedFromShow[] = $oldAT;
+        if(count($show->artistTypes)>0){
+            foreach( $show->artistTypes as $oldAT){
+                if(!in_array($oldAT->id, $newArtistTypes)){
+                    $removedFromShow[] = $oldAT;
+                }
             }
         }
 
