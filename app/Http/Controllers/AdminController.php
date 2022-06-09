@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\ArtistType;
+use App\Models\Reservation;
 use App\Models\Type;
 use Illuminate\Support\Facades\Http;
 
@@ -267,6 +268,13 @@ class AdminController extends Controller
             'failed' => $failed,
             'passed'=>$passed,
             'shows'=>$data,
+        ]);
+    }
+
+    public function ViewReservation(){
+        $reservations = Reservation::all();
+        return view('backend.reservation.index',[
+            'reservations' => $reservations
         ]);
     }
 }

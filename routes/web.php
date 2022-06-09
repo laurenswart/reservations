@@ -33,7 +33,7 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 //SEARCH
 Route::get('/search', [ShowController::class, 'search']);
- Route::get('/show-list', [ShowController::class, 'show_list']);
+Route::get('/show-list', [ShowController::class, 'show_list']);
 
 //ARTISTS
 Route::get('/artists', [ArtistController::class, 'index'])->name('artists_index');
@@ -128,18 +128,17 @@ Route::prefix('admin')->group(function () {
     Route::post('/api/import', [AdminController::class, 'apiImport'])->name('admin.apiImport')->middleware('admin');
 
 
-    Route::prefix('categories')->group(function(){
+    Route::prefix('categories')->group(function () {
 
         Route::get('/manage', [CategoryController::class, 'IndexCategory'])->name('manage-category')->middleware('admin');
 
-        Route::get('/edit/{id}',[CategoryController::class, 'EditCategory'])->name('category-edit')->middleware('admin');
+        Route::get('/edit/{id}', [CategoryController::class, 'EditCategory'])->name('category-edit')->middleware('admin');
 
-        Route::post('/update',[CategoryController::class, 'UpdateCategory'])->name('category-update');
+        Route::post('/update', [CategoryController::class, 'UpdateCategory'])->name('category-update');
 
-        Route::post('/add',[CategoryController::class, 'AddCategory'])->name('category-add');
+        Route::post('/add', [CategoryController::class, 'AddCategory'])->name('category-add');
 
-        Route::get('/delete/{id}',[CategoryController::class, 'DeleteCategory'])->name('category-delete');
-
+        Route::get('/delete/{id}', [CategoryController::class, 'DeleteCategory'])->name('category-delete');
     });
 
 
@@ -159,46 +158,56 @@ Route::prefix('admin')->group(function () {
 
 
 
-    Route::prefix('shows')->group(function(){
+        Route::prefix('shows')->group(function () {
 
-        Route::get('/manage', [AdminShowController::class, 'index'])->name('manage-show')->middleware('admin');
+            Route::get('/manage', [AdminShowController::class, 'index'])->name('manage-show')->middleware('admin');
 
-        Route::get('/edit/{id}', [AdminShowController::class, 'edit'])->name('admin-show-edit')->middleware('admin');
+            Route::get('/edit/{id}', [AdminShowController::class, 'edit'])->name('admin-show-edit')->middleware('admin');
 
-        Route::post('/update', [AdminShowController::class, 'update'])->name('admin-show-update');
+            Route::post('/update', [AdminShowController::class, 'update'])->name('admin-show-update');
 
-        Route::get('/add', [AdminShowController::class, 'add'])->name('admin-show-add');
+            Route::get('/add', [AdminShowController::class, 'add'])->name('admin-show-add');
 
-        Route::post('/store', [AdminShowController::class, 'store'])->name('admin-show-store');
+            Route::post('/store', [AdminShowController::class, 'store'])->name('admin-show-store');
 
-        Route::get('/delete/{id}', [AdminShowController::class, 'delete'])->name('admin-show-delete');
+            Route::get('/delete/{id}', [AdminShowController::class, 'delete'])->name('admin-show-delete');
+        });
 
+        Route::prefix('users')->group(function () {
+
+            Route::get('/manage', [AdminShowController::class, 'getUser'])->name('manage-user')->middleware('admin');
+            Route::get('/edit/{id}', [AdminShowController::class, 'editRole'])->name('admin-user-edit')->middleware('admin');
+            Route::post('/update-role', [AdminShowController::class, 'updateRole'])->name('admin-user-update');
+        });
+
+        Route::prefix('roles')->group(function () {
+
+            Route::get('/manage', [RoleController::class, 'index'])->name('manage-role')->middleware('admin');
+
+            Route::get('/edit/{id}', [RoleController::class, 'edit'])->name('admin-role-edit')->middleware('admin');
+
+            Route::post('/update', [RoleController::class, 'update'])->name('admin-role-update');
+
+            Route::post('/add', [RoleController::class, 'addRole'])->name('admin-role-add');
+
+            Route::get('/delete/{id}', [RoleController::class, 'delete'])->name('admin-role-delete');
+        });
+
+        Route::prefix('reservation')->group(function () {
+
+            Route::get('/manage', [AdminController::class, 'ViewReservation'])->name('manage-reservations');
+
+            // Route::get('/edit/{id}', [AdminRepresentationController::class, 'EditRepresentation'])->name('admin-representation-edit');
+
+            // Route::post('/update', [AdminRepresentationController::class, 'UpdateRepresentation'])->name('admin-representation-update');
+
+            // Route::get('/delete/{id}', [AdminRepresentationController::class, 'DeleteRepresentation'])->name('admin-representation-delete');
+
+            // Route::get('/add', [AdminRepresentationController::class, 'AddRepresentations'])->name('admin-representation-add');
+
+            // Route::post('/store', [AdminRepresentationController::class, 'StoreRepresentations'])->name('admin-representation-store');
+        });
     });
-
-    Route::prefix('users')->group(function(){
-
-        Route::get('/manage', [AdminShowController::class, 'getUser'])->name('manage-user')->middleware('admin');
-        Route::get('/edit/{id}', [AdminShowController::class, 'editRole'])->name('admin-user-edit')->middleware('admin');
-        Route::post('/update-role', [AdminShowController::class, 'updateRole'])->name('admin-user-update');
-
-    });
-
-    Route::prefix('roles')->group(function(){
-
-        Route::get('/manage', [RoleController::class, 'index'])->name('manage-role')->middleware('admin');
-
-        Route::get('/edit/{id}', [RoleController::class, 'edit'])->name('admin-role-edit')->middleware('admin');
-
-        Route::post('/update', [RoleController::class, 'update'])->name('admin-role-update');
-
-        Route::post('/add', [RoleController::class, 'addRole'])->name('admin-role-add');
-
-        Route::get('/delete/{id}', [RoleController::class, 'delete'])->name('admin-role-delete');
-
-    });
-
-});
-
 });
 
 
@@ -211,5 +220,4 @@ Route::prefix('admin')->group(function () {
 
 //End Admin Shows Route
 
-require __DIR__.'/auth.php';
-
+require __DIR__ . '/auth.php';
