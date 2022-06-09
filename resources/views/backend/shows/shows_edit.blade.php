@@ -88,6 +88,18 @@
                                         </div>
                                     </div>
 
+                                    <div class="form-group">
+                                        <h5>Show Categories <span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <div>
+                                                <select name="category_id">
+                                                    @foreach ($categories as $category)
+                                                        <option value="{{ $category->id }}" id="{{$category->id}}"> {{ $category->type }} </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <div class="text-xs-right">
                                         <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">

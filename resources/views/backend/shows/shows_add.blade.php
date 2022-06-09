@@ -9,22 +9,12 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <div class="table-responsive">
-                    <form method="POST" action="{{ route('admin-show-store') }}">
+                    <form method="POST" action="{{ route('admin-show-store') }}" enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="id" value="">
-                        <div class="form-group">
-                            <h5>Slug <span class="text-danger">*</span></h5>
-                            <div class="controls">
-                                <input type="text" name="slug" class="form-control" value="">
-                                @error('slug')
-                                    <span class="text-danger">{{ $message }} </span>
-                                @enderror
-                            </div>
-                        </div>
                         <div class="form-group">
                             <h5>Show Name <span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="text" name="title" class="form-control" value="">
+                                <input type="text" name="title" class="form-control" value="{{ old('title') ?? ''}}">
                                 @error('title')
                                     <span class="text-danger">{{ $message }} </span>
                                 @enderror
@@ -34,7 +24,7 @@
                         <div class="form-group">
                             <h5>Show description <span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="text" name="description" class="form-control" value="">
+                                <input type="text" name="description" class="form-control" value="{{ old('description') ?? ''}}">
                                 @error('description')
                                     <span class="text-danger">{{ $message }} </span>
                                 @enderror
@@ -43,7 +33,7 @@
                         <div class="form-group">
                             <h5>Show Price <span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="number" name="price" class="form-control" step="0.1" value="">
+                                <input type="number" name="price" class="form-control" step="0.1" value="{{ old('price') ?? ''}}">
                                 @error('price')
                                     <span class="text-danger">{{ $message }} </span>
                                 @enderror
@@ -55,8 +45,21 @@
                                 <div>
                                     <select name="location_id">
                                         @foreach ($locations as $location)
-                                            <option value="{{ $location->id }}" id="{{ $location->id }}">
-                                                {{ $location->address }} </option>
+                                            <option value="{{ $location->id }}" {{ old('location_id')==$location->id ? 'selected' : ''}}>
+                                                {{ $location->designation }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h5>Show Categories <span class="text-danger">*</span></h5>
+                            <div class="controls">
+                                <div>
+                                    <select name="category_id">
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}" {{ old('category_id')==$category->id ? 'selected' : ''}}> {{ $category->type }} </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -68,8 +71,8 @@
                             <div class="controls">
                                 <div>
                                     <select name="bookable">
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
+                                        <option value="1" {{ old('bookable')==1 ? 'selected' : ''}}>Yes</option>
+                                        <option value="0" {{ old('bookable')==0 ? 'selected' : ''}}>No</option>
                                     </select>
                                 </div>
                             </div>
@@ -77,7 +80,7 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <h5>Main Thambnail <span class="text-danger">*</span></h5>
+                                <h5>Main Thumbnail <span class="text-danger">*</span></h5>
                                 <div class="controls">
                                     <input type="file" name="poster_url" class="form-control" required="">
                                     @error('poster_url')

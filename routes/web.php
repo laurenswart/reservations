@@ -16,6 +16,7 @@ use App\Http\Controllers\backend\AdminShowController;
 
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\AdminRepresentationController;
+use App\Http\Controllers\Backend\AdminArtistController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -216,7 +217,7 @@ Route::prefix('admin')->group(function () {
 
 // Admin Shows Route //
 
-
+Route::feeds();
 
 //End Admin Shows Route
 
