@@ -203,19 +203,37 @@ class AdminShowController extends Controller
             'slug' => $slug,
         ]);
 
+        
+
         //update artists
-        $artistTypes = [];
+        $newArtistTypes = [];
         foreach($request->newArtists as $typeId=>$artistsForType){
             foreach($artistsForType as $artistId){
                 $artistType = ArtistType::firstOrCreate([
                     'type_id'=>$typeId,
                     'artist_id'=>$artistId
                 ]);
-                $artistTypes[] = $artistType->id;
+                $newArtistTypes[] = $artistType->id;
             }
         }
+        //find artistTypes that should no longer exist in this show
+        $removedFromShow = [];
+        foreach( $show->artistTypes as $oldAT){
+            if(!in_array($oldAT->id, $newArtistTypes)){
+                $removedFromShow[] = $oldAT;
+            }
+        }
+
+        //add new ones
+        $show->artistTypes()->sync($newArtistTypes);
+        //remove old ones
+        foreach($removedFromShow as $removedAT){
+            if(count($removedAT->shows)==0){
+                $removedAT->delete();
+            }
+        }
+
         
-        $show->artistTypes()->sync($artistTypes);
 
         return redirect()->route('manage-show');
     }
