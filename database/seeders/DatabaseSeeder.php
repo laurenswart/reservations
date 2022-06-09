@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             RoleUserSeeder::class,
             ReservationSeeder::class,
             CategorySeeder::class,
+            AdminSeeder::class,
         ]);
-        Admin::factory(2)->create();
     }
 }
