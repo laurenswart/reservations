@@ -29,6 +29,32 @@
 
             <li class="treeview">
                 <a href="#">
+                    <i data-feather="file"></i>
+                    <span>Users</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class=""><a href="{{ route('manage-user') }}"><i class="ti-more"></i>Manage Users</a></li>
+
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i data-feather="file"></i>
+                    <span>Roles</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class=""><a href="{{ route('manage-role') }}"><i class="ti-more"></i>Manage roles</a></li>
+
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
                     <i data-feather="mail"></i> <span>Category</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-right pull-right"></i>
@@ -102,26 +128,37 @@
             <li class="treeview">
                 <a href="#">
                     <i data-feather="grid"></i>
-                    <span>Import Shows</span>
+                    <span>Import Data</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-right pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="components_alerts.html"><i class="ti-more"></i>Upload File</a></li>
+                    <li><a href="{{ route('admin.import.view') }}"><i class="ti-more"></i>Upload File</a></li>
                     <li><a href="{{ route('admin.apiIndex') }}"><i class="ti-more"></i>Theatre API</a></li>
                 </ul>
+                
+            </li>
+            <li>
+                <a href="{{ route('admin.export.view') }}">
+                    <i data-feather="grid"></i>
+                    <span>Export Data</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
             </li>
 
         </ul>
+        
     </section>
 
     <div class="sidebar-footer">
+       
         <!-- item-->
-        <a href="javascript:void(0)" class="link" data-toggle="tooltip" title="" data-original-title="Settings" aria-describedby="tooltip92529"><i class="ti-settings"></i></a>
-        <!-- item-->
-        <a href="mailbox_inbox.html" class="link" data-toggle="tooltip" title="" data-original-title="Email"><i class="ti-email"></i></a>
-        <!-- item-->
-        <a href="javascript:void(0)" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i class="ti-lock"></i></a>
+        <form method="POST" action="{{ route('admin.logout') }}">
+            @csrf
+            <a href="#" onclick="event.preventDefault();this.closest('form').submit();"><i class="ti-lock"></i></a>
+        </form>
     </div>
 </aside>

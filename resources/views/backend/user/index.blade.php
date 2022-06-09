@@ -20,29 +20,23 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Slug</th>
-                                            <th>Title</th>
-                                            <th>Description</th>
-                                            <th>locations</th>
-                                            <th>Category</th>
-                                            <th>Bookable</th>
-                                            <th>Price</th>
-                                            <th>Action</th>
+                                            <th>firstname</th>
+                                            <th>lastname</th>
+                                            <th>Email</th>
+                                            <th>action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($shows as $show)
+                                        @foreach ($users as $item)
                                             <tr>
-                                                <th>{{ $show->slug }}</th>
-                                                <th>{{ $show->title }}</th>
-                                                <th>{{ $show->description }}</th>
-                                                <th>{{ $show->location->address ?? "pas d'adresse disponible" }}</th>
-                                                <th>{{ $show->category->type ?? "pas de category attribué" }}</th>
-                                                <th>{{ $show->bookable }}</th>
-                                                <th>{{ $show->price }}</th>
-                                                <th> <a href="{{ route('admin-show-edit', $show->id) }}">Edit</a>
+                                                <th>{{ $item->firstname }}</th>
+                                                <th>{{ $item->lastname}}</th>
+                                                <th>{{ $item->email}}</th>
+                                                <th> <a
+                                                        href="{{ route('admin-user-edit', $item->id) }}">Edit</a>
                                                     or
-                                                    <a href="{{ route('admin-show-delete', $show->id) }}" title="delete" class="delete" onclick="return confirm('Are you sure you want to delete this item')"> delete </a>
+                                                    {{-- <a href="{{ route('admin-representation-delete',$item->id) }}"> delete </a> --}}
+                                                    <a href="{{ route('admin-representation-delete',$item->id) }}" title="delete" class="delete" onclick="return confirm('Are you sure you want to delete this item')">Delete</a>
                                                     ?
                                                 </th>
                                             </tr>

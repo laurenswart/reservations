@@ -1,4 +1,5 @@
 @extends('layouts.no-sidebar')
+{{-- @extends('layouts.app') --}}
 
 @section('content')
     <nav class="navbar ">

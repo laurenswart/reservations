@@ -14,7 +14,13 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
+
+        Admin::truncate();
+
         //le 1 veut dire une seule donnée
-        Admin::factory(1)->create();
+        Admin::factory(1)->create([
+            'email'=>'admin@epfc.com'
+        ]);
+
     }
 }

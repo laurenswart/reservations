@@ -17,6 +17,7 @@ use App\Http\Controllers\backend\AdminShowController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\AdminRepresentationController;
 use App\Http\Controllers\Backend\AdminArtistController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -100,6 +101,8 @@ Route::get('/reservations/{id}', [ReservationController::class, 'show'])
 Route::get('/reservations/edit/{id}', [ReservationController::class, 'edit'])
     ->where('id', '[0-9]+')->name('reservations_edit');
 
+
+
 // Route::get('/reservations/edit/{id}', [CategoryController::class, 'edit'])->name('admin_category');
 
 
@@ -112,7 +115,14 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/dashboard', [AdminController::class, 'Dashboard'])->name('admin.dashboard')->middleware('admin');
 
-    Route::get('/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout')->middleware('admin');
+    Route::post('/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout')->middleware('admin');
+
+
+    Route::get('/export', [AdminController::class, 'exportView'])->name('admin.export.view')->middleware('admin');
+    Route::get('/export/{resource}/{format}', [AdminController::class, 'exportGet'])->name('admin.export.get')->middleware('admin');
+
+    Route::get('/import', [AdminController::class, 'importView'])->name('admin.import.view')->middleware('admin');
+    Route::post('/import/{resource}/{format}', [AdminController::class, 'importStore'])->name('admin.import.store')->middleware('admin');
 
     Route::get('/api', [AdminController::class, 'apiIndex'])->name('admin.apiIndex')->middleware('admin');
     Route::post('/api/search', [AdminController::class, 'apiSearch'])->name('admin.apiSearch')->middleware('admin');
@@ -165,7 +175,30 @@ Route::prefix('admin')->group(function () {
         });
     });
 
-    Route::prefix('artist')->group(function () {
+
+    Route::prefix('users')->group(function(){
+
+        Route::get('/manage', [AdminShowController::class, 'getUser'])->name('manage-user')->middleware('admin');
+        Route::get('/edit/{id}', [AdminShowController::class, 'editRole'])->name('admin-user-edit')->middleware('admin');
+        Route::post('/update-role', [AdminShowController::class, 'updateRole'])->name('admin-user-update');
+
+    });
+
+    Route::prefix('roles')->group(function(){
+
+        Route::get('/manage', [RoleController::class, 'index'])->name('manage-role')->middleware('admin');
+
+        Route::get('/edit/{id}', [RoleController::class, 'edit'])->name('admin-role-edit')->middleware('admin');
+
+        Route::post('/update', [RoleController::class, 'update'])->name('admin-role-update');
+
+        Route::post('/add', [RoleController::class, 'addRole'])->name('admin-role-add');
+
+        Route::get('/delete/{id}', [RoleController::class, 'delete'])->name('admin-role-delete');
+
+    });
+  
+   Route::prefix('artist')->group(function () {
         Route::get('/manage', [AdminArtistController::class, 'ViewArtist'])->name('manage-artist')->middleware('admin');
 
         Route::get('/edit/{id}', [AdminArtistController::class, 'ArtistEdit'])->name('admin-artist-edit')->middleware('admin');
@@ -181,7 +214,10 @@ Route::prefix('admin')->group(function () {
         Route::get('/info/{id}', [AdminArtistController::class, 'ArtistInfo'])->name('admin-artist-info');
 
     });
+
+  
 });
+
 
 // End Admin Routes //
 

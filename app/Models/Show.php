@@ -80,4 +80,10 @@ class Show extends Model implements Feedable
     return Show::all();
     }
 
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
+    
+
 }
