@@ -1,20 +1,17 @@
-@extends('layouts.app')
+@extends('layouts.left-sidebar')
 
-@section('title', 'Fiche d\'un spectacle')
+@section('sidebar')
+    @if($show->poster_url)
+        <img class="lib-img-show" src="{{ asset('images/show_posters/'.$show->poster_url) }}" alt="{{ $show->title }}">
+    @endif
+@endsection
 
 @section('content')
-    <div class="nav">
-        <a href="{{ route('shows_index') }}"><i class="fa-solid fa-chevron-left"></i>Retour à l'index</a>
+    <div class="back-nav mb-4">
+        <a href="{{ route('shows_index') }}"><i class="fas fa-angle-left"></i>Retour à l'index</a>
     </div>
     <div class="lib-item" data-category="view">
         <div class="lib-panel">
-            <div class="row box-shadow">
-                <div class="col-md-6">
-                    @if($show->poster_url)
-                    <img class="lib-img-show" src="{{ asset('images/show_posters/'.$show->poster_url) }}" alt="{{ $show->title }}">
-                    @endif
-                </div>
-                <div class="col-md-6">
                     <div class="lib-row">
                     <h1>{{ $show->title }}</h1>
                     </div>
@@ -60,8 +57,7 @@
                         @endforeach
                         </p>
                     @endforeach
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
