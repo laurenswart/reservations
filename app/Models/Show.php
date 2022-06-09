@@ -24,7 +24,8 @@ class Show extends Model implements Feedable
         'poster_url',
         'location_id',
         'bookable',
-        'price'
+        'price',
+        'category_id'
     ];
 
     /**
