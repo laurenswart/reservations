@@ -5,8 +5,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
 
-class Show extends Model
+
+class Show extends Model implements Feedable
 {
     use HasFactory;
      /**
@@ -60,9 +63,27 @@ class Show extends Model
         return $this->belongsToMany(ArtistType::class);
     }
 
+    public function toFeedItem(): FeedItem
+    {
+        return FeedItem::create()
+            ->id($this->id)
+            ->title($this->title)
+            ->summary($this->description)
+            ->updated($this->created_at)    //Gérer le cas ou le champ est null
+            ->link($this->slug)                        //Fournir l'URL qui affiche le show
+            ->authorName('')                         //Peut laisser à '' ou l'auteur du spectacle
+            ->authorEmail('');
+    }
+
+    public static function getFeedItems()
+    {
+    return Show::all();
+    }
+
     public function category(){
         return $this->belongsTo(Category::class);
     }
 
     
+
 }
