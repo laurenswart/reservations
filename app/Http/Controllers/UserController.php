@@ -89,6 +89,7 @@ class UserController extends Controller
             'lastname' => 'lastname'.$user->id,
             'password' => 'password',
         ]);
+        $user->delete();
 
         //logout
         Auth::guard('web')->logout();
