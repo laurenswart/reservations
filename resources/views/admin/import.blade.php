@@ -43,7 +43,7 @@
                                         </div>
                                     </td>
                                     <td class="text-right">
-                                        <form method="post" action="{{ route('admin.import.store', ['shows', 'csv']) }}" enctype="multipart/form-data">
+                                        <form method="post" action="{{ route('admin.import.store', ['artists', 'csv']) }}" enctype="multipart/form-data">
                                             @csrf  
                                             <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
                                             <input type="file" name="rows">
