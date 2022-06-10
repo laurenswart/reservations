@@ -17,22 +17,23 @@
                     </div>
                     <div class="lib-row lib-desc">
                     @if($show->location)
-                        <p><strong>Lieu de création:</strong> {{ $show->location->designation }}</p>
+                        <p><strong>Lieu de création:</strong> <a href="{{route('locations_show', $show->location_id)}}">{{ $show->location->designation }}</a></p>
                     @endif
                     <p><strong>Prix:</strong> {{ $show->price }} €</p>
                     <h2>Représentations</h2>
                     @if($show->representations->count()>=1)
                     <ul>
                         @foreach ($show->representations as $representation)
-                            <li class="d-flex justify-content-between my-1">{{ $representation->when }} 
+                            <li class="d-flex justify-content-between my-1"><span>{{ $representation->when }} 
                             @if($representation->location)
-                            ({{ $representation->location->designation }})
+                            <a href="{{route('locations_show', $representation->location_id)}}">({{ $representation->location->designation }})</a>
                             @elseif($representation->show->location)
-                            ({{ $representation->show->location->designation }})
+                            <a href="{{route('locations_show', $representation->show->location_id)}}">({{ $representation->show->location->designation }})</a>
                             @else
                             (lieu à déterminer)
                                
                             @endif
+                            </span>
                             @if($representation->when > now() && $representation->show->bookable)
                                 <a class="button small"  href="{{ route('representations_show', $representation->id) }}">Book</a>
                             @endif

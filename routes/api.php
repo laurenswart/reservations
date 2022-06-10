@@ -32,6 +32,6 @@ Route::group(['middleware'=>['auth:sanctum']], function () {
 Route::post('/shows', [ShowController::class, 'store']);
 Route::put('/shows/{id}', [ShowController::class, 'update']);
 Route::delete('/shows/{id}', [ShowController::class, 'destroy']);
-Route::get('/shows/search/{title}', [ShowController::class, 'search']);
+//Route::get('/shows/search/{title}', [ShowController::class, 'search']);
 
 });
