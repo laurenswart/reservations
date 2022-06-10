@@ -46,10 +46,9 @@
     <!-- Carousel -->
     <section class="carousel">
         <div class="reel">
-                <div class="row mt-2">
         @if(!$nextRepresentations->isEmpty())
             @foreach($nextRepresentations as $representation)
-                <article class="col">
+                <article>
                     <a href="{{ route('representations_show', $representation->id) }}" class="image featured"><img src="{{ asset('images/show_posters/'.$representation->show->poster_url)}}" alt="" /></a>
                     <header>
                         <h3><a href="{{ route('representations_show', $representation->id) }}">{{ $representation->show->title}}</a></h3>
@@ -60,7 +59,6 @@
         @else 
             <p>Aucune représentation à venir.</p>
         @endif
-                </div>
         </div>
     </section>
 

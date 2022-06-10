@@ -22,7 +22,7 @@ class WelcomeController extends Controller
     {
         $locations = Location::all();
         //$representations = Representation::orderBy('when', 'desc')->paginate(4);
-        $nextRepresentations = Representation::where('when', '>', date('Y-m-d H:m:s'))->orderby('when','desc')->take(4)->get()->reverse();
+        $nextRepresentations = Representation::where('when', '>', date('Y-m-d H:m:s'))->orderby('when','desc')->get()->reverse();
         $showsForSlider = Show::all();
 
         $popularShows = DB::select('SELECT futurShows.id, futurShows.title, futurShows.bookable, sum(places), futurShows.poster_url, futurShows.price  from 

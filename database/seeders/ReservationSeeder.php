@@ -26,13 +26,23 @@ class ReservationSeeder extends Seeder
                 'places'=>2
             ],
             [
-                'user_login'=>'lauren',
+                'user_login'=>'aboubacar',
                 'representation_id'=>2,
                 'places'=>1
             ],
             [
+                'user_login'=>'amine',
+                'representation_id'=>4,
+                'places'=>3
+            ],
+            [
                 'user_login'=>'lauren',
                 'representation_id'=>4,
+                'places'=>2
+            ],
+            [
+                'user_login'=>'amine',
+                'representation_id'=>2,
                 'places'=>3
             ],
         ];

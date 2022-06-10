@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Artist;
+use App\Models\ArtistType;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Show;
@@ -10,8 +12,9 @@ use App\Models\User;
 use App\Models\Location;
 use App\Models\Role;
 use App\Models\RoleUser;
-
+use App\Models\Type;
 use Carbon\Carbon;
+use Database\Seeders\TypeSeeder;
 use Illuminate\Support\Facades\Storage;
 use Image;
 use Illuminate\Support\Str;
@@ -139,10 +142,23 @@ class AdminShowController extends Controller
      */
     public function edit($id)
     {
-        $shows = Show::findOrFail($id);
+        $show = Show::findOrFail($id);
         $locations = Location::all();
         $categories = Category::all();
-        return view('backend.shows.shows_edit', compact('shows', 'locations','categories'));
+        
+        $currentArtists = [];
+        $types = Type::all();
+        foreach($types as $type){
+            $currentArtists[$type->id] = $show->artistTypes()
+            ->join('types', 'types.id', 'type_id')
+            ->where('type', $type->type)
+            ->pluck('artist_id')
+            ->toArray();
+        }
+
+        $allArtists = Artist::all();
+        
+        return view('backend.shows.shows_edit', compact('show', 'locations','categories','currentArtists', 'allArtists', 'types'));
     }
 
     /**
@@ -154,24 +170,75 @@ class AdminShowController extends Controller
      */
     public function update(Request $request)
     {
-
-        /* It's validating the input. */
-
-
+        
         $show_id = $request->id;
+        /* Validating the input. */
+        $request->validate([
+            'title' => 'required|max:60|filled|unique:shows,title,'.$show_id,
+            'description' => 'required|max:500|filled',
+            'price' => 'required',
+            'location_id' => 'required',
+            'bookable' => 'required',
+        ], [
+            'type' => 'You must choose a name !',
+            'description' => 'You must put a description !',
+            'price' => 'You must choose a price !',
+            'location_id' => 'You must choose a location !',
+            'bookable' => 'Choose between yes or no !',
 
-        Show::findOrFail($show_id)->update([
+        ]);
+        //dd($request->post());
+        $slug = Str::slug($request->title,'-');
+        //dd($request->post());
+        
+        //update show
+        $show = Show::findOrFail($show_id);
+        $show->update([
             'title' => $request->title,
             'description' => $request->description,
+            'price' => $request->price,
             'location_id' => $request->location_id,
             'category_id' => $request->category_id,
-            'slug' => $request->slug,
-            'price' => $request->price,
             'bookable' => $request->bookable,
+            'slug' => $slug,
         ]);
 
-        //dd($request->category_id);
-        // dd($request);
+        
+
+        //update artists
+        $newArtistTypes = [];
+        if(count($request->newArtists)>0){
+            foreach($request->newArtists as $typeId=>$artistsForType){
+                foreach($artistsForType as $artistId){
+                    $artistType = ArtistType::firstOrCreate([
+                        'type_id'=>$typeId,
+                        'artist_id'=>$artistId
+                    ]);
+                    $newArtistTypes[] = $artistType->id;
+                }
+            }
+        }
+        //find artistTypes that should no longer exist in this show
+        $removedFromShow = [];
+        if(count($show->artistTypes)>0){
+            foreach( $show->artistTypes as $oldAT){
+                if(!in_array($oldAT->id, $newArtistTypes)){
+                    $removedFromShow[] = $oldAT;
+                }
+            }
+        }
+
+        //add new ones
+        $show->artistTypes()->sync($newArtistTypes);
+        //remove old ones
+        foreach($removedFromShow as $removedAT){
+            if(count($removedAT->shows)==0){
+                $removedAT->delete();
+            }
+        }
+
+        
+
         return redirect()->route('manage-show');
     }
 
