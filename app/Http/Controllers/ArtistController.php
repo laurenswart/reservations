@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artist;
+use App\Models\ArtistType;
 use App\Models\Type;
 use Exception;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 class ArtistController extends Controller
@@ -57,10 +59,11 @@ class ArtistController extends Controller
     public function show($id)
     {
         $artist = Artist::find($id);
-        
+        $shows = ArtistType::with('shows')->where('artist_id', $id)->get()->groupBy('shows.*.id');
         return view('artist.show',[
             'artist' => $artist,
-            'resource' => $artist->firstname.' '.$artist->lastname
+            'resource' => $artist->firstname.' '.$artist->lastname,
+            'shows' => $shows
         ]);
 
     }
