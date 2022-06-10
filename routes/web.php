@@ -56,19 +56,7 @@ Route::put('/types/{id}', [TypeController::class, 'update'])
     ->where('id', '[0-9]+')->name('types_update');
 
 
-//LOCALITIES
-Route::get('/localities', [LocalityController::class, 'index'])->name('localities_index');
-Route::get('/localities/{id}', [LocalityController::class, 'show'])
-    ->where('id', '[0-9]+')->name('localities_show');
-Route::get('/localities/edit/{id}', [LocalityController::class, 'edit'])
-    ->where('id', '[0-9]+')->name('localities_edit');
-Route::put('/localities/{id}', [LocalityController::class, 'update'])
-    ->where('id', '[0-9]+')->name('localities_update');
-Route::get('/addlocality', [LocalityController::class, 'addlocality'])->name('add_locality');
-Route::post('/savelocality', [LocalityController::class, 'store'])->name('save_locality');
-Route::get('/editlocality/{id}', [LocalityController::class, 'edit'])->name('edit_locality');
-Route::post('/updatelocality/{id}', [LocalityController::class, 'update'])->name('update_locality');
-Route::get('/deletelocality/{id}', [LocalityController::class, 'destroy'])->name('delete_locality');
+
 
 
 Route::get('/roles', [RoleController::class, 'index'])->name('roles_index');
@@ -205,6 +193,21 @@ Route::prefix('admin')->group(function () {
 
             // Route::post('/store', [AdminRepresentationController::class, 'StoreRepresentations'])->name('admin-representation-store');
         });
+        Route::prefix('reservation')->group(function () {
+            //LOCALITIES
+            Route::get('/localities', [LocalityController::class, 'index'])->name('localities_index');
+            Route::get('/localities/{id}', [LocalityController::class, 'show'])
+                ->where('id', '[0-9]+')->name('localities_show');
+            Route::get('/localities/edit/{id}', [LocalityController::class, 'edit'])
+                ->where('id', '[0-9]+')->name('localities_edit');
+            Route::put('/localities/{id}', [LocalityController::class, 'update'])
+                ->where('id', '[0-9]+')->name('localities_update');
+            Route::get('/addlocality', [LocalityController::class, 'addlocality'])->name('add_locality');
+            Route::post('/savelocality', [LocalityController::class, 'store'])->name('save_locality');
+            Route::get('/editlocality/{id}', [LocalityController::class, 'edit'])->name('edit_locality');
+            Route::post('/updatelocality/{id}', [LocalityController::class, 'update'])->name('update_locality');
+            Route::get('/deletelocality/{id}', [LocalityController::class, 'destroy'])->name('delete_locality');
+            });    
     });
 });
 
