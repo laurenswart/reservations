@@ -21,7 +21,7 @@
                 <tr>
                     <th>{{ $reservation->representation->when }}</th>
                     <td><a href="{{ route('shows_show', $reservation->representation->show->id)}}">{{ $reservation->representation->show->title }}</a></td>
-                    <td><a href="{{ route('locations_index')}}">{{ $reservation->representation->location->designation }}</a></td>
+                    <td><a href="{{ route('locations_index')}}">{{ $reservation->representation->location ? $reservation->representation->location->designation : '(Lieu Inconnu)' }}</a></td>
                     <td>{{ $reservation->places }}</td>
                     <td>{{ $reservation->places * $reservation->representation->show->price }} &#8364</td>
                     <td>{{ $reservation->created_at }}</td>
