@@ -29,7 +29,7 @@
                 <div class="row justify-content-center no-gutters">
                     <div class="col-lg-4 col-md-5 col-12">
                         <div class="content-top-agile p-10">
-                            <h2 class="text-white">Get started with Us</h2>
+                            <h2 class="text-white">The Case of Shows</h2>
                             <p class="text-white-50">Sign in to start your session</p>
                         </div>
                         <div class="p-30 rounded30 box-shadowed b-2 b-dashed">
@@ -83,9 +83,9 @@
                                 </p>
                             </div> --}}
 
-                            <div class="text-center">
+                            <!--<div class="text-center">
                                 <p class="mt-15 mb-0 text-white">Don't have an account? <a href="auth_register.html" class="text-info ml-5">Sign Up</a></p>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>

@@ -27,7 +27,7 @@
                         @endif
                     </td>
                     <td style="text-align:right">
-                            @if($representation->show->bookable)
+                            @if($representation->show->bookable && $representation->when > now())
                                 <a class="button"  href="{{ route('representations_show', $representation->id) }}">Book</a>
                             @else
                             <a class="button"  href="{{ route('shows_show', $representation->show->id) }}">View</a>
