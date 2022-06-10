@@ -23,27 +23,32 @@ class ReservationSeeder extends Seeder
             [
                 'user_login'=>'lauren',
                 'representation_id'=>1,
-                'places'=>2
+                'places'=>2,
+                'created_at'=>'2022-05-21'
             ],
             [
                 'user_login'=>'aboubacar',
                 'representation_id'=>2,
-                'places'=>1
+                'places'=>1,
+                'created_at'=>'2022-05-26'
             ],
             [
                 'user_login'=>'amine',
                 'representation_id'=>4,
-                'places'=>3
+                'places'=>3,
+                'created_at'=>'2022-04-21'
             ],
             [
                 'user_login'=>'lauren',
                 'representation_id'=>4,
-                'places'=>2
+                'places'=>2,
+                'created_at'=>'2022-05-27'
             ],
             [
                 'user_login'=>'amine',
                 'representation_id'=>2,
-                'places'=>3
+                'places'=>3,
+                'created_at'=>'2022-05-30'
             ],
         ];
         //Prepare the data
